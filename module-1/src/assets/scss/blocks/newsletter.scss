@@ -1,0 +1,137 @@
+.newsletter {
+    margin-bottom: 6.8em;
+    background-color: $beige;
+
+     @media (max-width: 442px) {
+        margin-bottom: 3em;
+    }
+}
+
+.newsletter__inner {
+    display: flex;
+    justify-content: space-between;
+    background-color: $beige;
+
+    @media (max-width: 897px) {
+        flex-direction: column;
+    }
+}
+
+.newsletter__content {
+    margin-right: 2em;
+    padding: 6.8em 0 8em 4.7em;
+
+    @media (max-width: 1146px) {
+        padding: 6.8em 0 8em 0;
+    }
+
+    @media (max-width: 897px) {
+        margin: 0;
+        padding: 1em 0 1em 0;
+    }
+}
+
+.newsletter__title {
+    margin-bottom: 0.55em;
+    font-size: 42px;
+    letter-spacing: 3px;
+    @include text-black;
+
+     @media (max-width: 897px) {
+         font-size: 38px;
+    }
+}
+
+.newsletter__text {
+    font-size: 29px;
+    letter-spacing: 2px;
+    color: $black;
+    font-weight: 400;
+
+    @media (max-width: 981px) {
+        font-size: 22px;
+    }
+
+    @media (max-width: 385px) {
+        font-size: 19px;
+        letter-spacing: 1px;
+    }
+}
+
+.newsletter__items {
+    display: flex;
+    flex-direction: column;
+    padding-right: 5.3em;
+
+    @media (max-width: 1146px) {
+        padding-right: 0;
+    }
+}
+
+.newsletter__form {
+    padding: 12em 0em 2.4em 0;
+
+    @media (max-width: 897px) {
+        padding: 0em 0em 1.4em 0;
+    }
+
+}
+
+.newsletter__input {
+    width: 20.1em;
+    padding: 0.2em 0.2em 0.2em 0.8em;
+    font-family: inherit;
+    font-size: 26px;
+    font-weight: 400;
+    color: $black;
+    letter-spacing: 2px;
+    border: 2px solid #000;
+    background-color: $beige;
+
+    &:focus {
+        outline: none;
+        background-color: lighten($beige, 5%)
+    }
+
+    @media (max-width: 567px) {
+        width: 19em;
+        font-size: 22px;
+        letter-spacing: 1px;
+    }
+
+    @media (max-width: 442px) {
+        font-size: 19px;
+    }
+
+    @media (max-width: 385px) {
+        font-size: 17px;
+    }
+
+    @media (max-width: 346px) {
+        font-size: 15px;
+        padding: 0.2em 0.2em 0.2em 0.2em;
+    }
+}
+
+.newsletter__btn {
+    align-self: flex-end;
+    font-family: inherit;
+    font-size: 25px;
+    letter-spacing: 2px;
+    @include text-black;
+    border-style: none;
+    cursor: pointer;
+    border-bottom: 2px $black solid;
+    background: inherit;
+    @include transition;
+    @include hover;
+
+    @media (max-width: 981px) {
+        font-size: 21px;
+    }
+
+    @media (max-width: 897px) {
+        align-self: flex-start;
+        margin-bottom: 0.75em;
+    }
+}
