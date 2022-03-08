@@ -1,3 +1,14 @@
+let mysql = require('mysql')
+
+let connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'fashion',
+  password: '123123',
+  database: 'fashion'
+});
+
+// connection.end();
+
 // bring in express
 const express = require('express');
 
@@ -220,7 +231,20 @@ const pageContent = {
  //index route
 app.get('/', async (req, res) =>{
   const langList = await listLanguagesWithTarget();
-  res.render('index.ejs', {langList, pageContent});
+  res.render('index.ejs', {/*langList*/ pageContent});
+});
+
+app.get('/getContactRequest/:key?', async (req, res) =>{
+  const key = req.params.key
+  let queryString = "SELECT * FROM contacts"
+  if (key) {
+    queryString = `SELECT * FROM contacts WHERE id = ${key}`
+  }
+  connection.query(queryString, function (err, result, fields) {
+    if (err) throw err;
+    res.status(200).send(result);
+  });
+  // res.status(200).send(req.body);
 });
 
 app.post('/translate', async (req, res) =>{
@@ -230,6 +254,22 @@ app.post('/translate', async (req, res) =>{
   res.status(200).send(result);
 });
 
+app.post('/writeContactFormData', async (req, res) =>{
+  const {
+    name,
+    email,
+    comment  
+  } = req.body
+  
+  let queryString = 'INSERT INTO contacts(name,email,comment) VALUES(?,?,?)';
+  
+  connection.query(queryString, [name,email,comment], (err, results, fields) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    res.status(200).send(results);
+  });
+});
 // Port variable
 const PORT = process.env.PORT || 3001;
 
