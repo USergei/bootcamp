@@ -23,7 +23,8 @@ const ejs = require('ejs');
 
 //init our application 
 const app = express()
-app.use(express.json());
+// app.use(express.json());
+app.use(bodyParser.json())
 
 //setup template engine
 app.set('view-engine', 'html');
@@ -33,6 +34,7 @@ app.engine('html', ejs.renderFile);
 app.use(express.static(__dirname + '/dist'));
 
 //body parser middleware
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.urlencoded({extended:true}));
 
  // Imports the Google Cloud Translation library
@@ -45,23 +47,23 @@ const translationClient = new TranslationServiceClient();
 const {Translate} = require('@google-cloud/translate').v2;
  
  // Creates a client
-const translate = new Translate(
-  {
-  projectId: 'leafy-beach-336216', //eg my-project-0o0o0o0o'
-  keyFilename: './leafy-beach-336216-531f228315d4.json' //eg my-project-0fwewexyz.json
-  }
-);
+// const translate = new Translate(
+//   {
+//   projectId: 'leafy-beach-336216', //eg my-project-0o0o0o0o'
+//   keyFilename: './leafy-beach-336216-531f228315d4.json' //eg my-project-0fwewexyz.json
+//   }
+// );
 
-async function translateText(text, lang) {
-  let [translations] = await translate.translate(text, lang);
-  translations = Array.isArray(translations) ? translations : [translations];
-  return translations
-}
+// async function translateText(text, lang) {
+//   let [translations] = await translate.translate(text, lang);
+//   translations = Array.isArray(translations) ? translations : [translations];
+//   return translations
+// }
 
-async function listLanguagesWithTarget() {
-  const [languages] = await translate.getLanguages('en');
-  return languages
-}
+// async function listLanguagesWithTarget() {
+//   const [languages] = await translate.getLanguages('en');
+//   return languages
+// }
 
 
 const pageContent = {
@@ -230,8 +232,8 @@ const pageContent = {
 
  //index route
 app.get('/', async (req, res) =>{
-  const langList = await listLanguagesWithTarget();
-  res.render('index.ejs', {/*langList*/ pageContent});
+  // const langList = await listLanguagesWithTarget()
+  res.render('index.ejs', {/*langList*/ pageContent})
 });
 
 app.get('/getContactRequest/:key?', async (req, res) =>{
@@ -241,8 +243,12 @@ app.get('/getContactRequest/:key?', async (req, res) =>{
     queryString = `SELECT * FROM contacts WHERE id = ${key}`
   }
   connection.query(queryString, function (err, result, fields) {
-    if (err) throw err;
-    res.status(200).send(result);
+    if (err) {
+        res.sendStatus(500)
+      return
+    }
+    data = JSON.parse(JSON.stringify(result))
+    res.render('contacts-admin.ejs', data)
   });
   // res.status(200).send(req.body);
 });
@@ -255,15 +261,10 @@ app.post('/translate', async (req, res) =>{
 });
 
 app.post('/writeContactFormData', async (req, res) =>{
-  const {
-    name,
-    email,
-    comment  
-  } = req.body
+  const { name, email, message } = req.body
+  let queryString = 'INSERT INTO contacts(name,email,message) VALUES(?,?,?)';
   
-  let queryString = 'INSERT INTO contacts(name,email,comment) VALUES(?,?,?)';
-  
-  connection.query(queryString, [name,email,comment], (err, results, fields) => {
+  connection.query(queryString, [name,email,message], (err, results, fields) => {
     if (err) {
       return console.error(err.message);
     }

@@ -213,16 +213,12 @@
                 <div class="contact__inner">
                     <div class="contact__text"><%=pageContent.contact.text%></div>
                     <div class="contact__items">
-                        <form class="contact__form" action="/" method="post">
-                            <input class="contact__input" type="text" name="name" placeholder="<%=pageContent.contact.formPlaceHolders[0]%>">
+                        <form class="contact__form" id="contact__form" action="/writeContactFormData" method="post">
+                            <input class="contact__input" type="text" name="name" placeholder="<%=pageContent.contact.formPlaceHolders[0]%>" required>
+                            <input class="contact__input" type="email" name="email" placeholder="<%=pageContent.contact.formPlaceHolders[1]%>" required>
+                            <textarea class="contact__textarea" name="message" placeholder="<%=pageContent.contact.formPlaceHolders[2]%>" required></textarea>
+                            <button class="contact__btn" type="submit"><%=pageContent.contact.button%></button>
                         </form>
-                        <form class="contact__form" action="/" method="post">
-                            <input class="contact__input" type="email" name="email" placeholder="<%=pageContent.contact.formPlaceHolders[1]%>">
-                        </form>
-                        <form class="contact__form" action="/" method="post">
-                            <textarea class="contact__textarea" name="message" placeholder="<%=pageContent.contact.formPlaceHolders[2]%>"></textarea>
-                        </form>
-                        <button class="contact__btn" type="submit"><%=pageContent.contact.button%></button>
                     </div>
                 </div>
             </div>
@@ -339,7 +335,7 @@
         const body = document.querySelector('body')
 
         document.addEventListener("click", event => {
-            event.preventDefault()
+            // event.preventDefault()
             let elem = event.target
             if (elem.id === "about" || elem.id === "footer_about") {
                     about.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
@@ -367,6 +363,44 @@
                 closeModal()
             }
         })
+
+        window.addEventListener( "load", function () {
+        function sendData() {
+            const XHR = new XMLHttpRequest();
+            
+            // Bind the FormData object and the form element
+            const FD = new FormData( form );
+
+            // Define what happens on successful data submission
+            XHR.addEventListener( "load", function(event) {} );
+
+            // Define what happens in case of error
+            XHR.addEventListener( "error", function( event ) {
+            alert( 'Oops! Something went wrong.' );
+            } );
+
+            // Set up our request
+            XHR.open( "POST", "http://localhost:3001/writeContactFormData" );
+            XHR.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+            let convertedJSON = {};
+                for (const [key, value]  of FD.entries())
+                {
+                    convertedJSON[key] = value;
+                }
+
+            // The data sent is what the user provided in the form
+            XHR.send( JSON.stringify(convertedJSON) );
+        }
+
+        // Access the form element...
+        const form = document.getElementById( "contact__form" );
+        // ...and take over its submit event.
+        form.addEventListener( "submit", function ( event ) {
+                event.preventDefault();
+                sendData();
+                closeModal()
+            } );
+        } );
 
         const translatePageText = lang => {
             postData(
