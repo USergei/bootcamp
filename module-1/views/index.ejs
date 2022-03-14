@@ -335,7 +335,7 @@
         const body = document.querySelector('body')
 
         document.addEventListener("click", event => {
-            // event.preventDefault()
+            event.preventDefault()
             let elem = event.target
             if (elem.id === "about" || elem.id === "footer_about") {
                     about.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
@@ -372,7 +372,9 @@
             const FD = new FormData( form );
 
             // Define what happens on successful data submission
-            XHR.addEventListener( "load", function(event) {} );
+            XHR.addEventListener( "load", function(event) {
+                
+            } );
 
             // Define what happens in case of error
             XHR.addEventListener( "error", function( event ) {
@@ -387,6 +389,7 @@
                 {
                     convertedJSON[key] = value;
                 }
+                console.log(convertedJSON)
 
             // The data sent is what the user provided in the form
             XHR.send( JSON.stringify(convertedJSON) );
