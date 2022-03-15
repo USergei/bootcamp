@@ -29,14 +29,20 @@ background-color: #F9F9F9;
  border: 0;
 }
 
-.contact__btn {
+.table__btn {
   width: 70px;
   background-color: #e8d1c3;
   border: 1px solid #000;
   padding: 3px 0 3px 0;
   border-radius: 3.5px;
+  
 }
 
-.td .contact__btn:first-child {
+.table__btn:hover {
+  cursor: pointer;
+  background-color: #e6ae89;
+}
+
+.td .table__btn:first-child {
   margin-bottom: 10px;
 }

@@ -325,44 +325,82 @@
         })
       
         function closeModal() {
-            contact.style.display = "none"
+            modal.style.display = "none"
             body.style.overflow = ""
         }    
 
         const about = document.querySelector('.about')
         const collection = document.querySelector('.collection')
-        const contact = document.querySelector('.contact')
+        const headerContact = document.getElementById('contact')
+        const footerContact = document.getElementById('footer_contact')
+        const modal = document.getElementById('modal')
         const body = document.querySelector('body')
-
-        document.addEventListener("click", event => {
+        const headerNewCollection = document.getElementById('new_col')
+        const footerNewCollection = document.getElementById('footer_new_col')
+        const headerAbout = document.getElementById('about')
+        const footerAbout = document.getElementById('footer_about')
+        const buttonCloseModal = document.querySelector('.button-close-modal')
+                
+        function toNewCollection () {
             event.preventDefault()
-            let elem = event.target
-            if (elem.id === "about" || elem.id === "footer_about") {
-                    about.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
-            }
-            if (elem.id === "new_col" || elem.id === "footer_new_col") {
-                collection.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"})
-            }
-            if (elem.id === "contact" || elem.id === "footer_contact") {
-                contact.style.display = "block"
-                body.style.overflow = "hidden"
-            }
-            if (elem.id === "modal" || elem.matches(".button-close-modal")) {
-                closeModal()
-            }
-            if (menu.contains(elem)) {
-                const languageCode = event.target.hash.substring(1)
-                const selectLang = document.getElementsByClassName('icon')
-                selectLang[0].innerText = elem.innerText
-                translatePageText(languageCode)
-            }
-        })
+            collection.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+        } 
 
-        document.addEventListener("keydown", event => {
-            if (event.code === "Escape" && contact.style.display === "block") {
+        headerNewCollection.addEventListener("click", toNewCollection)
+        footerNewCollection.addEventListener("click", toNewCollection)
+
+        function toAbout () {
+            event.preventDefault()
+            about.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+        } 
+        
+        headerAbout.addEventListener("click", toAbout)
+        footerAbout.addEventListener("click", toAbout)
+
+        function showModal () {
+            event.preventDefault()
+            modal.style.display = "block"
+            body.style.overflow = "hidden"
+        }
+
+        headerContact.addEventListener("click", showModal)
+        footerContact.addEventListener("click", showModal)
+
+        buttonCloseModal.addEventListener("click", closeModal)
+        modal.addEventListener("click", event => {
+            if (event.target === modal) {
                 closeModal()
             }
         })
+        // document.addEventListener("click", event => {
+        //     event.preventDefault()
+        //     let elem = event.target
+        //     if (elem.id === "about" || elem.id === "footer_about") {
+        //             about.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+        //     }
+        //     if (elem.id === "new_col" || elem.id === "footer_new_col") {
+        //         collection.scrollIntoView({behavior: "smooth", block: "center", inline: "nearest"})
+        //     }
+        //     if (elem.id === "contact" || elem.id === "footer_contact") {
+        //         contact.style.display = "block"
+        //         body.style.overflow = "hidden"
+        //     }
+        //     if (elem.id === "modal" || elem.matches(".button-close-modal")) {
+        //         closeModal()
+        //     }
+        //     if (menu.contains(elem)) {
+        //         const languageCode = event.target.hash.substring(1)
+        //         const selectLang = document.getElementsByClassName('icon')
+        //         selectLang[0].innerText = elem.innerText
+        //         translatePageText(languageCode)
+        //     }
+        // })
+
+        // document.addEventListener("keydown", event => {
+        //     if (event.code === "Escape" && contact.style.display === "block") {
+        //         closeModal()
+        //     }
+        // })
 
         window.addEventListener( "load", function () {
         function sendData() {

@@ -1,32 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/style-contacts.css">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="/assets/css/style-contacts.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
 </head>
 <body>
-  <div class="table">
-    <div class="th">
-      <div class="td">Name</div>
-      <div class="td">Email</div>
-      <div class="td">Message</div>
-      <div class="td">Actions</div>
-    </div>
-    <%data.forEach(child => {%>
-      <div class="tr">
-        <div class="td"><%=child.name%></div>
-        <div class="td"><%=child.email%></div>
-        <div class="td"><%=child.message%></div>
-        <div class="td">
-          <button class="contact__btn" type="submit">Reply</button>
-          <button class="contact__btn" type="submit">Delete</button>
-        </div>
-      </div>
-    <%})%>
-  </div>
+	<div class="table">
+		<div class="th">
+			<div class="td">Name</div>
+			<div class="td">Email</div>
+			<div class="td">Message</div>
+			<div class="td">Actions</div>
+		</div>
+		<%data.forEach(child => {%>
+			<div class="tr">
+				<div class="td"><%=child.name%></div>
+				<div class="td"><%=child.email%></div>
+				<div class="td"><%=child.message%></div>
+				<div class="td">
+					<button class="table__btn" type="submit">Reply</button>
+					<button class="table__btn" type="submit">Delete</button>
+				</div>
+			</div>
+		<%})%>
+		<div class="tr">
+			<div class="tdr">
+				<form class="" id="reply-contact-form" action="">
+					<textarea class="" id="response-input-field" ></textarea> 
+						<button type="submit">Send</button>
+					</form>
+			</div>  
+			
+		</div>
+	</div>
+	<script type="text/javascript">
+		var mydata = document.getElementById('reply-contact-form');
+		var myresponse = document.getElementById('response-input-field');
+		var data = 'mydata=' + mydata.value;
+
+		var request = new XMLHttpRequest();
+		request.open('POST', 'http://localhost:3001/sendEmail', true);
+		request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+
+		request.onreadystatechange = function() {
+			if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
+				console.log('succeed');
+				myresponse.value = request.responseText;
+			} else {
+				console.log('server error');
+			}
+		};
+
+		request.onerror = function() {
+			console.log('something went wrong');
+		};
+
+		request.send(data);
+	</script>		
 </body>
 </html>
