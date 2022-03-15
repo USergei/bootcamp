@@ -185,7 +185,8 @@ const pageContent = {
         {
           name: 'New collection',
           href: '#',
-          id: 'footer_new_col'
+          id: 'footer_new_col',
+          data: 'close'
         },
         {
           name: 'Shop',

@@ -1421,7 +1421,8 @@ dropdown.closed {
 }
 
 .contact__form {
-    margin-bottom: 1.1em;
+    display: flex;
+    flex-direction: column;
 }
 
 .contact__form:nth-child(3) {
