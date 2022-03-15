@@ -278,6 +278,17 @@ app.post('/writeContactFormData', async (req, res) =>{
   });
 });
 
+app.delete('/deleteContactFormData/:id', async (req, res) =>{
+  const id = req.params.id
+  let queryString = `DELETE FROM contacts WHERE id=${id}`;
+  
+  connection.query(queryString, (err, results, fields) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    res.status(200).send(results);
+  });
+});
 
 app.post('/sendEmail', async (req, res) =>{
   // Create sendEmail params 
