@@ -69,7 +69,7 @@ const {Translate} = require('@google-cloud/translate').v2;
 // }
 
 // Set the region 
-AWS.config.update({region: 'us-east-1'});
+AWS.config.loadFromPath('./config.json')
 
 const pageContent = {
   header: {
@@ -287,7 +287,7 @@ app.post('/sendEmail', async (req, res) =>{
         /* more items */
       ],
       ToAddresses: [
-        'serega.umerenkov@gmail.com',
+        'fructusmortus@gmail.com',
         /* more items */
       ]
     },
@@ -307,9 +307,9 @@ app.post('/sendEmail', async (req, res) =>{
         Data: 'Test email'
       }
       },
-    Source: 'serega.umerenkov@gmail.com', /* required */
+    Source: 'fructusmortus@gmail.com', /* required */
     ReplyToAddresses: [
-      'serega.umerenkov@gmail.com',
+      'fructusmortus@gmail.com',
       /* more items */
     ],
   };
