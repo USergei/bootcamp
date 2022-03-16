@@ -291,7 +291,8 @@ app.delete('/deleteContactFormData/:id', async (req, res) =>{
 });
 
 app.post('/sendEmail', async (req, res) =>{
-  // Create sendEmail params 
+  // Create sendEmail params
+  console.log("body", req.body.sentEmail) 
   var params = {
     Destination: { /* required */
       CcAddresses: [
@@ -299,7 +300,7 @@ app.post('/sendEmail', async (req, res) =>{
         /* more items */
       ],
       ToAddresses: [
-        'fructusmortus@gmail.com',
+        req.body.sentEmail,
         /* more items */
       ]
     },
@@ -307,7 +308,7 @@ app.post('/sendEmail', async (req, res) =>{
       Body: { /* required */
         Html: {
         Charset: "UTF-8",
-        Data: "HTML_FORMAT_BODY"
+        Data: req.body.sentText
         },
         Text: {
         Charset: "UTF-8",
