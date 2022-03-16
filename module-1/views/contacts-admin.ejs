@@ -19,30 +19,25 @@
 		<%data.forEach(child => {%>
 			<div id=<%=child.id%> class="tr">
 				<div class="td"><%=child.name%></div>
-				<div class="td"><%=child.email%></div>
+				<div class="td email"><%=child.email%></div>
 				<div class="td"><%=child.message%></div>
 				<div class="td">
-					<button class="table__btn" type="submit">Reply</button>
+					<button class="table__btn" data-reply type="submit">Reply</button>
 					<button class="table__btn" data-delete type="submit">Delete</button>
+					<form class="" action="/sendEmail" method="post">
+						<textarea class=""></textarea> 
+							<button type="submit">Send</button>
+					</form>
 				</div>
 			</div>
 		<%})%>
-		<div class="tr">
-			<div class="tdr">
-				<form class="" id="reply-contact-form" action="">
-					<textarea class="" id="response-input-field" ></textarea> 
-						<button type="submit">Send</button>
-					</form>
-			</div>  
-			
-		</div>
 	</div>
 	<script type="text/javascript">
 
-		const buttons = document.querySelectorAll("[data-delete]") 
+		const deleteButtons = document.querySelectorAll("[data-delete]") 
+		const replyButtons = document.querySelectorAll("[data-reply]")
 
-		console.log("buttons", buttons)
-		buttons.forEach(elem => {
+		deleteButtons.forEach(elem => {
 			elem.addEventListener("click", event => {
         remove(event.target.parentNode.parentNode.id)
 				location.reload()
@@ -57,7 +52,38 @@
 			}).catch(err => {
 				console.error(err)
 			});
-		}	
+		}
+		
+		replyButtons.forEach(elem => {
+			elem.addEventListener("click", event => {
+				let text = event.target.closest("div.td").querySelector('textarea')
+				let form = event.target.closest("div.td").querySelector('form')
+				let email = event.target.parentNode.parentNode.querySelector('.email').innerText
+				text.focus()
+
+				form.addEventListener("submit", function (event) {
+					event.preventDefault();
+					let data = {
+						sentText: text.value,
+						sentEmail: email
+					}
+					fetch('http://localhost:3001/sendEmail', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+						},
+						body: JSON.stringify(data),
+					})
+					.then(response => response.json())
+					.then(data => {
+						console.log('Success:', data);
+					})
+					.catch((error) => {
+						console.error('Error:', error);
+					})
+				})
+      })
+		})
 	</script>		
 </body>
 </html>
