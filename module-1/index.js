@@ -292,38 +292,36 @@ app.delete('/deleteContactFormData/:id', async (req, res) =>{
 
 app.post('/sendEmail', async (req, res) =>{
   // Create sendEmail params
-  console.log("body", req.body.sentEmail) 
+  const replyEmail = 'serega.umerenkov@gmail.com'
+  const {email, subject, text} = req.body
+ 
   var params = {
-    Destination: { /* required */
+    Destination: { 
       CcAddresses: [
-        // 'fructusmortus@gmail.com',
-        /* more items */
       ],
       ToAddresses: [
-        req.body.sentEmail,
-        /* more items */
+        email,  
       ]
     },
-    Message: { /* required */
-      Body: { /* required */
+    Message: { 
+      Body: { 
         Html: {
-        Charset: "UTF-8",
-        Data: req.body.sentText
+          Charset: 'UTF-8',
+          Data: text
         },
         Text: {
-        Charset: "UTF-8",
-        Data: "TEXT_FORMAT_BODY"
+          Charset: 'UTF-8',
+          Data: 'TEXT_FORMAT_BODY'
         }
       },
       Subject: {
         Charset: 'UTF-8',
-        Data: 'Test email'
+        Data: subject
       }
       },
-    Source: 'fructusmortus@gmail.com', /* required */
+    Source: replyEmail, 
     ReplyToAddresses: [
-      'fructusmortus@gmail.com',
-      /* more items */
+      replyEmail,
     ],
   };
   // Create the promise and SES service object
@@ -332,13 +330,11 @@ app.post('/sendEmail', async (req, res) =>{
   // Handle promise's fulfilled/rejected states
   sendPromise.then(
     function(data) {
-      console.log(data.MessageId);
+      res.status(200).send(data);
     }).catch(
       function(err) {
-      console.error(err, err.stack);
+        res.status(500).send(err);
     });
-  res.status(200)
-  // .send(result);
 });
 
 // Port variable
