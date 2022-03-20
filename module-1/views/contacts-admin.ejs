@@ -20,13 +20,13 @@
 			<div id=<%=child.id%> class="tr">
 				<div class="td"><%=child.name%></div>
 				<div class="td email"><%=child.email%></div>
-				<div class="td"><%=child.message%></div>
+				<div class="td message"><%=child.message%></div>
 				<div class="td">
 					<button class="table__btn" data-reply type="submit">Reply</button>
 					<button class="table__btn" data-delete type="submit">Delete</button>
 					<form class="" action="/sendEmail" method="post">
 						<textarea class=""></textarea> 
-							<button type="submit">Send</button>
+						<button type="submit">Send</button>
 					</form>
 				</div>
 			</div>
@@ -39,33 +39,35 @@
 
 		deleteButtons.forEach(elem => {
 			elem.addEventListener("click", event => {
-        remove(event.target.parentNode.parentNode.id)
+       			remove(event.target.parentNode.parentNode.id)
 				location.reload()
-      })
+			})
 		})
 
 		function remove(id){
 			fetch("http://localhost:3001/deleteContactFormData/" + id, {
 				method: 'DELETE'
 			}).then(() => {
-				console.log('removed');
-			}).catch(err => {
-				console.error(err)
-			});
+				console.log('removed')
+			}).catch(error => {
+				throw new Error(error)
+			})
 		}
-		
+				
 		replyButtons.forEach(elem => {
 			elem.addEventListener("click", event => {
 				let text = event.target.closest("div.td").querySelector('textarea')
 				let form = event.target.closest("div.td").querySelector('form')
 				let email = event.target.parentNode.parentNode.querySelector('.email').innerText
+				let message = event.target.parentNode.parentNode.querySelector('.message').innerText
 				text.focus()
-
+				
 				form.addEventListener("submit", function (event) {
-					event.preventDefault();
-					let data = {
-						sentText: text.value,
-						sentEmail: email
+					event.preventDefault()
+					const data = {	
+						email: email,
+						subject: `re: ${message}`,
+						text: text.value 
 					}
 					fetch('http://localhost:3001/sendEmail', {
 						method: 'POST',
@@ -76,13 +78,13 @@
 					})
 					.then(response => response.json())
 					.then(data => {
-						console.log('Success:', data);
+						console.log('Success:', data)
 					})
 					.catch((error) => {
-						console.error('Error:', error);
+						throw new Error(error)
 					})
 				})
-      })
+      		})
 		})
 	</script>		
 </body>
