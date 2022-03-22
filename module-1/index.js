@@ -300,7 +300,7 @@ app.post('/sendEmail', async (req, res) =>{
       CcAddresses: [
       ],
       ToAddresses: [
-        email,  
+        email  
       ]
     },
     Message: { 
@@ -318,7 +318,7 @@ app.post('/sendEmail', async (req, res) =>{
         Charset: 'UTF-8',
         Data: subject
       }
-      },
+    },
     Source: replyEmail, 
     ReplyToAddresses: [
       replyEmail,

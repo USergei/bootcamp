@@ -17,18 +17,20 @@
 			<div class="td">Actions</div>
 		</div>
 		<%data.forEach(child => {%>
-			<div id=<%=child.id%> class="tr">
+			<div class="tr" id="<%=child.id%>">
 				<div class="td"><%=child.name%></div>
 				<div class="td email"><%=child.email%></div>
 				<div class="td message"><%=child.message%></div>
 				<div class="td">
 					<button class="table__btn" data-reply type="submit">Reply</button>
 					<button class="table__btn" data-delete type="submit">Delete</button>
-					<form class="" action="/sendEmail" method="post">
-						<textarea class=""></textarea> 
-						<button type="submit">Send</button>
-					</form>
 				</div>
+			</div>
+			<div class="tr" id="<%=child.id%>-reply-form"> 
+				<form class="form" action="/sendEmail" method="post">
+					<textarea class="" ></textarea> 
+					<button type="submit">Send</button>
+				</form>
 			</div>
 		<%})%>
 	</div>
@@ -53,7 +55,24 @@
 				throw new Error(error)
 			})
 		}
-				
+		
+		async function postData(url = '', data = {}) {
+			const response = await fetch(url, {
+				method: 'POST', // *GET, POST, PUT, DELETE, etc.
+				mode: 'cors', // no-cors, *cors, same-origin
+				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+				credentials: 'same-origin', // include, *same-origin, omit
+				headers: {
+				'Content-Type': 'application/json'
+				// 'Content-Type': 'application/x-www-form-urlencoded',
+				},
+				redirect: 'follow', // manual, *follow, error
+				referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+				body: JSON.stringify(data) // body data type must match "Content-Type" header
+			});
+			return response.json(); // parses JSON response into native JavaScript objects
+		}
+
 		replyButtons.forEach(elem => {
 			elem.addEventListener("click", event => {
 				let text = event.target.closest("div.td").querySelector('textarea')
@@ -69,16 +88,9 @@
 						subject: `re: ${message}`,
 						text: text.value 
 					}
-					fetch('http://localhost:3001/sendEmail', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						body: JSON.stringify(data),
-					})
-					.then(response => response.json())
+					postData('http://localhost:3001/sendEmail', data)
 					.then(data => {
-						console.log('Success:', data)
+						console.log(data); 
 					})
 					.catch((error) => {
 						throw new Error(error)
