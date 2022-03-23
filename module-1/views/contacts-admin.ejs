@@ -7,6 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<script type="text/javascript" src="/assets/js/admin-page.js"></script>
 </head>
 <body>
 	<div class="table">
@@ -24,80 +25,13 @@
 				<div class="td">
 					<button class="table__btn" data-reply type="submit">Reply</button>
 					<button class="table__btn" data-delete type="submit">Delete</button>
+					<form class="form" action="/sendEmail" method="post">
+						<textarea class="" ></textarea> 
+						<button type="submit">Send</button>
+					</form>
 				</div>
-			</div>
-			<div class="tr" id="<%=child.id%>-reply-form"> 
-				<form class="form" action="/sendEmail" method="post">
-					<textarea class="" ></textarea> 
-					<button type="submit">Send</button>
-				</form>
-			</div>
+			</div>	
 		<%})%>
-	</div>
-	<script type="text/javascript">
-
-		const deleteButtons = document.querySelectorAll("[data-delete]") 
-		const replyButtons = document.querySelectorAll("[data-reply]")
-
-		deleteButtons.forEach(elem => {
-			elem.addEventListener("click", event => {
-       			remove(event.target.parentNode.parentNode.id)
-				location.reload()
-			})
-		})
-
-		function remove(id){
-			fetch("http://localhost:3001/deleteContactFormData/" + id, {
-				method: 'DELETE'
-			}).then(() => {
-				console.log('removed')
-			}).catch(error => {
-				throw new Error(error)
-			})
-		}
-		
-		async function postData(url = '', data = {}) {
-			const response = await fetch(url, {
-				method: 'POST', // *GET, POST, PUT, DELETE, etc.
-				mode: 'cors', // no-cors, *cors, same-origin
-				cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
-				credentials: 'same-origin', // include, *same-origin, omit
-				headers: {
-				'Content-Type': 'application/json'
-				// 'Content-Type': 'application/x-www-form-urlencoded',
-				},
-				redirect: 'follow', // manual, *follow, error
-				referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
-				body: JSON.stringify(data) // body data type must match "Content-Type" header
-			});
-			return response.json(); // parses JSON response into native JavaScript objects
-		}
-
-		replyButtons.forEach(elem => {
-			elem.addEventListener("click", event => {
-				let text = event.target.closest("div.td").querySelector('textarea')
-				let form = event.target.closest("div.td").querySelector('form')
-				let email = event.target.parentNode.parentNode.querySelector('.email').innerText
-				let message = event.target.parentNode.parentNode.querySelector('.message').innerText
-				text.focus()
-				
-				form.addEventListener("submit", function (event) {
-					event.preventDefault()
-					const data = {	
-						email: email,
-						subject: `re: ${message}`,
-						text: text.value 
-					}
-					postData('http://localhost:3001/sendEmail', data)
-					.then(data => {
-						console.log(data); 
-					})
-					.catch((error) => {
-						throw new Error(error)
-					})
-				})
-      		})
-		})
-	</script>		
+	</div>	
 </body>
 </html>

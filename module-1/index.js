@@ -255,8 +255,7 @@ app.get('/getContactRequest/:key?', async (req, res) =>{
     }
     data = JSON.parse(JSON.stringify(result))
     res.render('contacts-admin.ejs', data)
-  });
-  // res.status(200).send(req.body);
+  });  
 });
 
 app.post('/translate', async (req, res) =>{
@@ -291,7 +290,7 @@ app.delete('/deleteContactFormData/:id', async (req, res) =>{
 });
 
 app.post('/sendEmail', async (req, res) =>{
-  // Create sendEmail params
+
   const replyEmail = 'serega.umerenkov@gmail.com'
   const {email, subject, text} = req.body
  
@@ -324,10 +323,9 @@ app.post('/sendEmail', async (req, res) =>{
       replyEmail,
     ],
   };
-  // Create the promise and SES service object
+  
   const sendPromise = new AWS.SES({apiVersion: '2010-12-01'}).sendEmail(params).promise();
 
-  // Handle promise's fulfilled/rejected states
   sendPromise.then(
     function(data) {
       res.status(200).send(data);
@@ -337,10 +335,8 @@ app.post('/sendEmail', async (req, res) =>{
     });
 });
 
-// Port variable
 const PORT = process.env.PORT || 3001;
 
-// listen for connections
 app.listen(PORT, () =>{
     console.log(`App running on port ${PORT}`)
 })
