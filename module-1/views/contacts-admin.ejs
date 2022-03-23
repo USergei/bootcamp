@@ -7,6 +7,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<script type="text/javascript" src="/assets/js/admin-page.js"></script>
 </head>
 <body>
 	<div class="table">
@@ -17,75 +18,20 @@
 			<div class="td">Actions</div>
 		</div>
 		<%data.forEach(child => {%>
-			<div id=<%=child.id%> class="tr">
+			<div class="tr" id="<%=child.id%>">
 				<div class="td"><%=child.name%></div>
 				<div class="td email"><%=child.email%></div>
 				<div class="td message"><%=child.message%></div>
 				<div class="td">
 					<button class="table__btn" data-reply type="submit">Reply</button>
 					<button class="table__btn" data-delete type="submit">Delete</button>
-					<form class="" action="/sendEmail" method="post">
-						<textarea class=""></textarea> 
+					<form class="form" action="/sendEmail" method="post">
+						<textarea class="" ></textarea> 
 						<button type="submit">Send</button>
 					</form>
 				</div>
-			</div>
+			</div>	
 		<%})%>
-	</div>
-	<script type="text/javascript">
-
-		const deleteButtons = document.querySelectorAll("[data-delete]") 
-		const replyButtons = document.querySelectorAll("[data-reply]")
-
-		deleteButtons.forEach(elem => {
-			elem.addEventListener("click", event => {
-       			remove(event.target.parentNode.parentNode.id)
-				location.reload()
-			})
-		})
-
-		function remove(id){
-			fetch("http://localhost:3001/deleteContactFormData/" + id, {
-				method: 'DELETE'
-			}).then(() => {
-				console.log('removed')
-			}).catch(error => {
-				throw new Error(error)
-			})
-		}
-				
-		replyButtons.forEach(elem => {
-			elem.addEventListener("click", event => {
-				let text = event.target.closest("div.td").querySelector('textarea')
-				let form = event.target.closest("div.td").querySelector('form')
-				let email = event.target.parentNode.parentNode.querySelector('.email').innerText
-				let message = event.target.parentNode.parentNode.querySelector('.message').innerText
-				text.focus()
-				
-				form.addEventListener("submit", function (event) {
-					event.preventDefault()
-					const data = {	
-						email: email,
-						subject: `re: ${message}`,
-						text: text.value 
-					}
-					fetch('http://localhost:3001/sendEmail', {
-						method: 'POST',
-						headers: {
-							'Content-Type': 'application/json',
-						},
-						body: JSON.stringify(data),
-					})
-					.then(response => response.json())
-					.then(data => {
-						console.log('Success:', data)
-					})
-					.catch((error) => {
-						throw new Error(error)
-					})
-				})
-      		})
-		})
-	</script>		
+	</div>	
 </body>
 </html>
