@@ -9,8 +9,10 @@
 	<title>Document</title>
 	<script type="text/javascript" src="/assets/js/admin-page.js"></script>
 </head>
+
 <body>
-	<div class="table">
+ -->
+	<!-- <div class="table">
 		<div class="th">
 			<div class="td">Name</div>
 			<div class="td">Email</div>
@@ -31,6 +33,30 @@
 					</form>
 				</div>
 			</div>	
+		<%})%>
+	</div> -->
+	
+	<div class="table">
+		<div class="table__headers">
+			<div class="table__header">Name</div>
+			<div class="table__header">Email</div>
+			<div class="table__header">Message</div>
+			<div class="table__header">Actions</div>
+		</div>
+		<%data.forEach(child => {%>
+			<div class="table__row" id="<%=child.id%>">
+				<div class="table__items"><%=child.name%></div>
+				<div class="table__items"><%=child.email%></div>
+				<div class="table__items"><%=child.message%></div>
+				<div class="table__items">
+					<button class="table__btn" data-reply type="submit">Reply</button>
+					<button class="table__btn" data-delete type="submit">Delete</button>
+				</div>
+				<form class="table__form" action="/sendEmail" method="post">
+					<textarea class="table__textarea" placeholder="Whrite your message"></textarea> 
+					<button class="textarea__btn" type="submit">Send</button>
+				</form>
+			</div>
 		<%})%>
 	</div>	
 </body>
