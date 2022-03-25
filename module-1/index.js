@@ -229,7 +229,7 @@ const pageContent = {
         },
         {
           name: 'twitter',
-          href: 'https://www.twitter.com/#'
+          href: 'https://www.twitter.com/'
         }
       ]
     }
@@ -239,7 +239,7 @@ const pageContent = {
  //index route
 app.get('/', async (req, res) =>{
   // const langList = await listLanguagesWithTarget()
-  res.render('index.ejs', {/*langList*/ pageContent})
+  res.render('index.ejs',  {/*langList*/ pageContent})
 });
 
 app.get('/getContactRequest/:key?', async (req, res) =>{
