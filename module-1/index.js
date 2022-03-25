@@ -291,7 +291,7 @@ app.delete('/deleteContactFormData/:id', async (req, res) =>{
 
 app.post('/sendEmail', async (req, res) =>{
 
-  const replyEmail = 'serega.umerenkov@gmail.com'
+  const replyEmail = 'fructusmortus@gmail.com'
   const {email, subject, text} = req.body
  
   var params = {
