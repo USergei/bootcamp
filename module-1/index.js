@@ -50,32 +50,38 @@ const translationClient = new TranslationServiceClient();
 // Imports the Google Cloud client library
 const {Translate} = require('@google-cloud/translate').v2;
  
- // Creates a client
-// const translate = new Translate(
-//   {
-//   projectId: 'leafy-beach-336216', //eg my-project-0o0o0o0o'
-//   keyFilename: './leafy-beach-336216-531f228315d4.json' //eg my-project-0fwewexyz.json
-//   }
-// );
+//  Creates a client
+const translate = new Translate(
+  {
+  projectId: 'leafy-beach-336216', //eg my-project-0o0o0o0o'
+  keyFilename: './leafy-beach-336216-531f228315d4.json' //eg my-project-0fwewexyz.json
+  }
+);
 
-// async function translateText(text, lang) {
-//   let [translations] = await translate.translate(text, lang);
-//   translations = Array.isArray(translations) ? translations : [translations];
-//   return translations
-// }
+async function translateText(text, lang) {
+  let [translations] = await translate.translate(text, lang);
+  translations = Array.isArray(translations) ? translations : [translations];
+  return translations
+}
 
-// async function listLanguagesWithTarget() {
-//   const [languages] = await translate.getLanguages('en');
-//   return languages
-// }
+async function listLanguagesWithTarget() {
+  try {
+    const [languages] = await translate.getLanguages('en')
+  } catch (e) {
+    throw new Error(e)
+    return []
+  }
+
+  return languages
+ }
 
 // Set the region 
 AWS.config.loadFromPath('./config.json')
 
  //index route
 app.get('/', async (req, res) =>{
-  // const langList = await listLanguagesWithTarget()
-  res.render('index.ejs',  {/*langList*/ PAGE_CONTENT})
+  const langList = await listLanguagesWithTarget()
+  res.render('index.ejs',  {langList, PAGE_CONTENT})
 });
 
 app.get('/getContactRequest/:key?', async (req, res) =>{
