@@ -1,19 +1,17 @@
-// TODO fix import
-// import {HOST_URL} from './constants.js'
+// import { HOST_URL } from './constants.js'
 const HOST_URL = "http://localhost:3001/"
-
 const deleteButtons = document.querySelectorAll("[data-delete]") 
 const replyButtons = document.querySelectorAll("[data-reply]")
 
 deleteButtons.forEach(elem => {
     elem.addEventListener("click", event => {
-        remove(event.target.parentNode.parentNode.id)
+        remove(event.target.closest(".table__row").id)
         location.reload()
     })
 })
 
 function remove(id){
-    fetch("http://localhost:3001/deleteContactFormData/" + id, {
+    fetch(`${HOST_URL}deleteContactFormData/` + id, {
         method: 'DELETE'
     }).then(() => {
         console.log('removed')
@@ -40,10 +38,12 @@ async function postData(url = '', data = {}) {
 
 replyButtons.forEach(elem => {
     elem.addEventListener("click", event => {
-        let text = event.target.closest("div.td").querySelector('textarea')
-        let form = event.target.closest("div.td").querySelector('form')
-        let email = event.target.parentNode.parentNode.querySelector('.email').innerText
-        let message = event.target.parentNode.parentNode.querySelector('.message').innerText
+        const parent = event.target.closest(".table__row")
+        const form = parent.querySelector('form')
+        const text = parent.querySelector('textarea')
+        const email = parent.querySelector('.email').innerText
+        const message = parent.querySelector('.message').innerText
+        form.classList.add('is__open')
         text.focus()
         
         form.addEventListener("submit", function (event) {
@@ -53,13 +53,21 @@ replyButtons.forEach(elem => {
                 subject: `re: ${message}`,
                 text: text.value 
             }
-            postData(`${hostUrl}sendEmail`, data)
+            postData(`${HOST_URL}sendEmail`, data)
             .then(data => { 
                 // TODO process data
             })
             .catch((error) => {
                 throw new Error(error)
             })
+            form.reset()
+            form[0].value=""
+            form[0].placeholder = "Your mail has been sent"
+            form[0].classList.add('color__placeholder')
+            function formClose() {
+                form.classList.remove('is__open')
+            }
+            setTimeout(formClose, 3000)
         })
     })
 })

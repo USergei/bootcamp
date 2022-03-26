@@ -57,20 +57,20 @@
         <header>
             <div class="header-top">
                 <div class="dropdown closed">
-                    <div class="icon"><%=pageContent.header.dropdown[0]%> <span><%=pageContent.header.dropdown[1]%></span></div>
+                    <div class="icon"><%=PAGE_CONTENT.header.dropdown[0]%> <span><%=PAGE_CONTENT.header.dropdown[1]%></span></div>
                     <ul class="menu">
                         
                     </ul>  
                 </div>
         
                 <div class="header-top__social">
-                    <%pageContent.header.social.forEach(elem => {%>
+                    <%PAGE_CONTENT.header.social.forEach(elem => {%>
                         <a class="header-top__link" href="<%=elem.href%>" target="_blank"><%=elem.name%></a>
                     <%})%>
                 </div>
         
                 <div class="header-top__icons">
-                    <%pageContent.header.social.forEach(elem => {%>
+                    <%PAGE_CONTENT.header.social.forEach(elem => {%>
                         <a class="header-top__item" href="<%=elem.href%>" target="_blank">
                             <svg class="header-top__icon">
                                 <use xlink:href="#<%=elem.name%>"></use>
@@ -83,7 +83,7 @@
             <div class="header-bottom">
                 <img class="header-bottom__logo" src="assets/images/header-logo.png" alt="fashion logo">
                 <nav class="header-bottom__nav">
-                    <%pageContent.header.menu.forEach(elem => {%>
+                    <%PAGE_CONTENT.header.menu.forEach(elem => {%>
                         <a class="header-bottom__link" id="<%=elem.id%>" href="<%=elem.href%>"><%=elem.name%></a>
                     <%})%>
                 </nav>
@@ -94,7 +94,7 @@
                         <span></span>
                     </label>
                     <ul class="menu__box">
-                        <%pageContent.header.menu.forEach(elem => {%>
+                        <%PAGE_CONTENT.header.menu.forEach(elem => {%>
                             <li><a class="menu__item" href="<%=elem.href%>"><%=elem.name%></a></li>
                         <%})%>
                     </ul>
@@ -105,15 +105,15 @@
         <div class="collection">
             <div class="collection__left">
                 <img class="collection__image" src="assets/images/image-1.jpg" alt="photo">
-                <a class="collection__link" href="<%=pageContent.collectionSection.collectionLink.href%>"><%=pageContent.collectionSection.collectionLink.name%></a>
+                <a class="collection__link" href="<%=PAGE_CONTENT.collectionSection.collectionLink.href%>"><%=PAGE_CONTENT.collectionSection.collectionLink.name%></a>
             </div>
             <div class="collection__right">
                 <div class="collection__subtext">
-                    <p><%=pageContent.collectionSection.collectionSubtext.date%></p>
-                    <p><%=pageContent.collectionSection.collectionSubtext.text%></p>
+                    <p><%=PAGE_CONTENT.collectionSection.collectionSubtext.date%></p>
+                    <p><%=PAGE_CONTENT.collectionSection.collectionSubtext.text%></p>
                 </div>
                 <div class="collection__text">
-                    <%pageContent.collectionSection.collectionText.forEach(elem => {%>
+                    <%PAGE_CONTENT.collectionSection.collectionText.forEach(elem => {%>
                         <p><%=elem%></p>
                     <%})%>
                 </div>
@@ -123,13 +123,13 @@
    
         <div class="about">
             <div class="container">
-                <h2 class="about__title"><%=pageContent.about.title%></h2>
+                <h2 class="about__title"><%=PAGE_CONTENT.about.title%></h2>
                 <div class="about__inner">
                     <div class="about__items">
                         <div class="about__text">
-                            <%=pageContent.about.text%>
+                            <%=PAGE_CONTENT.about.text%>
                         </div>
-                        <a class="about__link" href="<%=pageContent.about.link.href%>"><%=pageContent.about.link.name%></a>
+                        <a class="about__link" href="<%=PAGE_CONTENT.about.link.href%>"><%=PAGE_CONTENT.about.link.name%></a>
                    </div>
                    <div class="about__image">
                       <img class="about__photo" src="assets/images/image-3.jpg" alt="photo">
@@ -141,15 +141,15 @@
         <div class="description">
             <div class="description__inner">
                 <div class="description__title">
-                    <p><%=pageContent.description.title[0]%></p>
-                    <p><%=pageContent.description.title[1]%></p>
+                    <p><%=PAGE_CONTENT.description.title[0]%></p>
+                    <p><%=PAGE_CONTENT.description.title[1]%></p>
                 </div>
                 <div class="description__text">
-                    <%pageContent.description.text.forEach(elem => {%>
+                    <%PAGE_CONTENT.description.text.forEach(elem => {%>
                         <p><%=elem%></p>
                     <%})%>
                 </div>
-                <a class="description__link" href="<%=pageContent.description.link.href%>"><%=pageContent.description.link.name%></a>
+                <a class="description__link" href="<%=PAGE_CONTENT.description.link.href%>"><%=PAGE_CONTENT.description.link.name%></a>
             </div>
             <div class="description__image">
             <img class="description__photo" src="assets/images/image-4.jpg" alt="photo">
@@ -157,12 +157,12 @@
         </div>
         
         <div class="presentation">
-            <h2 class="presentation__title"><%=pageContent.presentation.title%></h2>
+            <h2 class="presentation__title"><%=PAGE_CONTENT.presentation.title%></h2>
             <div class="presentation__inner">
                 <div class="presentation__text">
-                    <p><%=pageContent.presentation.text[0]%></p>
-                    <p><%=pageContent.presentation.text[1]%></p>
-                    <a class="presentation__link" href="<%=pageContent.presentation.link.href%>"><%=pageContent.presentation.link.name%></a>
+                    <p><%=PAGE_CONTENT.presentation.text[0]%></p>
+                    <p><%=PAGE_CONTENT.presentation.text[1]%></p>
+                    <a class="presentation__link" href="<%=PAGE_CONTENT.presentation.link.href%>"><%=PAGE_CONTENT.presentation.link.name%></a>
                 </div>
             </div>
         </div>
@@ -171,18 +171,18 @@
             <div class="container">
                <div class="newsletter__inner">
                     <div class="newsletter__content">
-                        <h2 class="newsletter__title"><%=pageContent.newsletter.title%></h2>
+                        <h2 class="newsletter__title"><%=PAGE_CONTENT.newsletter.title%></h2>
                         <div class="newsletter__text">
-                            <%pageContent.newsletter.text.forEach(elem => {%>
+                            <%PAGE_CONTENT.newsletter.text.forEach(elem => {%>
                                 <p><%=elem%></p>
                             <%})%>
                         </div>
                     </div>
                     <div class="newsletter__items">
                         <form class="newsletter__form" action="/" method="post">
-                            <input class="newsletter__input" type="email" name="email" placeholder="<%=pageContent.newsletter.emailPlaceholder%>">
+                            <input class="newsletter__input" type="email" name="email" placeholder="<%=PAGE_CONTENT.newsletter.emailPlaceholder%>">
                         </form>
-                        <button class="newsletter__btn" type="submit"><%=pageContent.newsletter.button%></button>
+                        <button class="newsletter__btn" type="submit"><%=PAGE_CONTENT.newsletter.button%></button>
                     </div>
                 </div>
             </div>
@@ -190,9 +190,9 @@
         
         <div class="stores">
             <div class="container">
-                <h2 class="stores__title"><%=pageContent.stores.title%></h2>
+                <h2 class="stores__title"><%=PAGE_CONTENT.stores.title%></h2>
                 <div class="stores__inner">
-                    <%pageContent.stores.cities.forEach(elem => {%>
+                    <%PAGE_CONTENT.stores.cities.forEach(elem => {%>
                         <address class="stores__items">
                             <p class="stores__city"><%=elem.name%></p>
                                 <%elem.address.forEach(i => {%>
@@ -210,15 +210,15 @@
         <div class="contact" id="modal">
             <div class="container-modal">
                 <button class="button-close-modal">&#x2715</button>
-                <h2 class="contact__title"><%=pageContent.contact.title%></h2>
+                <h2 class="contact__title"><%=PAGE_CONTENT.contact.title%></h2>
                 <div class="contact__inner">
-                    <div class="contact__text"><%=pageContent.contact.text%></div>
+                    <div class="contact__text"><%=PAGE_CONTENT.contact.text%></div>
                     <div class="contact__items">
                         <form class="contact__form" id="contact__form" action="/writeContactFormData" method="post">
-                            <input class="contact__input" type="text" name="name" placeholder="<%=pageContent.contact.formPlaceHolders[0]%>" required>
-                            <input class="contact__input" type="email" name="email" placeholder="<%=pageContent.contact.formPlaceHolders[1]%>" required>
-                            <textarea class="contact__textarea" name="message" placeholder="<%=pageContent.contact.formPlaceHolders[2]%>" required></textarea>
-                            <button class="contact__btn" type="submit"><%=pageContent.contact.button%></button>
+                            <input class="contact__input" type="text" name="name" placeholder="<%=PAGE_CONTENT.contact.formPlaceHolders[0]%>" required>
+                            <input class="contact__input" type="email" name="email" placeholder="<%=PAGE_CONTENT.contact.formPlaceHolders[1]%>" required>
+                            <textarea class="contact__textarea" name="message" placeholder="<%=PAGE_CONTENT.contact.formPlaceHolders[2]%>" required></textarea>
+                            <button class="contact__btn" type="submit"><%=PAGE_CONTENT.contact.button%></button>
                         </form>
                     </div>
                 </div>
@@ -231,26 +231,26 @@
                     <img class="footer-top__logo" src="assets/images/footer-logo.png" alt="footer logo">
                     <div class="footer__top-items">
                         <nav class="footer__top-nav">
-                            <%pageContent.footer.top.nav.forEach(elem => {%>
+                            <%PAGE_CONTENT.footer.top.nav.forEach(elem => {%>
                                 <a class="footer__top-nav__link" id="<%=elem.id%>" href="<%=elem.href%>"><%=elem.name%></a>
                             <%})%>
                         </nav>
                         <div class="footer__top-info">
-                            <%pageContent.footer.top.info.forEach(elem => {%>
+                            <%PAGE_CONTENT.footer.top.info.forEach(elem => {%>
                                 <a class="footer__top-info__link" href="<%=elem.href%>"><%=elem.name%></a>
                             <%})%>
                         </div>
                         <address class="footer__top__address">
-                            <%pageContent.footer.top.address.forEach(elem => {%>
+                            <%PAGE_CONTENT.footer.top.address.forEach(elem => {%>
                                 <p><%=elem%></p>
                             <%})%>
                         </address>
                     </div>
                 </div>
                 <div class="footer__bottom">
-                    <span class="footer__bottom__copyright"><%=pageContent.footer.bottom.copyright%></span>
+                    <span class="footer__bottom__copyright"><%=PAGE_CONTENT.footer.bottom.copyright%></span>
                     <div class="footer__bottom__social">
-                        <%pageContent.footer.bottom.social.forEach(elem => {%>
+                        <%PAGE_CONTENT.footer.bottom.social.forEach(elem => {%>
                             <a class="footer__bottom__social__link" href="<%=elem.href%>" target="_blank"><%=elem.name%></a>
                         <%})%>
                     </div>
