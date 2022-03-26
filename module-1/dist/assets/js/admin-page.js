@@ -1,5 +1,5 @@
-import { HOST_URL } from './constants.js'
-
+// import { HOST_URL } from './constants.js'
+const HOST_URL = "http://localhost:3001/"
 const deleteButtons = document.querySelectorAll("[data-delete]") 
 const replyButtons = document.querySelectorAll("[data-reply]")
 
@@ -38,12 +38,12 @@ async function postData(url = '', data = {}) {
 
 replyButtons.forEach(elem => {
     elem.addEventListener("click", event => {
-        let parent = event.target.closest(".table__row")
-        let form = parent.querySelector('form')
-        form.style.display = "flex"
-        let text = parent.querySelector('textarea')
-        let email = parent.querySelector('.email').innerText
-        let message = parent.querySelector('.message').innerText
+        const parent = event.target.closest(".table__row")
+        const form = parent.querySelector('form')
+        const text = parent.querySelector('textarea')
+        const email = parent.querySelector('.email').innerText
+        const message = parent.querySelector('.message').innerText
+        form.classList.add('is__open')
         text.focus()
         
         form.addEventListener("submit", function (event) {
@@ -65,7 +65,7 @@ replyButtons.forEach(elem => {
             form[0].placeholder = "Your mail has been sent"
             form[0].classList.add('color__placeholder')
             function formClose() {
-                form.style.display = "none"
+                form.classList.remove('is__open')
             }
             setTimeout(formClose, 3000)
         })

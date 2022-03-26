@@ -106,3 +106,6 @@ body {
   background-color: #e6ae89;
 }
 
+.is__open {
+  display: flex;
+}
