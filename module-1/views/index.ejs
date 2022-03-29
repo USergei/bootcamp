@@ -1,426 +1,290 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/style.css">
-    
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="robots" content="index, follow">
-    <meta name="google" content="notranslate">
-    <meta name="format-detection" content="telephone=no">
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images//favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images//favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images//favicons/favicon-16x16.png">
-    <link rel="mask-icon" href="img/favicons/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
-    
-    <meta name="description" content="Fashion" />
-    <meta name="keywords" content="Fashion 2021"/>
-    
-    <title>Fashion3</title>
+    <%- include('./partials/head') %>
 </head>
 <body>
     <div class="wrapper">
-      <svg style="display: none;">
-        <symbol id="facebook" viewBox="0 0 155.139 155.139">
-            <g>
-                <path d="M89.584,155.139V84.378h23.742l3.562-27.585H89.584V39.184
-            c0-7.984,2.208-13.425,13.67-13.425l14.595-0.006V1.08C115.325,0.752,106.661,0,96.577,0C75.52,0,61.104,12.853,61.104,36.452
-            v20.341H37.29v27.585h23.814v70.761H89.584z"/>
-            </g>
-        </symbol>
-    
-        <symbol id="twitter" viewBox="0 0 512 512">
-            <g>
-                <path d="M512,97.248c-19.04,8.352-39.328,13.888-60.48,16.576c21.76-12.992,38.368-33.408,46.176-58.016
-                c-20.288,12.096-42.688,20.64-66.56,25.408C411.872,60.704,384.416,48,354.464,48c-58.112,0-104.896,47.168-104.896,104.992
-                c0,8.32,0.704,16.32,2.432,23.936c-87.264-4.256-164.48-46.08-216.352-109.792c-9.056,15.712-14.368,33.696-14.368,53.056
-                c0,36.352,18.72,68.576,46.624,87.232c-16.864-0.32-33.408-5.216-47.424-12.928c0,0.32,0,0.736,0,1.152
-                c0,51.008,36.384,93.376,84.096,103.136c-8.544,2.336-17.856,3.456-27.52,3.456c-6.72,0-13.504-0.384-19.872-1.792
-                c13.6,41.568,52.192,72.128,98.08,73.12c-35.712,27.936-81.056,44.768-130.144,44.768c-8.608,0-16.864-0.384-25.12-1.44
-                C46.496,446.88,101.6,464,161.024,464c193.152,0,298.752-160,298.752-298.688c0-4.64-0.16-9.12-0.384-13.568
-                C480.224,136.96,497.728,118.496,512,97.248z"/>
-            </g>
-        </symbol>
-    
-        <symbol id="instagram" viewBox="0 0 512 512.00006">
-            <g>
-                <path d="m261.039062 512c-1.695312 0-3.390624 0-5.097656-.007812-40.132812.097656-77.214844-.921876-113.277344-3.117188-33.0625-2.011719-63.242187-13.4375-87.28125-33.039062-23.195312-18.914063-39.035156-44.488282-47.078124-76.003907-7-27.4375-7.371094-54.371093-7.726563-80.421875-.257813-18.691406-.5234375-40.839844-.578125-63.363281.0546875-22.617187.320312-44.765625.578125-63.457031.355469-26.046875.726563-52.980469 7.726563-80.421875 8.042968-31.515625 23.882812-57.089844 47.078124-76.003907 24.039063-19.601562 54.21875-31.027343 87.285157-33.039062 36.0625-2.191406 73.152343-3.2148438 113.371093-3.1171875 40.144532-.0859375 77.214844.9257815 113.277344 3.1171875 33.0625 2.011719 63.242188 13.4375 87.28125 33.039062 23.199219 18.914063 39.035156 44.488282 47.078125 76.003907 7 27.4375 7.371094 54.375 7.726563 80.421875.257812 18.691406.527344 40.839844.578125 63.363281v.09375c-.050781 22.523437-.320313 44.671875-.578125 63.363281-.355469 26.046875-.722656 52.980469-7.726563 80.421875-8.042969 31.515625-23.878906 57.089844-47.078125 76.003907-24.039062 19.601562-54.21875 31.027343-87.28125 33.039062-34.535156 2.101562-70.011718 3.125-108.277344 3.125zm-5.097656-40.007812c39.480469.09375 75.730469-.902344 110.945313-3.042969 25-1.519531 46.675781-9.632813 64.433593-24.113281 16.414063-13.386719 27.71875-31.855469 33.597657-54.894532 5.828125-22.839844 6.164062-47.363281 6.488281-71.078125.253906-18.566406.519531-40.558593.574219-62.863281-.054688-22.308594-.320313-44.296875-.574219-62.863281-.324219-23.714844-.660156-48.238281-6.488281-71.082031-5.878907-23.039063-17.183594-41.507813-33.597657-54.894532-17.757812-14.476562-39.433593-22.589844-64.433593-24.109375-35.214844-2.144531-71.464844-3.132812-110.851563-3.046875-39.472656-.09375-75.726562.902344-110.941406 3.046875-25 1.519531-46.675781 9.632813-64.433594 24.109375-16.414062 13.386719-27.71875 31.855469-33.597656 54.894532-5.828125 22.84375-6.164062 47.363281-6.488281 71.082031-.253907 18.582031-.519531 40.585937-.574219 62.910156.054688 22.226563.320312 44.234375.574219 62.816406.324219 23.714844.660156 48.238281 6.488281 71.078125 5.878906 23.039063 17.183594 41.507813 33.597656 54.894532 17.757813 14.476562 39.433594 22.589843 64.433594 24.109374 35.214844 2.144532 71.476562 3.144532 110.847656 3.046876zm-.953125-90.992188c-68.921875 0-125-56.074219-125-125s56.078125-125 125-125c68.925781 0 125 56.074219 125 125s-56.074219 125-125 125zm0-210c-46.867187 0-85 38.132812-85 85s38.132813 85 85 85c46.871094 0 85-38.132812 85-85s-38.128906-85-85-85zm139-80c-16.566406 0-30 13.429688-30 30s13.433594 30 30 30c16.570313 0 30-13.429688 30-30s-13.429687-30-30-30zm0 0"/>
-            </g>
-        </symbol>
-    </svg>
+        <svg style="display: none;">
+            <%- include('./partials/svgs') %>
+        </svg>
 
-    <div class="page-container">
-        <header>
-            <div class="header-top">
-                <div class="dropdown closed">
-                    <div class="icon"><%=PAGE_CONTENT.header.dropdown[0]%> <span><%=PAGE_CONTENT.header.dropdown[1]%></span></div>
-                    <ul class="menu">
-                        <li>Google translate API license is missing</li>
-                    </ul>  
+        <div class="page-container">
+            <header>
+                <%- include('./partials/header') %>
+            </header>
+            
+            <div class="collection">
+                <div class="collection__left">
+                    <img class="collection__image" src="assets/images/image-1.jpg" alt="photo">
+                    <a class="collection__link" href="<%=PAGE_CONTENT.collectionSection.collectionLink.href%>"><%=PAGE_CONTENT.collectionSection.collectionLink.name%></a>
                 </div>
-        
-                <div class="header-top__social">
-                    <%PAGE_CONTENT.header.social.forEach(elem => {%>
-                        <a class="header-top__link" href="<%=elem.href%>" target="_blank"><%=elem.name%></a>
-                    <%})%>
-                </div>
-        
-                <div class="header-top__icons">
-                    <%PAGE_CONTENT.header.social.forEach(elem => {%>
-                        <a class="header-top__item" href="<%=elem.href%>" target="_blank">
-                            <svg class="header-top__icon">
-                                <use xlink:href="#<%=elem.name%>"></use>
-                            </svg>
-                        </a>
-                    <%})%>
-                </div>
-            </div>
-        
-            <div class="header-bottom">
-                <img class="header-bottom__logo" src="assets/images/header-logo.png" alt="fashion logo">
-                <nav class="header-bottom__nav">
-                    <%PAGE_CONTENT.header.menu.forEach(elem => {%>
-                        <a class="header-bottom__link" id="<%=elem.id%>" href="<%=elem.href%>"><%=elem.name%></a>
-                    <%})%>
-                </nav>
-        
-                 <div class="hamburger-menu">
-                    <input id="menu__toggle" type="checkbox">
-                    <label class="menu__btn" for="menu__toggle">
-                        <span></span>
-                    </label>
-                    <ul class="menu__box">
-                        <%PAGE_CONTENT.header.menu.forEach(elem => {%>
-                            <li><a class="menu__item" href="<%=elem.href%>"><%=elem.name%></a></li>
+                <div class="collection__right">
+                    <div class="collection__subtext">
+                        <p><%=PAGE_CONTENT.collectionSection.collectionSubtext.date%></p>
+                        <p><%=PAGE_CONTENT.collectionSection.collectionSubtext.text%></p>
+                    </div>
+                    <div class="collection__text">
+                        <%PAGE_CONTENT.collectionSection.collectionText.forEach(elem => {%>
+                            <p><%=elem%></p>
                         <%})%>
-                    </ul>
-                </div>
-            </div>
-        </header>
-        
-        <div class="collection">
-            <div class="collection__left">
-                <img class="collection__image" src="assets/images/image-1.jpg" alt="photo">
-                <a class="collection__link" href="<%=PAGE_CONTENT.collectionSection.collectionLink.href%>"><%=PAGE_CONTENT.collectionSection.collectionLink.name%></a>
-            </div>
-            <div class="collection__right">
-                <div class="collection__subtext">
-                    <p><%=PAGE_CONTENT.collectionSection.collectionSubtext.date%></p>
-                    <p><%=PAGE_CONTENT.collectionSection.collectionSubtext.text%></p>
-                </div>
-                <div class="collection__text">
-                    <%PAGE_CONTENT.collectionSection.collectionText.forEach(elem => {%>
-                        <p><%=elem%></p>
-                    <%})%>
-                </div>
-                <img class="collection__image" src="assets/images/image-2.jpg" alt="photo">
-            </div>
-        </div>
-   
-        <div class="about">
-            <div class="container">
-                <h2 class="about__title"><%=PAGE_CONTENT.about.title%></h2>
-                <div class="about__inner">
-                    <div class="about__items">
-                        <div class="about__text">
-                            <%=PAGE_CONTENT.about.text%>
-                        </div>
-                        <a class="about__link" href="<%=PAGE_CONTENT.about.link.href%>"><%=PAGE_CONTENT.about.link.name%></a>
-                   </div>
-                   <div class="about__image">
-                      <img class="about__photo" src="assets/images/image-3.jpg" alt="photo">
-                   </div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="description">
-            <div class="description__inner">
-                <div class="description__title">
-                    <p><%=PAGE_CONTENT.description.title[0]%></p>
-                    <p><%=PAGE_CONTENT.description.title[1]%></p>
-                </div>
-                <div class="description__text">
-                    <%PAGE_CONTENT.description.text.forEach(elem => {%>
-                        <p><%=elem%></p>
-                    <%})%>
-                </div>
-                <a class="description__link" href="<%=PAGE_CONTENT.description.link.href%>"><%=PAGE_CONTENT.description.link.name%></a>
-            </div>
-            <div class="description__image">
-            <img class="description__photo" src="assets/images/image-4.jpg" alt="photo">
-            </div>
-        </div>
-        
-        <div class="presentation">
-            <h2 class="presentation__title"><%=PAGE_CONTENT.presentation.title%></h2>
-            <div class="presentation__inner">
-                <div class="presentation__text">
-                    <p><%=PAGE_CONTENT.presentation.text[0]%></p>
-                    <p><%=PAGE_CONTENT.presentation.text[1]%></p>
-                    <a class="presentation__link" href="<%=PAGE_CONTENT.presentation.link.href%>"><%=PAGE_CONTENT.presentation.link.name%></a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="newsletter">
-            <div class="container">
-               <div class="newsletter__inner">
-                    <div class="newsletter__content">
-                        <h2 class="newsletter__title"><%=PAGE_CONTENT.newsletter.title%></h2>
-                        <div class="newsletter__text">
-                            <%PAGE_CONTENT.newsletter.text.forEach(elem => {%>
-                                <p><%=elem%></p>
-                            <%})%>
-                        </div>
                     </div>
-                    <div class="newsletter__items">
-                        <form class="newsletter__form" action="/" method="post">
-                            <input class="newsletter__input" type="email" name="email" placeholder="<%=PAGE_CONTENT.newsletter.emailPlaceholder%>">
-                        </form>
-                        <button class="newsletter__btn" type="submit"><%=PAGE_CONTENT.newsletter.button%></button>
+                    <img class="collection__image" src="assets/images/image-2.jpg" alt="photo">
+                </div>
+            </div>
+    
+            <div class="about">
+                <div class="container">
+                    <h2 class="about__title"><%=PAGE_CONTENT.about.title%></h2>
+                    <div class="about__inner">
+                        <div class="about__items">
+                            <div class="about__text">
+                                <%=PAGE_CONTENT.about.text%>
+                            </div>
+                            <a class="about__link" href="<%=PAGE_CONTENT.about.link.href%>"><%=PAGE_CONTENT.about.link.name%></a>
+                    </div>
+                    <div class="about__image">
+                        <img class="about__photo" src="assets/images/image-3.jpg" alt="photo">
+                    </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-        <div class="stores">
-            <div class="container">
-                <h2 class="stores__title"><%=PAGE_CONTENT.stores.title%></h2>
-                <div class="stores__inner">
-                    <%PAGE_CONTENT.stores.cities.forEach(elem => {%>
-                        <address class="stores__items">
-                            <p class="stores__city"><%=elem.name%></p>
-                                <%elem.address.forEach(i => {%>
-                                    <p class="stores__address">
-                                        <%=i%>
-                                    </p>
+            
+            <div class="description">
+                <div class="description__inner">
+                    <div class="description__title">
+                        <p><%=PAGE_CONTENT.description.title[0]%></p>
+                        <p><%=PAGE_CONTENT.description.title[1]%></p>
+                    </div>
+                    <div class="description__text">
+                        <%PAGE_CONTENT.description.text.forEach(elem => {%>
+                            <p><%=elem%></p>
+                        <%})%>
+                    </div>
+                    <a class="description__link" href="<%=PAGE_CONTENT.description.link.href%>"><%=PAGE_CONTENT.description.link.name%></a>
+                </div>
+                <div class="description__image">
+                <img class="description__photo" src="assets/images/image-4.jpg" alt="photo">
+                </div>
+            </div>
+            
+            <div class="presentation">
+                <h2 class="presentation__title"><%=PAGE_CONTENT.presentation.title%></h2>
+                <div class="presentation__inner">
+                    <div class="presentation__text">
+                        <p><%=PAGE_CONTENT.presentation.text[0]%></p>
+                        <p><%=PAGE_CONTENT.presentation.text[1]%></p>
+                        <a class="presentation__link" href="<%=PAGE_CONTENT.presentation.link.href%>"><%=PAGE_CONTENT.presentation.link.name%></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="newsletter">
+                <div class="container">
+                <div class="newsletter__inner">
+                        <div class="newsletter__content">
+                            <h2 class="newsletter__title"><%=PAGE_CONTENT.newsletter.title%></h2>
+                            <div class="newsletter__text">
+                                <%PAGE_CONTENT.newsletter.text.forEach(elem => {%>
+                                    <p><%=elem%></p>
                                 <%})%>
-                            <a class="stores__address" href="<%=elem.link.href%>"><%=elem.link.name%></a>
-                        </address>
-                    <%})%>
-                </div>
-            </div>
-        </div>
-        
-        <div class="contact" id="modal">
-            <div class="container-modal">
-                <button class="button-close-modal">&#x2715</button>
-                <h2 class="contact__title"><%=PAGE_CONTENT.contact.title%></h2>
-                <div class="contact__inner">
-                    <div class="contact__text"><%=PAGE_CONTENT.contact.text%></div>
-                    <div class="contact__items">
-                        <form class="contact__form" id="contact__form" action="/writeContactFormData" method="post">
-                            <input class="contact__input" type="text" name="name" placeholder="<%=PAGE_CONTENT.contact.formPlaceHolders[0]%>" required>
-                            <input class="contact__input" type="email" name="email" placeholder="<%=PAGE_CONTENT.contact.formPlaceHolders[1]%>" required>
-                            <textarea class="contact__textarea" name="message" placeholder="<%=PAGE_CONTENT.contact.formPlaceHolders[2]%>" required></textarea>
-                            <button class="contact__btn" type="submit"><%=PAGE_CONTENT.contact.button%></button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <footer class="footer">
-            <div class="container">
-                <div class="footer__top">
-                    <img class="footer-top__logo" src="assets/images/footer-logo.png" alt="footer logo">
-                    <div class="footer__top-items">
-                        <nav class="footer__top-nav">
-                            <%PAGE_CONTENT.footer.top.nav.forEach(elem => {%>
-                                <a class="footer__top-nav__link" id="<%=elem.id%>" href="<%=elem.href%>"><%=elem.name%></a>
-                            <%})%>
-                        </nav>
-                        <div class="footer__top-info">
-                            <%PAGE_CONTENT.footer.top.info.forEach(elem => {%>
-                                <a class="footer__top-info__link" href="<%=elem.href%>"><%=elem.name%></a>
-                            <%})%>
+                            </div>
                         </div>
-                        <address class="footer__top__address">
-                            <%PAGE_CONTENT.footer.top.address.forEach(elem => {%>
-                                <p><%=elem%></p>
-                            <%})%>
-                        </address>
+                        <div class="newsletter__items">
+                            <form class="newsletter__form" action="/" method="post">
+                                <input class="newsletter__input" type="email" name="email" placeholder="<%=PAGE_CONTENT.newsletter.emailPlaceholder%>">
+                            </form>
+                            <button class="newsletter__btn" type="submit"><%=PAGE_CONTENT.newsletter.button%></button>
+                        </div>
                     </div>
                 </div>
-                <div class="footer__bottom">
-                    <span class="footer__bottom__copyright"><%=PAGE_CONTENT.footer.bottom.copyright%></span>
-                    <div class="footer__bottom__social">
-                        <%PAGE_CONTENT.footer.bottom.social.forEach(elem => {%>
-                            <a class="footer__bottom__social__link" href="<%=elem.href%>" target="_blank"><%=elem.name%></a>
+            </div>
+            
+            <div class="stores">
+                <div class="container">
+                    <h2 class="stores__title"><%=PAGE_CONTENT.stores.title%></h2>
+                    <div class="stores__inner">
+                        <%PAGE_CONTENT.stores.cities.forEach(elem => {%>
+                            <address class="stores__items">
+                                <p class="stores__city"><%=elem.name%></p>
+                                    <%elem.address.forEach(i => {%>
+                                        <p class="stores__address">
+                                            <%=i%>
+                                        </p>
+                                    <%})%>
+                                <a class="stores__address" href="<%=elem.link.href%>"><%=elem.link.name%></a>
+                            </address>
                         <%})%>
                     </div>
-        
-                    <div class="footer__bottom__icons">
-                        <a class="footer__bottom__item" href="https://www.facebook.com/" target="_blank">
-                            <svg class="footer__bottom__icon">
-                                <use xlink:href="#facebook"></use>
-                            </svg>
-                        </a>
-                        <a class="footer__bottom__item" href="https://www.twitter.com/" target="_blank">
-                            <svg class="footer__bottom__icon">
-                                <use xlink:href="#twitter"></use>
-                            </svg>
-                        </a>
-                        <a class="footer__bottom__item" href="https://www.instagram.com/" target="_blank">
-                            <svg class="footer__bottom__icon">
-                                <use xlink:href="#instagram"></use>
-                            </svg>
-                        </a>
+                </div>
+            </div>
+            
+            <div class="contact" id="modal">
+                <div class="container-modal">
+                    <button class="button-close-modal">&#x2715</button>
+                    <h2 class="contact__title"><%=PAGE_CONTENT.contact.title%></h2>
+                    <div class="contact__inner">
+                        <div class="contact__text"><%=PAGE_CONTENT.contact.text%></div>
+                        <div class="contact__items">
+                            <form class="contact__form" id="contact__form" action="/writeContactFormData" method="post">
+                                <input class="contact__input" type="text" name="name" placeholder="<%=PAGE_CONTENT.contact.formPlaceHolders[0]%>" required>
+                                <input class="contact__input" type="email" name="email" placeholder="<%=PAGE_CONTENT.contact.formPlaceHolders[1]%>" required>
+                                <textarea class="contact__textarea" name="message" placeholder="<%=PAGE_CONTENT.contact.formPlaceHolders[2]%>" required></textarea>
+                                <button class="contact__btn" type="submit"><%=PAGE_CONTENT.contact.button%></button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </footer>
+            
+            <footer class="footer">
+                <%- include('./partials/footer') %>
+            </footer>
+        </div>
     </div>
-
     <script src="assets/js/app.js"></script>
-    <script type="text/javascript">
-        async function getData (url = '') {
-            return fetch(url)
-                .then(response => response.json())
-                .then(data => data)
-        }
-      
-        async function postData(url = '', data = {}) {
-            const response = await fetch(url, {
-                method: 'POST',
-                mode: 'cors',
-                cache: 'no-cache',
-                credentials: 'same-origin',
-                headers: {
-                'Content-Type': 'application/json'
-                },
-                redirect: 'follow',
-                referrerPolicy: 'no-referrer',
-                body: JSON.stringify(data)
-            });
-            return await response.json();
-        }
-
-        const container = document.getElementsByClassName('page-container')
-        const allTags = container[0].querySelectorAll('*')
-        const menu = document.querySelector('.menu')
-
-        const allTagsWithText = Object.values(allTags).filter(element => {
-            if (menu.contains(element)) {
-                return false
+        <script type="text/javascript">
+            async function getData (url = '') {
+                return fetch(url)
+                    .then(response => response.json())
+                    .then(data => data)
             }
-            if (element.text || element.innerText && element.children.length == 0) {
-                return true
+        
+            async function postData(url = '', data = {}) {
+                const response = await fetch(url, {
+                    method: 'POST',
+                    mode: 'cors',
+                    cache: 'no-cache',
+                    credentials: 'same-origin',
+                    headers: {
+                    'Content-Type': 'application/json'
+                    },
+                    redirect: 'follow',
+                    referrerPolicy: 'no-referrer',
+                    body: JSON.stringify(data)
+                });
+                return await response.json();
+            }
+
+            const container = document.getElementsByClassName('page-container')
+            const allTags = container[0].querySelectorAll('*')
+            const menu = document.querySelector('.menu')
+
+            const allTagsWithText = Object.values(allTags).filter(element => {
+                if (menu.contains(element)) {
+                    return false
+                }
+                if (element.text || element.innerText && element.children.length == 0) {
+                    return true
+                } 
+            })  
+
+            const targetElementsArray = allTagsWithText.map(element => { 
+            if (element.innerText) {
+                return element.innerText 
+            }  
+            if (element.text) {
+                return element.text 
+            }  
+            })
+        
+            function closeModal() {
+                modal.style.display = "none"
+                body.style.overflow = ""
+            }    
+
+            const about = document.querySelector('.about')
+            const collection = document.querySelector('.collection')
+            const headerContact = document.getElementById('contact')
+            const footerContact = document.getElementById('footer_contact')
+            const modal = document.getElementById('modal')
+            const body = document.querySelector('body')
+            const headerNewCollection = document.getElementById('new_col')
+            const footerNewCollection = document.getElementById('footer_new_col')
+            const headerAbout = document.getElementById('about')
+            const footerAbout = document.getElementById('footer_about')
+            const buttonCloseModal = document.querySelector('.button-close-modal')
+                    
+            function toNewCollection () {
+                event.preventDefault()
+                collection.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
             } 
-        })  
 
-        const targetElementsArray = allTagsWithText.map(element => { 
-          if (element.innerText) {
-            return element.innerText 
-          }  
-          if (element.text) {
-            return element.text 
-          }  
-        })
-      
-        function closeModal() {
-            modal.style.display = "none"
-            body.style.overflow = ""
-        }    
+            headerNewCollection.addEventListener("click", toNewCollection)
+            footerNewCollection.addEventListener("click", toNewCollection)
 
-        const about = document.querySelector('.about')
-        const collection = document.querySelector('.collection')
-        const headerContact = document.getElementById('contact')
-        const footerContact = document.getElementById('footer_contact')
-        const modal = document.getElementById('modal')
-        const body = document.querySelector('body')
-        const headerNewCollection = document.getElementById('new_col')
-        const footerNewCollection = document.getElementById('footer_new_col')
-        const headerAbout = document.getElementById('about')
-        const footerAbout = document.getElementById('footer_about')
-        const buttonCloseModal = document.querySelector('.button-close-modal')
-                
-        function toNewCollection () {
-            event.preventDefault()
-            collection.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
-        } 
+            function toAbout () {
+                event.preventDefault()
+                about.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+            } 
+            
+            headerAbout.addEventListener("click", toAbout)
+            footerAbout.addEventListener("click", toAbout)
 
-        headerNewCollection.addEventListener("click", toNewCollection)
-        footerNewCollection.addEventListener("click", toNewCollection)
-
-        function toAbout () {
-            event.preventDefault()
-            about.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
-        } 
-        
-        headerAbout.addEventListener("click", toAbout)
-        footerAbout.addEventListener("click", toAbout)
-
-        function showModal () {
-            event.preventDefault()
-            modal.style.display = "block"
-        }
-
-        headerContact.addEventListener("click", showModal)
-        footerContact.addEventListener("click", showModal)
-
-        buttonCloseModal.addEventListener("click", closeModal)
-        modal.addEventListener("click", event => {
-            if (event.target === modal) {
-                closeModal()
+            function showModal () {
+                event.preventDefault()
+                modal.style.display = "block"
             }
-        })
 
-        window.addEventListener( "load", function () {
-        function sendData() {
-            const XHR = new XMLHttpRequest();
-            const FD = new FormData( form );
+            headerContact.addEventListener("click", showModal)
+            footerContact.addEventListener("click", showModal)
 
-            XHR.addEventListener( "load", function(event) {                
-            });
-
-            XHR.addEventListener("error", function(event) {
-            alert('Oops! Something went wrong.');
-            });
-
-            XHR.open("POST", "http://localhost:3001/writeContactFormData");
-            XHR.setRequestHeader("Content-type", "application/json;charset=UTF-8");
-            let convertedJSON = {};
-                for (const [key, value]  of FD.entries())
-                {
-                    convertedJSON[key] = value;
+            buttonCloseModal.addEventListener("click", closeModal)
+            modal.addEventListener("click", event => {
+                if (event.target === modal) {
+                    closeModal()
                 }
-                console.log(convertedJSON)
+            })
 
-            XHR.send(JSON.stringify(convertedJSON));
-        }
+            window.addEventListener( "load", function () {
+            function sendData() {
+                const XHR = new XMLHttpRequest();
+                const FD = new FormData( form );
 
-        const form = document.getElementById("contact__form");
-        
-        form.addEventListener( "submit", function (event) {
-                event.preventDefault();
-                sendData();
-                form.reset();
-                closeModal()
+                XHR.addEventListener( "load", function(event) {                
+                });
+
+                XHR.addEventListener("error", function(event) {
+                alert('Oops! Something went wrong.');
+                });
+
+                XHR.open("POST", "http://localhost:3001/writeContactFormData");
+                XHR.setRequestHeader("Content-type", "application/json;charset=UTF-8");
+                let convertedJSON = {};
+                    for (const [key, value]  of FD.entries())
+                    {
+                        convertedJSON[key] = value;
+                    }
+                    console.log(convertedJSON)
+
+                XHR.send(JSON.stringify(convertedJSON));
+            }
+
+            const form = document.getElementById("contact__form");
+            
+            form.addEventListener( "submit", function (event) {
+                    event.preventDefault();
+                    sendData();
+                    form.reset();
+                    closeModal()
+                } );
             } );
-        } );
 
-        const translatePageText = lang => {
-            postData(
-                'http://localhost:3001/translate', 
-                {
-                    "text": targetElementsArray, 
-                    "lang": lang 
-                }
-            )
-            .then((translatedTextArray) => {
-                    allTagsWithText.forEach((element, index) => {
-                    element.text = translatedTextArray[index]
-                    element.innerText = translatedTextArray[index]
-                })    
-            });
-        }
-    </script>
-    </div>        
+            const translatePageText = lang => {
+                postData(
+                    'http://localhost:3001/translate', 
+                    {
+                        "text": targetElementsArray, 
+                        "lang": lang 
+                    }
+                )
+                .then((translatedTextArray) => {
+                        allTagsWithText.forEach((element, index) => {
+                        element.text = translatedTextArray[index]
+                        element.innerText = translatedTextArray[index]
+                    })    
+                });
+            }
+        </script>        
 </body>
 </html>

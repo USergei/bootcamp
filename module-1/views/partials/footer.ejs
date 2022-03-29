@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="footer__top">
+      <img class="footer-top__logo" src="assets/images/footer-logo.png" alt="footer logo">
+      <div class="footer__top-items">
+          <nav class="footer__top-nav">
+              <%PAGE_CONTENT.footer.top.nav.forEach(elem => {%>
+                  <a class="footer__top-nav__link" id="<%=elem.id%>" href="<%=elem.href%>"><%=elem.name%></a>
+              <%})%>
+          </nav>
+          <div class="footer__top-info">
+              <%PAGE_CONTENT.footer.top.info.forEach(elem => {%>
+                  <a class="footer__top-info__link" href="<%=elem.href%>"><%=elem.name%></a>
+              <%})%>
+          </div>
+          <address class="footer__top__address">
+              <%PAGE_CONTENT.footer.top.address.forEach(elem => {%>
+                  <p><%=elem%></p>
+              <%})%>
+          </address>
+      </div>
+  </div>
+  <div class="footer__bottom">
+      <span class="footer__bottom__copyright"><%=PAGE_CONTENT.footer.bottom.copyright%></span>
+      <div class="footer__bottom__social">
+          <%PAGE_CONTENT.footer.bottom.social.forEach(elem => {%>
+              <a class="footer__bottom__social__link" href="<%=elem.href%>" target="_blank"><%=elem.name%></a>
+          <%})%>
+      </div>
+
+      <div class="footer__bottom__icons">
+          <a class="footer__bottom__item" href="https://www.facebook.com/" target="_blank">
+              <svg class="footer__bottom__icon">
+                  <use xlink:href="#facebook"></use>
+              </svg>
+          </a>
+          <a class="footer__bottom__item" href="https://www.twitter.com/" target="_blank">
+              <svg class="footer__bottom__icon">
+                  <use xlink:href="#twitter"></use>
+              </svg>
+          </a>
+          <a class="footer__bottom__item" href="https://www.instagram.com/" target="_blank">
+              <svg class="footer__bottom__icon">
+                  <use xlink:href="#instagram"></use>
+              </svg>
+          </a>
+      </div>
+  </div>
+</div>

@@ -1,38 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="/assets/css/style-contacts.css">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<%- include('./partials/head') %>
 </head>
 
 <body>
-	<div class="table">
-		<div class="table__headers">
-			<div class="table__header">Name</div>
-			<div class="table__header">Email</div>
-			<div class="table__header">Message</div>
-			<div class="table__header">Actions</div>
-		</div>
-		<%data.forEach(child => {%>
-			<div class="table__row" id="<%=child.id%>">
-				<div class="table__items"><%=child.name%></div>
-				<div class="table__items email"><%=child.email%></div>
-				<div class="table__items message"><%=child.message%></div>
-				<div class="table__items">
-					<button class="table__btn" data-reply type="submit">Reply</button>
-					<button class="table__btn" data-delete type="submit">Delete</button>
-				</div>
-				<form class="table__form" action="/sendEmail" method="post">
-					<textarea class="table__textarea" name="message" placeholder="Whrite your message"></textarea> 
-					<button class="textarea__btn" type="submit">Send</button>
-				</form>
+	<div class="wrapper">
+		<svg style="display: none;">
+			<%- include('./partials/svgs') %>
+		</svg>
+		<header>
+			<%- include('./partials/header') %>
+		</header>
+		<div class="table">
+			<div class="table__headers">
+				<div class="table__header">Name</div>
+				<div class="table__header">Email</div>
+				<div class="table__header">Message</div>
+				<div class="table__header">Actions</div>
 			</div>
-		<%})%>
-	</div>	
+			<%data.forEach(child => {%>
+				<div class="table__row" id="<%=child.id%>">
+					<div class="table__items"><%=child.name%></div>
+					<div class="table__items email"><%=child.email%></div>
+					<div class="table__items message"><%=child.message%></div>
+					<div class="table__items">
+						<button class="table__btn" data-reply type="submit">Reply</button>
+						<button class="table__btn" data-delete type="submit">Delete</button>
+					</div>
+					<form class="table__form" action="/sendEmail" method="post">
+						<textarea class="table__textarea" name="message" placeholder="Whrite your message"></textarea> 
+						<button class="textarea__btn" type="submit">Send</button>
+					</form>
+				</div>
+			<%})%>
+		</div>
+		<footer class="footer">
+			<%- include('./partials/footer') %>
+		</footer>	
+	</div>
 </body>
 <script type="module" src="/assets/js/admin-page.js"></script>
 </html>
