@@ -1,1 +1,4 @@
-Please add a decent description of what's been achieved in this module supported with screenshots
+To run the project:
+
+docker-compose -f docker-compose.builder.yml run --rm install
+docker-compose up
