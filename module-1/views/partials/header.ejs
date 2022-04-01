@@ -24,7 +24,9 @@
 </div>
 
 <div class="header-bottom">
-  <img class="header-bottom__logo" src="assets/images/header-logo.png" alt="fashion logo">
+  <a href="/">
+    <img class="header-bottom__logo" src="assets/images/header-logo.png" alt="fashion logo">
+  </a> 
   <nav class="header-bottom__nav">
       <%PAGE_CONTENT.header.menu.forEach(elem => {%>
           <a class="header-bottom__link" id="<%=elem.id%>" href="<%=elem.href%>"><%=elem.name%></a>

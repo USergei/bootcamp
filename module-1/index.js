@@ -68,7 +68,8 @@ async function listLanguagesWithTarget() {
   try {
     const [languages] = await translate.getLanguages('en')
   } catch (e) {
-    // throw new Error(e)
+    console.log(new Error(e))
+    
     return []
   }
 
