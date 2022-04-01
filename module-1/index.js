@@ -68,7 +68,8 @@ async function listLanguagesWithTarget() {
   try {
     const [languages] = await translate.getLanguages('en')
   } catch (e) {
-    throw new Error(e)
+    console.log(new Error(e))
+    
     return []
   }
 
@@ -96,7 +97,7 @@ app.get('/getContactRequest/:key?', async (req, res) =>{
       return
     }
     data = JSON.parse(JSON.stringify(result))
-    res.render('contacts-admin.ejs', data)
+    res.render('contacts-admin.ejs', {data, PAGE_CONTENT})
   });  
 });
 
