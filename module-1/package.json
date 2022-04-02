@@ -45,6 +45,8 @@
     "nodemon": "^2.0.15"
   },
   "scripts": {
+    "init-db": "node init-db.js",
+    "web-service": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

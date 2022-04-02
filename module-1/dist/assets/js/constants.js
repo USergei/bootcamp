@@ -1,7 +1,7 @@
 const HOST_URL = "http://localhost:3001/"
 const CONTACT_FORM_REPLY_EMAIL = "fructusmortus@gmail.com"
 const SQL_CONNECTION_STRING = {
-  host: 'localhost', 
+  host: 'db', 
   user: 'fashion',
   password: '123123', 
   database: 'fashion'

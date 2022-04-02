@@ -1,8 +1,6 @@
-# Use root/example as user/password credentials
 version: '3.1'
 
 services:
-
   db:
     image: mariadb
     restart: always
@@ -18,3 +16,13 @@ services:
     restart: always
     ports:
       - 8080:8080
+
+  web-service:
+    image: node:13
+    volumes:
+        - .:/usr/src/service
+    working_dir: /usr/src/service
+    command: npm run web-service
+    ports:
+        - 1234:1234
+        - 3001:3001
