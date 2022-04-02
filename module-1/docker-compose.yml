@@ -16,6 +16,8 @@ services:
     restart: always
     ports:
       - 8080:8080
+    depends_on:
+      - "db"  
 
   web-service:
     image: node:13
@@ -26,3 +28,5 @@ services:
     ports:
         - 1234:1234
         - 3001:3001
+    depends_on:
+      - "db"    
