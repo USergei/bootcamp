@@ -2,12 +2,10 @@
 @import "mixins";
 
 body {
-    margin: 0;
-
-    font-family: 'Work Sans', sans-serif;
+    font-family: "Work Sans", sans-serif;
     font-size: 15px;
-
     background-color: #fff;
+    overflow: hidden;
 }
 
 *,
@@ -18,7 +16,7 @@ body {
     padding: 0;
 }
 
-
+@import "blocks/wrapper";
 @import "blocks/page-container";
 @import "blocks/header-top";
 @import "blocks/header-top-icons";
@@ -35,3 +33,4 @@ body {
 @import "blocks/footer-top";
 @import "blocks/footer-bottom";
 @import "blocks/footer-bottom-icons";
+@import "blocks/style-contacts";
