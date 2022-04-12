@@ -1,32 +1,53 @@
 .contact {
-    margin-bottom: 6.2em;
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.3)
+}
 
+.button-close-modal {
+    display: block;
+    box-sizing: content-box;
+    width: 1.5em;
+    height: 1.5em;
+    font-size: 1em;
+    color: #000;
+    font-weight: normal;
+    background-color: #fff;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    right: 19px;
+    transition: all 0.3s ease-in-out;
 
-    @media (max-width: 442px) {
-        margin-bottom: 2em;
+    &:hover {
+        transform: rotate(90deg);
     }
+}
+
+.container-modal {
+    position: relative;
+    width: 600px;
+    height: auto;
+    margin: 50px auto;
+    padding: 20px;
+    background: $white;
 }
 
 .contact__title {
     margin-bottom: 0.7em;
-    font-size: 40px;
+    font-size: 30px;
     letter-spacing: 2px;
     @include text-black;
-
-    @media (max-width: 897px) {
-    text-align: center;
-    margin-bottom: 0.56em;
-    font-size: 38px;
-    }
 }
 
 .contact__inner {
     display: flex;
     justify-content: space-between;
-
-    @media (max-width: 897px) {
-        flex-direction: column;
-    }
 }
 
 .contact__items {
@@ -35,137 +56,63 @@
 }
 
 .contact__text {
-    padding-right: 4em;
-    font-size: 29px;
+    padding-right: 5em;
+    font-size: 16px;
     letter-spacing: 1px;
-    color: #000000;
+    color: $black;
     font-weight: 400;
-
-    @media (max-width: 981px) {
-        padding-right: 0.4em;
-        font-size: 24px;
-    }
-
-    @media (max-width: 897px) {
-        margin-bottom: 1.5em;
-        padding: 0;
-        font-size: 21px;
-    }
-
-    @media (max-width: 442px) {
-        font-size: 19px;
-    }
 }
 
 .contact__form {
-    margin-bottom: 1.1em;
+    display: flex;
+    flex-direction: column;
 
     &:nth-child(3) {
         margin-bottom: 1.53em;
     }
-}
+}    
 
 .contact__input {
     display: block;
-    width: 23.95em;
+    width: 19em;
     padding: 0.35em 0.4em 0.33em 0.9em;
-    font-family: inherit;
-    font-size: 21px;
-    font-weight: 500;
-    color: $black;
-    letter-spacing: 1px;
-    border: 2px solid #000;
-    background-color: $white;
-
+    margin-bottom: 1em;
+    @include input;
+    
     &:focus {
         outline: none;
-        background-color: darken($white, 10%)
+        background-color: #e5e5e5;
     }
-
-    @media (max-width: 567px) {
-        width: 19em;
-        font-size: 22px;
-        letter-spacing: 1px;
-    }
-
-    @media (max-width: 442px) {
-        font-size: 19px;
-    }
-
-    @media (max-width: 385px) {
-        font-size: 17px;
-    }
-
-    @media (max-width: 346px) {
-        font-size: 15px;
-        padding: 0.35em 0.4em 0.33em 0.4em;
-    }
-}
+}    
 
 .contact__textarea {
     display: block;
     width: 100%;
     height: 6em;
     padding: 0.35em 0.4em 0.3em 0.9em;
+    margin-bottom: 1em;
     resize: none;
-    font-family: inherit;
-    font-size: 21px;
-    font-weight: 500;
-    color: $black;
-    letter-spacing: 1px;
-    border: 2px solid #000;
-    background-color: $white;
+    @include input;
 
     &:focus {
         outline: none;
-
-        background-color: darken($white, 10%)
-    }
-
-    @media (max-width: 897px) {
-        width: 23.95em;
-    }
-
-    @media (max-width: 567px) {
-        width: 19em;
-        font-size: 22px;
-        letter-spacing: 1px;
-    }
-
-    @media (max-width: 442px) {
-        font-size: 19px;
-    }
-
-    @media (max-width: 385px) {
-        font-size: 17px;
-    }
-
-     @media (max-width: 346px) {
-        font-size: 15px;
-        padding: 0.35em 0.4em 0.33em 0.4em;
-    }
+        background-color: #e5e5e5;
+    }    
 }
 
 .contact__btn {
     align-self: flex-end;
     font-family: inherit;
-    font-size: 24px;
+    font-size: 20px;
     letter-spacing: 1px;
-    @include text-black;
+    color: $black;
+    font-weight: 500;
+    text-transform: uppercase;
     cursor: pointer;
     border-style: none;
     border-bottom: 2px $black solid;
     background: inherit;
-    @include transition;
+    transition: opacity 0.2s ease-in-out;
     @include hover;
-
-     @media (max-width: 981px) {
-        font-size: 21px;
-    }
-
-    @media (max-width: 897px) {
-        align-self: flex-start;
-    }
-}
-
+}    
 

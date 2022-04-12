@@ -1,38 +1,26 @@
-body {
-  background-color: #FFF;
-  font-family: "Work Sans", sans-serif;
-  font-size: 15px;
-}
-
-*,
-*:before,
-*:after {
-    box-sizing: border-box;
-}  
-
 .table {
   max-width: 100%;
-  border: 1px solid #000;
+  border: 1px solid $black;
+  margin-top: -72px;
+  margin-bottom: 20px;
 }
 
 .table__headers {
   display: flex;
   justify-content: space-around;
   padding: 10px 0 10px 0;
-  color: #000;
-  font-weight: bold;
-  text-transform: uppercase;
-  background-color: #e8d1c3;
+  @include text-black;
+  background-color: $beige;
 }
 
 .table__row {
   display: flex;
   flex-wrap: wrap;
-  border-bottom:  1px solid #000;;
-}
+  border-bottom:  1px solid $black;
 
-.table__row:last-child {
-  border-bottom: none;
+  &:last-child {
+    border-bottom: none;
+  }
 }
 
 .table__items {
@@ -48,14 +36,14 @@ body {
 .table__btn {
   width: 70px;
   padding: 3px 0 3px 0;
-  background-color: #e8d1c3;
-  border: 1px solid #000;
+  background-color: $beige;
+  border: 1px solid $black;
   border-radius: 3.5px; 
-}
 
-.table__btn:hover {
-  cursor: pointer;
-  background-color: #e6ae89;
+  &:hover {
+    cursor: pointer;
+    background-color: #e6ae89;
+  }
 }
 
 .table__form {
@@ -73,11 +61,17 @@ body {
   font-family: inherit;
   font-size: 16px;
   font-weight: 500;
-  color: #000;
+  color: $black;
   letter-spacing: 1px;
   border-left: none;
   border-right: none;
   resize: none;
+
+  &:focus {
+    border: 0.5px solid #353333;
+    background: #f4f4f4;  
+    outline: none;
+  }
 }
 
 .color__placeholder::placeholder {
@@ -86,26 +80,20 @@ body {
   text-align: center; 
 }
 
-.table__textarea:focus {
-  border: 0.5px solid #353333;
-  background: #f4f4f4;  
-  outline: none;
-}
 
 .textarea__btn {
   align-self: center;
   width: 70px;
   padding: 3px 0 3px 0;
-  background-color: #e8d1c3;
-  border: 1px solid #000;
+  background-color: $beige;
+  border: 1px solid $black;
   border-radius: 3.5px; 
-}
 
-.textarea__btn:hover {
-  cursor: pointer;
-  background-color: #e6ae89;
+  &:hover {
+    cursor: pointer;
+    background-color: #e6ae89;
+  }
 }
-
 .is__open {
   display: flex;
 }
