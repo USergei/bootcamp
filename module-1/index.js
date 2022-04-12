@@ -1,17 +1,19 @@
-const {
-  CONTACT_FORM_REPLY_EMAIL, 
-  SQL_CONNECTION_STRING,
-  PAGE_CONTENT
-} = require('./dist/assets/js/constants.js')
+require('dotenv').config()
+const {CONTACT_FORM_REPLY_EMAIL, DB_HOST, DB_USER, DB_PWD, DB} = process.env
+
+const {PAGE_CONTENT} = require('./content.js')
 
 // Load the AWS SDK for Node.js
 const AWS = require('aws-sdk');
 
 const mysql = require('mysql')
 
-const connection = mysql.createConnection(SQL_CONNECTION_STRING);
-
-//TODO connection.end();
+const connection = mysql.createConnection({
+  host: DB_HOST,
+  user: DB_USER,
+  password: DB_PWD,
+  database: DB
+});
 
 // bring in express
 const express = require('express');
@@ -111,7 +113,6 @@ app.post('/translate', async (req, res) =>{
 app.post('/writeContactFormData', async (req, res) =>{
   const { name, email, message } = req.body
   let queryString = 'INSERT INTO contacts(name,email,message) VALUES(?,?,?)';
-  
   connection.query(queryString, [name,email,message], (err, results, fields) => {
     if (err) {
       return console.error(err.message);

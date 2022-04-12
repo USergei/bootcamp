@@ -26,7 +26,7 @@
 					<div class="table__items message"><%=child.message%></div>
 					<div class="table__items">
 						<button class="table__btn" data-reply type="submit">Reply</button>
-						<button class="table__btn" data-delete type="submit">Delete</button>
+						<button class="table__btn" data-delete type="button">Delete</button>
 					</div>
 					<form class="table__form" action="/sendEmail" method="post">
 						<textarea class="table__textarea" name="message" placeholder="Whrite your message"></textarea> 
@@ -39,6 +39,7 @@
 			<%- include('./partials/footer') %>
 		</footer>	
 	</div>
+
+	<script src="assets/js/admin-page.js"></script>	
 </body>
-<script type="module" src="/assets/js/admin-page.js"></script>
 </html>

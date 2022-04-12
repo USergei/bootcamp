@@ -44,7 +44,8 @@
     "icon"
     "menu";
 }
-dropdown.closed { 
+
+.dropdown.closed { 
   grid-template-areas: "icon";  
 }
 
@@ -73,7 +74,7 @@ dropdown.closed {
   transition: all 0.2s ease-in-out;
   position: absolute;
   top: 44px;
-  height: 250px;
+  max-height: 250px;
   overflow-y: scroll;
 }
 
