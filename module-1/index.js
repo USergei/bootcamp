@@ -55,8 +55,8 @@ const {Translate} = require('@google-cloud/translate').v2;
 //  Creates a client
 const translate = new Translate(
   {
-  projectId: 'leafy-beach-336216', //eg my-project-0o0o0o0o'
-  keyFilename: './leafy-beach-336216-531f228315d4.json' //eg my-project-0fwewexyz.json
+  projectId: 'proven-dryad-336215', //eg my-project-0o0o0o0o'
+  keyFilename: './proven-dryad-336215-e3afa0dbd68d.json' //eg my-project-0fwewexyz.json
   }
 );
 
@@ -69,14 +69,13 @@ async function translateText(text, lang) {
 async function listLanguagesWithTarget() {
   try {
     const [languages] = await translate.getLanguages('en')
+    return languages
   } catch (e) {
     console.log(new Error(e))
     
     return []
   }
-
-  return languages
- }
+}
 
 // Set the region 
 AWS.config.loadFromPath('./config.json')
