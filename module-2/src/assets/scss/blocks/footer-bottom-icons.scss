@@ -1,0 +1,33 @@
+.footer__bottom__icons {
+    display: none;
+    align-items: center;
+
+    @media (max-width: 897px) {
+        display: flex;
+    }
+}
+
+.footer__bottom__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color:$white;
+    border-radius: 0.4em;
+
+    &:not(:last-child) {
+        margin-right: 0.5em;
+    }
+
+    &:hover .footer__bottom__icon {
+       fill: $green;
+    }
+}
+
+.footer__bottom__icon {
+    display: block;
+    height: 25px;
+    fill: $black;
+    transition: fill .1s linear;
+}

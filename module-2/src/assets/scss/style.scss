@@ -1,0 +1,36 @@
+@import "vars";
+@import "mixins";
+
+body {
+    font-family: "Work Sans", sans-serif;
+    font-size: 15px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+@import "blocks/wrapper";
+@import "blocks/page-container";
+@import "blocks/header-top";
+@import "blocks/header-top-icons";
+@import "blocks/header-bottom";
+@import "blocks/hamburger-menu";
+@import "blocks/collection";
+@import "blocks/container";
+@import "blocks/about";
+@import "blocks/description";
+@import "blocks/presentation";
+@import "blocks/newsletter";
+@import "blocks/stores";
+@import "blocks/contact";
+@import "blocks/footer-top";
+@import "blocks/footer-bottom";
+@import "blocks/footer-bottom-icons";
+@import "blocks/style-contacts";

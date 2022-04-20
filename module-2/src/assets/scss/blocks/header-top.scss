@@ -1,0 +1,105 @@
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $beige;
+}
+
+.header-top__social {
+    display: flex;
+    margin-right: 8.8em;
+    padding: 1.13em 0 1.33em;
+
+    @media (max-width: 1071px) {
+        margin-right: 1em;
+    }
+
+    @media (max-width: 897px) {
+        display: none;
+    }
+}
+
+.header-top__link {
+    font-size: 1em;
+    letter-spacing: 0.067em;
+    @include link-black;
+    @include hover;
+
+    &:not(:last-child) {
+        margin-right: 0.9em;
+    }
+}
+
+.dropdown {
+  transition: all 0.2s ease-in-out;
+  overflow: hidden;
+  margin-left: 6.4em;
+  background: $beige;
+  width: 172px;
+  display: grid;
+  cursor: pointer;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: 
+    "icon"
+    "menu";
+}
+
+.dropdown.closed { 
+  grid-template-areas: "icon";  
+}
+
+.icon {
+  grid-area: icon;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em 0.5em; 
+  font-weight: 500; 
+  text-transform: uppercase;
+}
+
+.icon span {
+  transition: all 0.2s ease-in-out;
+  transform: rotateX(180deg) rotateY(180deg);
+  color: $green;;
+}
+
+.closed .icon span {
+  transform: rotateX(0deg);  
+  color: $green;
+}
+
+.menu {
+  grid-area: menu;
+  transition: all 0.2s ease-in-out;
+  position: absolute;
+  top: 44px;
+  max-height: 250px;
+  overflow-y: scroll;
+}
+
+.menu li {
+  width: 200px;
+  transition: all 0.2s ease-in-out;  
+  text-transform: uppercase;
+  padding: 0.5em 0.4em;
+  border-top: solid 1px rgb(15, 49, 27);
+  list-style: none;
+  background: $beige;
+}
+
+.menu li:hover {
+  background: $green;
+}
+
+.menu li a {
+  font-size: 1em;
+  text-decoration: none;
+  color: $black;
+}
+
+.dropdown.closed .menu {
+   display: none;
+}
+
+

@@ -1,0 +1,34 @@
+.header-top__icons {
+    display: none;
+    align-items: center;
+    margin-right: 1em;
+
+    @media (max-width: 897px) {
+        display: flex;
+    }
+}
+
+.header-top__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: $white;
+    border-radius: 0.4em;
+
+    &:not(:last-child) {
+        margin-right: 1.5em;
+    }
+
+    &:hover .header-top__icon {
+       fill: #b7805f;
+    }
+}
+
+.header-top__icon {
+    display: block;
+    height: 25px;
+    fill: $black;
+    transition: fill .2s linear;
+}
