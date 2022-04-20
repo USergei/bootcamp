@@ -38,6 +38,18 @@ const container = document.getElementsByClassName('page-container')
 const allTags = container[0].querySelectorAll('*')
 const menu = document.querySelector('.menu')
 
+menu.addEventListener("click", event => {
+    event.preventDefault()
+    let elem = event.target
+        
+    if (menu.contains(elem)) {
+        const languageCode = event.target.hash.substring(1)
+        const selectLang = document.getElementsByClassName('icon')
+        selectLang[0].innerText = elem.innerText
+        translatePageText(languageCode)
+    }
+})
+
 const allTagsWithText = Object.values(allTags).filter(element => {
     if (menu.contains(element)) {
         return false

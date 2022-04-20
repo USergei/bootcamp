@@ -1,9 +1,19 @@
 <div class="header-top">
   <div class="dropdown closed">
-      <div class="icon"><%=PAGE_CONTENT.header.dropdown[0]%> <span><%=PAGE_CONTENT.header.dropdown[1]%></span></div>
-      <ul class="menu">
-          <li>Google translate API license is missing</li>
-      </ul>  
+    <div class="icon"><%=PAGE_CONTENT.header.dropdown[0]%> <span><%=PAGE_CONTENT.header.dropdown[1]%></span></div>
+        <ul class="menu">
+            <!-- <li><% typeof langList %></li> -->
+            <% if(langList ){ %>
+                <li>Google translate API license666666666666 is missing</li>
+                <%langList.forEach(lang => {%>
+                    <li>
+                        <a href='#<%=lang.code%>'><%=lang.name%></a>
+                    </li>
+                <%})%>
+            <% } else{ %>  
+                <li>Google translate API license is missing</li>
+            <% } %>
+        </ul>  
   </div>
 
   <div class="header-top__social">
