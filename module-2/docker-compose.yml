@@ -1,0 +1,32 @@
+version: '3.1'
+
+services:
+  db:
+    image: mariadb
+    restart: always
+    volumes:
+      - ./db/:/var/lib/mysql
+    environment:
+      MARIADB_ROOT_PASSWORD: 123123
+    ports: 
+      - 3306:3306  
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - "db"  
+
+  web-service:
+    image: node:13
+    volumes:
+        - .:/usr/src/service
+    working_dir: /usr/src/service
+    command: npm run web-service
+    ports:
+        - 1234:1234
+        - 3001:3001
+    depends_on:
+      - "db"    

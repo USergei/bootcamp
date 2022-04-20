@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<%- include('./partials/head') %>
+</head>
+
+<body>
+	<div class="wrapper">
+		<svg style="display: none;">
+			<%- include('./partials/svgs') %>
+		</svg>
+		<header>
+			<%- include('./partials/header') %>
+		</header>
+		<div class="table">
+			<div class="table__headers">
+				<div class="table__header">Name</div>
+				<div class="table__header">Email</div>
+				<div class="table__header">Message</div>
+				<div class="table__header">Actions</div>
+			</div>
+			<%data.forEach(child => {%>
+				<div class="table__row" id="<%=child.id%>">
+					<div class="table__items"><%=child.name%></div>
+					<div class="table__items email"><%=child.email%></div>
+					<div class="table__items message"><%=child.message%></div>
+					<div class="table__items">
+						<button class="table__btn" data-reply type="submit">Reply</button>
+						<button class="table__btn" data-delete type="button">Delete</button>
+					</div>
+					<form class="table__form" action="/sendEmail" method="post">
+						<textarea class="table__textarea" name="message" placeholder="Whrite your message"></textarea> 
+						<button class="textarea__btn" type="submit">Send</button>
+					</form>
+				</div>
+			<%})%>
+		</div>
+		<footer class="footer">
+			<%- include('./partials/footer') %>
+		</footer>	
+	</div>
+
+	<script type="text/javascript" src="assets/js/vendor/jquery-3.6.0.js"></script>	
+	<script src="assets/js/admin-page.js"></script>	
+</body>
+</html>
