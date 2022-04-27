@@ -3,7 +3,7 @@ version: '3.1'
 services:
   db:
     image: mariadb
-    restart: always
+    # restart: always
     volumes:
       - ./db/:/var/lib/mysql
     environment:
@@ -13,7 +13,7 @@ services:
 
   adminer:
     image: adminer
-    restart: always
+    # restart: always
     ports:
       - 8080:8080
     depends_on:

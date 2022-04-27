@@ -38,10 +38,14 @@ const container = document.getElementsByClassName('page-container')
 const allTags = container[0].querySelectorAll('*')
 const menu = document.querySelector('.menu')
 
+
+//TODO either add event listener on the right tag or check if we click on li a or an eliment 
 menu.addEventListener("click", event => {
     event.preventDefault()
     let elem = event.target
-        
+
+
+    // remove redundant if statement    
     if (menu.contains(elem)) {
         const languageCode = event.target.hash.substring(1)
         const selectLang = document.getElementsByClassName('icon')

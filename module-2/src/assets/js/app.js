@@ -19,26 +19,42 @@ $( document ).ready(function() {
     const allTags = container.find('*')
     const menu = $('.menu')
 
+    function replaceMenuWithSelectedLanguage (urlElement) {
+        const languageCode = urlElement[0].hash.substring(1)
+        const selectLang = $('.icon')
+        selectLang[0].innerText = urlElement[0].innerText
+        // translatePageText(languageCode)
+    }
+
     menu.click(function(event) {
         event.preventDefault()
-        const elem = $(event.target)     
-        if (menu.has(elem)) {
-            const languageCode = elem[0].hash.substring(1)
-            const selectLang = $('.icon')
-            selectLang[0].innerText = elem[0].innerText
-            // translatePageText(languageCode)
-        }
+        const elem = $(event.target)
+        if (elem.is('a')) {  
+            replaceMenuWithSelectedLanguage(elem)
+            
+        } if (elem.is('li')) {
+            const childUrl = elem.find('a:first')
+            replaceMenuWithSelectedLanguage(childUrl)
+        }  
     })
 
     const allTagsWithText = Object.values(allTags).filter(element => {
-        if (menu.has(element)) {
+        // console.log({element})
+        // console.log({element: element})
+        // console.log(menu.has(element).length)
+        if (menu.has(element).length) {
+            // console.log('777')
             return false
         }
-        // TODO check later if the following code complies with jQuery standards
-        if (element.text || element.innerText && element.children.length == 0) {
+        // TODO check if we can replace the following with native jQuery methods
+        // console.log('element', element.children?.length == 0)
+        if (element.text || element.innerText && element.children?.length == 0) {
+            // console.log('666')
             return true
         } 
     })  
+
+    // console.log({allTagsWithText})
 
     const targetElementsArray = allTagsWithText.map(element => { 
         if (element.innerText) {
@@ -48,6 +64,8 @@ $( document ).ready(function() {
             return element.text 
         }  
     })
+
+    // console.log({targetElementsArray})
 
     function closeModal() {
         modal.hide()
@@ -127,6 +145,8 @@ $( document ).ready(function() {
     })
     
     const translatePageText = lang => {
+        console.log({targetElementsArray})
+        console.log({lang})
         postData(
             `${HOST_URL}/translate`, 
             {
@@ -136,6 +156,7 @@ $( document ).ready(function() {
         )
         .then((translatedTextArray) => {
                 allTagsWithText.forEach((element, index) => {
+                //TODO check if there is  a jQuery method to update text and innerText properties
                 element.text = translatedTextArray[index]
                 element.innerText = translatedTextArray[index]
             })    
