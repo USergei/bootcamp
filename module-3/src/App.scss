@@ -1,0 +1,19 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.App {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  font-weight: 300;
+  color: rgb(255, 255, 255);
+  background-color: #212228;
+}
+
