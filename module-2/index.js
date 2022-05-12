@@ -55,8 +55,8 @@ const {Translate} = require('@google-cloud/translate').v2;
 //  Creates a client
 const translate = new Translate(
   {
-  projectId: 'proven-dryad-336215', //eg my-project-0o0o0o0o'
-  keyFilename: './proven-dryad-336215-e3afa0dbd68d.json' //eg my-project-0fwewexyz.json
+  projectId: 'alert-flames-347314', //eg my-project-0o0o0o0o'
+  keyFilename: './alert-flames-347314-d118c34616b9.json' //eg my-project-0fwewexyz.json
   }
 );
 

@@ -1,3 +1,5 @@
+const HOST_URL = "http://localhost:3001"
+
 $( document ).ready(function() {
     let dropdown = $('.dropdown')
 
@@ -13,32 +15,46 @@ $( document ).ready(function() {
         } 
     })
 
-    // async function getData (url = '') {
-    //     $.get( url, function( data ) {
-    //         console.log( typeof data )
-    //         console.log( data )
-    //     })   
-    // }
+    const container = $('.page-container')
+    const allTags = container.find('*')
+    const menu = $('.menu')
 
-    // async function getData (url = '') {
-    //     return fetch(url)
-    //         .then(response => response.json())
-    //         .then(data => data)
-    // }
+    function replaceMenuWithSelectedLanguage (urlElement) {
+        const languageCode = urlElement[0].hash.substring(1)
+        const selectLang = $('.icon')
+        selectLang[0].innerText = urlElement[0].innerText
+        // translatePageText(languageCode)
+    }
 
-    const container = document.getElementsByClassName('page-container')
-    const allTags = container[0].querySelectorAll('*')
-    const menu = document.querySelector('.menu')
-    console.log({allTags})
+    menu.click(function(event) {
+        event.preventDefault()
+        const elem = $(event.target)
+        if (elem.is('a')) {  
+            replaceMenuWithSelectedLanguage(elem)
+            
+        } if (elem.is('li')) {
+            const childUrl = elem.find('a:first')
+            replaceMenuWithSelectedLanguage(childUrl)
+        }  
+    })
 
     const allTagsWithText = Object.values(allTags).filter(element => {
-        if (menu.contains(element)) {
+        // console.log({element})
+        // console.log({element: element})
+        // console.log(menu.has(element).length)
+        if (menu.has(element).length) {
+            // console.log('777')
             return false
         }
-        if (element.text || element.innerText && element.children.length == 0) {
+        // TODO check if we can replace the following with native jQuery methods
+        // console.log('element', element.children?.length == 0)
+        if (element.text || element.innerText && element.children?.length == 0) {
+            // console.log('666')
             return true
         } 
     })  
+
+    // console.log({allTagsWithText})
 
     const targetElementsArray = allTagsWithText.map(element => { 
         if (element.innerText) {
@@ -49,50 +65,52 @@ $( document ).ready(function() {
         }  
     })
 
+    // console.log({targetElementsArray})
+
     function closeModal() {
-        modal.style.display = "none"
-        body.style.overflow = ""
+        modal.hide()
+        body.css('overflow','visible')
     }    
 
-    const about = document.querySelector('.about')
-    const collection = document.querySelector('.collection')
-    const headerContact = document.getElementById('contact')
-    const footerContact = document.getElementById('footer_contact')
-    const modal = document.getElementById('modal')
-    const body = document.querySelector('body')
-    const headerNewCollection = document.getElementById('new_col')
-    const footerNewCollection = document.getElementById('footer_new_col')
-    const headerAbout = document.getElementById('about')
-    const footerAbout = document.getElementById('footer_about')
-    const buttonCloseModal = document.querySelector('.button-close-modal')
+    const about = $('.about')
+    const collection = $('.collection')
+    const headerContact = $('#contact')
+    const footerContact = $('#footer_contact')
+    const modal = $('#modal')
+    const body = $('document.body')
+    const headerNewCollection = $('#new_col')
+    const footerNewCollection = $('#footer_new_col')
+    const headerAbout = $('#about')
+    const footerAbout = $('#footer_about')
+    const buttonCloseModal = $('.button-close-modal')
             
     function toNewCollection () {
         event.preventDefault()
-        collection.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+        collection.get(0).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
     } 
 
-    headerNewCollection.addEventListener("click", toNewCollection)
-    footerNewCollection.addEventListener("click", toNewCollection)
+    headerNewCollection.click(toNewCollection)
+    footerNewCollection.click(toNewCollection)
 
     function toAbout () {
         event.preventDefault()
-        about.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+        about.get(0).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
     } 
 
-    headerAbout.addEventListener("click", toAbout)
-    footerAbout.addEventListener("click", toAbout)
+    headerAbout.click(toAbout)
+    footerAbout.click(toAbout)
 
     function showModal () {
         event.preventDefault()
-        modal.style.display = "block"
+        modal.css('display','block')
     }
 
-    headerContact.addEventListener("click", showModal)
-    footerContact.addEventListener("click", showModal)
+    headerContact.click(showModal)
+    footerContact.click(showModal)
 
-    buttonCloseModal.addEventListener("click", closeModal)
-    modal.addEventListener("click", event => {
-        if (event.target === modal) {
+    buttonCloseModal.click(closeModal)
+    modal.click(function() {
+        if ($(this) === modal) {
             closeModal()
         }
     })
@@ -120,15 +138,17 @@ $( document ).ready(function() {
         e.preventDefault()
         const form = $(e.target)
         const json = convertFormToJSON(form)
-        const url = 'http://localhost:3001/writeContactFormData'
+        const url = `${HOST_URL}/writeContactFormData`
         postData(url, json)
         form.trigger("reset")
         closeModal()
     })
     
     const translatePageText = lang => {
+        console.log({targetElementsArray})
+        console.log({lang})
         postData(
-            'http://localhost:3001/translate', 
+            `${HOST_URL}/translate`, 
             {
                 "text": targetElementsArray, 
                 "lang": lang 
@@ -136,6 +156,7 @@ $( document ).ready(function() {
         )
         .then((translatedTextArray) => {
                 allTagsWithText.forEach((element, index) => {
+                //TODO check if there is  a jQuery method to update text and innerText properties
                 element.text = translatedTextArray[index]
                 element.innerText = translatedTextArray[index]
             })    

@@ -1,0 +1,13 @@
+.headerRight {
+    background-color: #212228;
+    width: 150px;
+    height: 150px;
+
+    &:hover {
+        background-color: greenyellow;
+    }
+}
+
+.svg:hover {
+    fill: red;
+}
