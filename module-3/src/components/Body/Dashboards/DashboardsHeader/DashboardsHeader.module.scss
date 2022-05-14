@@ -1,0 +1,50 @@
+.dashboardsHeader {
+    display: flex;
+    justify-content: space-between;
+}
+
+.dashboardText {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    margin: 0 1.53em 0 1.8em;
+    font-size: 1.6em;
+    font-weight: 400;
+    color: #939496;
+}
+
+.greeting {
+    font-size: 0.7em;
+    font-weight: 100;
+    color: #b9b9b9;
+}
+
+.addWidget {
+    display: flex;
+    align-items: center;
+}
+
+.addWidgetText {
+    margin-right: 2.26em;
+    font-size: 0.93em;
+    font-weight: 400;
+    color: #fff;
+}
+
+.addWidgetBtn {
+    padding: 0.3em;
+    font-size: 1.46em;
+    color: #3d404a;
+    line-height: 13px;
+    background: none;
+    border: 1.5px solid #646569;
+    border-radius: 4px;
+    opacity: .7;
+    transition: color .1s ease-in-out;
+
+    &:hover {
+        color: #fff; 
+    }
+}

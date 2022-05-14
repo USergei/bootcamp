@@ -1,13 +1,5 @@
 .headerRight {
-    background-color: #212228;
-    width: 150px;
-    height: 150px;
+    display: flex;
+    padding: 2.13em 3.4em 1.4em 0;
 
-    &:hover {
-        background-color: greenyellow;
-    }
-}
-
-.svg:hover {
-    fill: red;
 }
