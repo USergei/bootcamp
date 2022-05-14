@@ -1,13 +1,18 @@
-import React from "react";
+import React from "react"
 import style from './Header-right.module.scss'
-import searchIcon from './../../../image/searchIcon.png'
-import { SvgTest } from "./SvgTest";
+import SearchIcon from "./Search/SearchIcon"
+import BellIcon from "./BellIcon/BellIcon"
+import HeaderUser from "./HeaderUser/HeaderUser"
+import DropDown from "./DropDown/DropDown"
 
 const HeaderRight = (props) => {
     return (
         <div className={style.headerRight}>
-            {/* <img className={style.lupa} src={searchIcon} alt="search" /> */}
-            <SvgTest className={style.svg}  id="svg"/>
+            <SearchIcon/>
+            <BellIcon/>
+            <HeaderUser/>
+            <DropDown/>
+
         </div>
     )
 }
