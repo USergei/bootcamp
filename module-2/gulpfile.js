@@ -99,7 +99,7 @@ function js(cb) {
                 this.emit('end');
             }
         }))
-        .pipe(uglify())
+        // .pipe(uglify())
         .pipe(dest(path.build.js))
         .pipe(browserSync.reload({stream: true}));
 

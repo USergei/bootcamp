@@ -5,4 +5,8 @@
     min-height: 100vh;
     max-height: 100vh;
     overflow: auto;
+    &.translation-in-progress * {
+        text-shadow: 0 0 10px $black;
+        color: transparent !important;
+    }
 }

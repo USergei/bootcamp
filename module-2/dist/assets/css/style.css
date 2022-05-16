@@ -22,6 +22,11 @@ body {
     overflow: auto;
 }
 
+.wrapper.translation-in-progress * {
+    text-shadow: 0 0 10px #000;
+    color: transparent !important;
+}
+
 .page-container {
     width: 100%;
     max-width: 1450px;

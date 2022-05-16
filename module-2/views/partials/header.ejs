@@ -1,5 +1,5 @@
 <div class="header-top">
-  <div class="dropdown closed">
+  <div class="dropdown language-selector closed">
       <div class="icon"><%=PAGE_CONTENT.header.dropdown[0]%> <span><%=PAGE_CONTENT.header.dropdown[1]%></span></div>
       <ul class="menu">
         <% if (typeof langList != 'undefined') {%>
@@ -8,8 +8,9 @@
                     <a href='#<%=lang.code%>'><%=lang.name%></a>
                 </li>
             <%})%>
-        <%}%>        
+        <%} else {%>        
             <li>Google translate API license is missing</li>
+        <%}%>    
       </ul>  
   </div>
 

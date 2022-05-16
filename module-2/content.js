@@ -163,14 +163,6 @@ const PAGE_CONTENT = {
     }
   }
 
-  const SQL_CONNECTION_STRING = {
-    host: 'localhost', 
-    user: 'fashion',
-    password: '123123', 
-    database: 'fashion'
-  }
-
 module.exports = {
-PAGE_CONTENT,
-SQL_CONNECTION_STRING
+PAGE_CONTENT
 }

@@ -1,32 +1,32 @@
-const HOST_URL = "http://localhost:3001"
+import { postData, HOST_URL } from "./utils.js"
 
-$( document ).ready(function() {
+$( document ).ready(() => {
     let dropdown = $('.dropdown')
 
-    dropdown.on('mouseenter', (e) => {
+    dropdown.on('mouseenter', () => {
         if (dropdown.hasClass('closed')) {
             dropdown.removeClass('closed')
         }   
     })
 
-    dropdown.on('mouseleave', (e) => {
+    dropdown.on('mouseleave', () => {
         if (!dropdown.hasClass('closed')) {
             dropdown.addClass('closed')
         } 
     })
-
+    
     const container = $('.page-container')
     const allTags = container.find('*')
     const menu = $('.menu')
-
+    
     function replaceMenuWithSelectedLanguage (urlElement) {
         const languageCode = urlElement[0].hash.substring(1)
         const selectLang = $('.icon')
         selectLang[0].innerText = urlElement[0].innerText
-        // translatePageText(languageCode)
+        translatePageText(languageCode)
     }
 
-    menu.click(function(event) {
+    menu.click((event) => {
         event.preventDefault()
         const elem = $(event.target)
         if (elem.is('a')) {  
@@ -38,39 +38,21 @@ $( document ).ready(function() {
         }  
     })
 
-    const allTagsWithText = Object.values(allTags).filter(element => {
-        // console.log({element})
-        // console.log({element: element})
-        // console.log(menu.has(element).length)
+    const allTagsWithText = Object.values(allTags).filter((element) => {
         if (menu.has(element).length) {
-            // console.log('777')
             return false
         }
-        // TODO check if we can replace the following with native jQuery methods
-        // console.log('element', element.children?.length == 0)
-        if (element.text || element.innerText && element.children?.length == 0) {
-            // console.log('666')
+        
+        if ($(element).text() && element.children?.length == 0) {
             return true
         } 
-    })  
-
-    // console.log({allTagsWithText})
-
-    const targetElementsArray = allTagsWithText.map(element => { 
-        if (element.innerText) {
-            return element.innerText 
-        }  
-        if (element.text) {
-            return element.text 
-        }  
     })
-
-    // console.log({targetElementsArray})
-
-    function closeModal() {
-        modal.hide()
-        body.css('overflow','visible')
-    }    
+    
+    const targetElementsArray = allTagsWithText.map((element) => { 
+        if ($(element).text()) {
+            return $(element).text()
+        }  
+    })   
 
     const about = $('.about')
     const collection = $('.collection')
@@ -84,7 +66,7 @@ $( document ).ready(function() {
     const footerAbout = $('#footer_about')
     const buttonCloseModal = $('.button-close-modal')
             
-    function toNewCollection () {
+    function toNewCollection (event) {
         event.preventDefault()
         collection.get(0).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
     } 
@@ -92,7 +74,7 @@ $( document ).ready(function() {
     headerNewCollection.click(toNewCollection)
     footerNewCollection.click(toNewCollection)
 
-    function toAbout () {
+    function toAbout (event) {
         event.preventDefault()
         about.get(0).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
     } 
@@ -100,7 +82,7 @@ $( document ).ready(function() {
     headerAbout.click(toAbout)
     footerAbout.click(toAbout)
 
-    function showModal () {
+    function showModal (event) {
         event.preventDefault()
         modal.css('display','block')
     }
@@ -108,59 +90,47 @@ $( document ).ready(function() {
     headerContact.click(showModal)
     footerContact.click(showModal)
 
+    function closeModal() {
+        modal.hide()
+        body.css('overflow','visible')
+    } 
+
     buttonCloseModal.click(closeModal)
-    modal.click(function() {
-        if ($(this) === modal) {
+    modal.click((event) => {
+        if ($(event.target).hasClass('contact')) {
             closeModal()
         }
     })
 
-    async function postData(url = '', data = {}) {
-        $.post(url, data)
-        .done(function( data ) {
-           console.log(data)
-        })
-        .fail(function() {
-            console.log("error")
-        })
-    }
-    
-    function convertFormToJSON(form) {
-        const array = $(form).serializeArray()
-        const json = {}
-        $.each(array, function () {
-          json[this.name] = this.value || ""
-        })
-        return json
-      }
+    const form = $("#contact__form")
 
-    $("#contact__form").on("submit", function (e) {
-        e.preventDefault()
-        const form = $(e.target)
-        const json = convertFormToJSON(form)
-        const url = `${HOST_URL}/writeContactFormData`
+    form.on("submit", (event) => {
+        event.preventDefault()
+        const formData = $(event.target).serializeArray()
+        const json = {
+            name: formData[0].value,
+            email: formData[1].value,
+            message: formData[2].value
+        }
+        const url = `${HOST_URL}writeContactFormData`
         postData(url, json)
         form.trigger("reset")
         closeModal()
     })
     
     const translatePageText = lang => {
-        console.log({targetElementsArray})
-        console.log({lang})
-        postData(
-            `${HOST_URL}/translate`, 
-            {
-                "text": targetElementsArray, 
-                "lang": lang 
-            }
-        )
+        const json = {
+            "text": targetElementsArray, 
+            "lang": lang 
+        }
+        const wrapper = $('.wrapper')
+        wrapper.addClass('translation-in-progress')
+        postData(`${HOST_URL}translate`, json)
         .then((translatedTextArray) => {
                 allTagsWithText.forEach((element, index) => {
-                //TODO check if there is  a jQuery method to update text and innerText properties
-                element.text = translatedTextArray[index]
-                element.innerText = translatedTextArray[index]
+                $(element).text(translatedTextArray[index])
+                wrapper.removeClass('translation-in-progress')
             })    
         })
     }
 })
-

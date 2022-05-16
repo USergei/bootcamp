@@ -1,1 +1,136 @@
-const HOST_URL="http://localhost:3001";$(document).ready(function(){let e=$(".dropdown");e.on("mouseenter",t=>{e.hasClass("closed")&&e.removeClass("closed")}),e.on("mouseleave",t=>{e.hasClass("closed")||e.addClass("closed")});const t=$(".page-container");var n=t.find("*");const o=$(".menu");function c(t){t[0].hash.substring(1);const e=$(".icon");e[0].innerText=t[0].innerText}o.click(function(t){t.preventDefault();const e=$(t.target);e.is("a")&&c(e),e.is("li")&&c(e.find("a:first"))});const i=Object.values(n).filter(t=>!o.has(t).length&&(!!(t.text||t.innerText&&0==t.children?.length)||void 0));i.map(t=>t.innerText||t.text||void 0);function s(){f.hide(),d.css("overflow","visible")}const l=$(".about"),a=$(".collection"),r=$("#contact"),u=$("#footer_contact"),f=$("#modal"),d=$("document.body"),h=$("#new_col"),v=$("#footer_new_col"),m=$("#about"),b=$("#footer_about"),g=$(".button-close-modal");function k(){event.preventDefault(),a.get(0).scrollIntoView({behavior:"smooth",block:"start",inline:"nearest"})}function p(){event.preventDefault(),l.get(0).scrollIntoView({behavior:"smooth",block:"start",inline:"nearest"})}function _(){event.preventDefault(),f.css("display","block")}async function w(t="",e={}){$.post(t,e).done(function(t){console.log(t)}).fail(function(){console.log("error")})}h.click(k),v.click(k),m.click(p),b.click(p),r.click(_),u.click(_),g.click(s),f.click(function(){$(this)===f&&s()}),$("#contact__form").on("submit",function(t){t.preventDefault();const e=$(t.target);t=function(t){t=$(t).serializeArray();const e={};return $.each(t,function(){e[this.name]=this.value||""}),e}(e);w(`${HOST_URL}/writeContactFormData`,t),e.trigger("reset"),s()})});
+import { postData, HOST_URL } from "./utils.js"
+
+$( document ).ready(() => {
+    let dropdown = $('.dropdown')
+
+    dropdown.on('mouseenter', () => {
+        if (dropdown.hasClass('closed')) {
+            dropdown.removeClass('closed')
+        }   
+    })
+
+    dropdown.on('mouseleave', () => {
+        if (!dropdown.hasClass('closed')) {
+            dropdown.addClass('closed')
+        } 
+    })
+    
+    const container = $('.page-container')
+    const allTags = container.find('*')
+    const menu = $('.menu')
+    
+    function replaceMenuWithSelectedLanguage (urlElement) {
+        const languageCode = urlElement[0].hash.substring(1)
+        const selectLang = $('.icon')
+        selectLang[0].innerText = urlElement[0].innerText
+        translatePageText(languageCode)
+    }
+
+    menu.click((event) => {
+        event.preventDefault()
+        const elem = $(event.target)
+        if (elem.is('a')) {  
+            replaceMenuWithSelectedLanguage(elem)
+            
+        } if (elem.is('li')) {
+            const childUrl = elem.find('a:first')
+            replaceMenuWithSelectedLanguage(childUrl)
+        }  
+    })
+
+    const allTagsWithText = Object.values(allTags).filter((element) => {
+        if (menu.has(element).length) {
+            return false
+        }
+        
+        if ($(element).text() && element.children?.length == 0) {
+            return true
+        } 
+    })
+    
+    const targetElementsArray = allTagsWithText.map((element) => { 
+        if ($(element).text()) {
+            return $(element).text()
+        }  
+    })   
+
+    const about = $('.about')
+    const collection = $('.collection')
+    const headerContact = $('#contact')
+    const footerContact = $('#footer_contact')
+    const modal = $('#modal')
+    const body = $('document.body')
+    const headerNewCollection = $('#new_col')
+    const footerNewCollection = $('#footer_new_col')
+    const headerAbout = $('#about')
+    const footerAbout = $('#footer_about')
+    const buttonCloseModal = $('.button-close-modal')
+            
+    function toNewCollection (event) {
+        event.preventDefault()
+        collection.get(0).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+    } 
+
+    headerNewCollection.click(toNewCollection)
+    footerNewCollection.click(toNewCollection)
+
+    function toAbout (event) {
+        event.preventDefault()
+        about.get(0).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"})
+    } 
+
+    headerAbout.click(toAbout)
+    footerAbout.click(toAbout)
+
+    function showModal (event) {
+        event.preventDefault()
+        modal.css('display','block')
+    }
+
+    headerContact.click(showModal)
+    footerContact.click(showModal)
+
+    function closeModal() {
+        modal.hide()
+        body.css('overflow','visible')
+    } 
+
+    buttonCloseModal.click(closeModal)
+    modal.click((event) => {
+        if ($(event.target).hasClass('contact')) {
+            closeModal()
+        }
+    })
+
+    const form = $("#contact__form")
+
+    form.on("submit", (event) => {
+        event.preventDefault()
+        const formData = $(event.target).serializeArray()
+        const json = {
+            name: formData[0].value,
+            email: formData[1].value,
+            message: formData[2].value
+        }
+        const url = `${HOST_URL}writeContactFormData`
+        postData(url, json)
+        form.trigger("reset")
+        closeModal()
+    })
+    
+    const translatePageText = lang => {
+        const json = {
+            "text": targetElementsArray, 
+            "lang": lang 
+        }
+        const wrapper = $('.wrapper')
+        wrapper.addClass('translation-in-progress')
+        postData(`${HOST_URL}translate`, json)
+        .then((translatedTextArray) => {
+                allTagsWithText.forEach((element, index) => {
+                $(element).text(translatedTextArray[index])
+                wrapper.removeClass('translation-in-progress')
+            })    
+        })
+    }
+})
