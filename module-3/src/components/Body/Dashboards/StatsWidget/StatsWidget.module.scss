@@ -1,0 +1,59 @@
+.statsWidget {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 1.5em;
+    margin-right: 0.73em;
+    background-color: #282a31;
+    border-bottom: 5px solid purple;
+
+    &:last-of-type {
+        margin-right: 0;
+    }
+
+    &.typeInfo {
+        border-color: #3490de;
+    }
+    
+    &.typeWarning {
+        border-color: #d11e5b;
+    }
+    
+    &.typeAttention {
+        border-color: #6639a6;
+    }
+    
+    &.typeNotification {
+        border-color: #6fe7dd;
+    }
+}
+
+.statsImg {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    width: 62px;
+    height: 62px;
+    background-color: #3d404a;
+    border-radius: 999px;
+    box-shadow: 2px 2px 4px 0px rgba(1, 1, 1, 0.3);
+    
+    svg {
+        width: 30px;
+        height: 30px;
+        fill: #d6d7d9;
+    }
+}
+
+.statsTitle {
+    font-size: 0.6em;
+    color: #909094;
+    text-align: right;
+}
+
+.statsFigure {
+    font-size: 1.6em;
+    color: #b1b2b5;
+}
+
