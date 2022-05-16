@@ -1,6 +1,7 @@
 .dashboardsHeader {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2.2em;
 }
 
 .dashboardText {
@@ -18,7 +19,7 @@
 .greeting {
     font-size: 0.7em;
     font-weight: 100;
-    color: #b9b9b9;
+    color: #c3c2c2;
 }
 
 .addWidget {
@@ -34,7 +35,7 @@
 }
 
 .addWidgetBtn {
-    padding: 0.3em;
+    padding: 0.3em 0.3em 0.4em 0.3em;
     font-size: 1.46em;
     color: #3d404a;
     line-height: 13px;
@@ -42,9 +43,11 @@
     border: 1.5px solid #646569;
     border-radius: 4px;
     opacity: .7;
-    transition: color .1s ease-in-out;
+    cursor: pointer;
+    transition: color .1s ease-in-out, border-color .03s ease-in-out;
 
     &:hover {
-        color: #fff; 
+        color: #fff;
+        border-color: #fff; 
     }
 }

@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "classnames": "^2.3.1",
     "react-inlinesvg": "^3.0.0"
   }
 }
