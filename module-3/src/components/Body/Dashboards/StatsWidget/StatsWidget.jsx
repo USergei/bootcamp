@@ -1,17 +1,21 @@
 import React from "react";
 import style from './StatsWidget.module.scss'
 import SVG from 'react-inlinesvg'
-import classNames from 'classnames/bind'
+import classNames from 'classnames'
 
 const StatsWidget = ({id, statsImg, type, title, figure, unitMessure}) => {
-    const widgetClassNames = classNames({
-        typeInfo: type === 'info',
-        typeWarning: type === 'warning',
-        typeAttention: type === 'attention',
-        typeNotification: type === 'notification'        
-      })
+    const widgetClassNames = classNames(
+        style.statsWidget,
+        {
+            [style.typeInfo]: type === 'info',
+            [style.typeWarning]: type === 'warning',
+            [style.typeAttention]: type === 'attention',
+            [style.typeNotification]: type === 'notification'        
+        }
+    )
+    
     return (
-        <div className={`${style.statsWidget} ${widgetClassNames}`}>
+        <div className={widgetClassNames}>
             <div className={style.statsImg}>
                 <SVG src={statsImg} alt="widget-img" />
             </div>

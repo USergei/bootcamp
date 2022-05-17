@@ -1,8 +1,8 @@
 import React from "react"
 import style from './Dashboards.module.scss'
-import DashboardsHeader from "./DashboardsHeader/DashboardsHeader"
+import DashboardsHeader from "./DashboardsHeader"
 import StatsWidgetsBar from "./StatsWidgetsBar"
-import Charts from "./Charts/Charts"
+import Charts from "./Charts"
 
 const Dashboards = () => {
     return (
