@@ -6,10 +6,10 @@ import Dashboards from "./Dashboards/Dashboards"
 
 const Body = () => {
     return (
-        <body className={style.body}>
+        <div className={style.body}>
             <Navbar/>
             <Dashboards/>
-        </body>
+        </div>
     )
 }
 

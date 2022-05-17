@@ -7,7 +7,7 @@
     margin-right: 0.73em;
     background-color: #282a31;
     border-bottom: 5px solid purple;
-    box-shadow: 5px 5px 5px 0px rgba(1, 1, 1, 0.5);
+    box-shadow: 5px 5px 5px 0px rgba(1, 1, 1, 0.7);
 
     &:last-of-type {
         margin-right: 0;
@@ -15,6 +15,7 @@
 
     &.typeInfo {
         border-color: #3490de;
+        margin-right: 100px;
     }
     
     &.typeWarning {
@@ -38,7 +39,7 @@
     height: 62px;
     background-color: #3d404a;
     border-radius: 999px;
-    box-shadow: 2px 2px 4px 0px rgba(1, 1, 1, 0.3);
+    box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.3);
     
     svg {
         width: 30px;
@@ -47,14 +48,25 @@
     }
 }
 
-.statsTitle {
-    font-size: 0.6em;
-    color: #909094;
+.statsText {
     text-align: right;
+}
+
+.statsTitle {
+    font-size: 0.7em;
+    color: #909094;
+    font-weight: 400;
+    text-transform: uppercase;
 }
 
 .statsFigure {
     font-size: 1.6em;
     color: #b1b2b5;
+    font-weight: 400;
+
+    & span {
+        margin-left: 0.5em;
+        font-size: 0.5em;
+    }
 }
 
