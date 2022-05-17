@@ -18,22 +18,23 @@ const statsWidgetContent = [
         id: 2,
         statsImg: users,
         type: 'warning',
-        title: 'Total view',
-        figure: '121,459' 
+        title: 'Total user',
+        figure: '35,912' 
     },
     {
         id: 3,
         statsImg: rocket,
         type: 'attention',
-        title: 'Total view',
-        figure: '121,459' 
+        title: 'Server speed',
+        figure: '1180',
+        unitMessure: 'mbps' 
     },
     {
         id: 4,
         statsImg: envelope,
         type: 'notification',
-        title: 'Total view',
-        figure: '121,459' 
+        title: 'Total message',
+        figure: '2356' 
     },
 ]
 
@@ -47,10 +48,10 @@ const StatsWidgetsBar = () => {
                     statsImg={item.statsImg}
                     type={item.type}
                     title={item.title}
-                    figure={item.figure} 
+                    figure={item.figure}
+                    unitMessure={item.unitMessure} 
                 />
-            ) }
-            
+            )}        
         </div>
     )
 }
