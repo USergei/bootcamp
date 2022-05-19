@@ -3,6 +3,7 @@ import style from './Dashboards.module.scss'
 import DashboardsHeader from "./DashboardsHeader"
 import StatsWidgetsBar from "./StatsWidgetsBar"
 import Charts from "./Charts"
+import SocialWidgets from "./SocialWidgets"
 
 const Dashboards = () => {
     return (
@@ -10,6 +11,7 @@ const Dashboards = () => {
             <DashboardsHeader/>
             <StatsWidgetsBar/>
             <Charts/>
+            <SocialWidgets/>
         </div>
     )
 }
