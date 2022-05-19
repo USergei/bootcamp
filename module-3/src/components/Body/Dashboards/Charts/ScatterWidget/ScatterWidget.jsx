@@ -3,7 +3,7 @@ import style from './ScatterWidget.module.scss'
 
 const ScatterWidget = () => {
   return (
-    <div>
+    <div className={style.scatterWidget}>
       <h1>Scatter</h1>
     </div>
   )

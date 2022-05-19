@@ -1,4 +1,5 @@
+@use '../../../../../mixins/' as *;
+
 .pieWidget {
-  background-color: #282a31;
-  box-shadow: 5px 5px 5px 0px rgba(1, 1, 1, 0.7);
+  @include widgetShadowAndBg;
 }
