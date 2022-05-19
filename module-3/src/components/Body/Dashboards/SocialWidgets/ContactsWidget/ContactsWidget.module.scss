@@ -1,0 +1,5 @@
+@use '../../../../../mixins/' as *;
+
+.contactsWidget {
+  @include widgetShadowAndBg;
+} 

@@ -1,0 +1,5 @@
+@use '../../../../../mixins/' as *;
+
+.reviewsWidget {
+  @include widgetShadowAndBg;
+} 
