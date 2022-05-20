@@ -2,4 +2,13 @@
 
 .contactsWidget {
   @include widgetShadowAndBg;
-} 
+}
+
+.contactsWidgetHeader {
+  @include dFlexSpaceBetween;
+  @include widgetTitle;
+}
+
+.contactsWidgetHeader div{
+  transform: rotate(-90deg);
+}
