@@ -3,7 +3,21 @@
     width: 100%;
 }
 
-.tasksRadar {
+.charts {
+    display: flex;
+    margin-bottom: 1em;
+}
+  
+.mainChart {
+    flex-grow: 70;
+    margin-right: 0.6em;
+}
+
+.sideCharts {
+    flex-grow: 30;
+}
+
+.dashboardTwoColumnRow {
     display: flex;
     justify-content: space-between; 
 }

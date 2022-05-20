@@ -1,3 +1,11 @@
-import Charts from "./Charts";
+import HistogramWidget from "./HistogramWidget"
+import PieWidget from "./PieWidget"
+import RadarWidget from "./RadarWidget"
+import ScatterWidget from "./ScatterWidget"
 
-export default Charts
+export {
+  HistogramWidget,
+  PieWidget,
+  RadarWidget,
+  ScatterWidget
+}

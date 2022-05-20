@@ -49,7 +49,7 @@ const StatsWidgetsBar = () => {
                     type={item.type}
                     title={item.title}
                     figure={item.figure}
-                    unitMessure={item.unitMessure} 
+                    unitMessure={item.unitMeasure} 
                 />
             )}        
         </div>

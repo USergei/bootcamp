@@ -12,7 +12,6 @@ const HeaderRight = (props) => {
             <BellIcon/>
             <HeaderUser/>
             <DropDown/>
-
         </div>
     )
 }
