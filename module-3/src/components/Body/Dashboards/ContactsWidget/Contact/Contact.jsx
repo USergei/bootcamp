@@ -4,13 +4,11 @@ import SVG from 'react-inlinesvg'
 import envelope from './../../../../../assets/icons/envelope.svg'
 import chat from './../../../../../assets/icons/chat.svg'
 
-const Contact = (id, avatar, name, workplace) => {
+const Contact = ({id, avatar, name, workplace}) => {
     return (
         <div className={style.contactItems}>
-          <div className={style.contactItems}>
-            <div className={style.contactAvatar}>
-              <img src={avatar}></img>
-            </div>
+          <div className={style.contactUserItems}>
+            <img src={avatar} alt="avatar" className={style.contactAvatar}></img>
             <div>
               <div className={style.contactUsername}>{name}</div>
               <div className={style.contactWorkplace}>{workplace}</div>

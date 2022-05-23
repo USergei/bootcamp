@@ -1,5 +1,7 @@
 import React from "react";
 import style from './ContactsWidget.module.scss'
+import SVG from 'react-inlinesvg'
+import search from './../../../../assets/icons/search.svg'
 import avatar1 from './../../../../assets/images/user-avatar1.jpg'
 import avatar2 from './../../../../assets/images/user-avatar2.jpg'
 import avatar3 from './../../../../assets/images/user-avatar3.jpg'
@@ -16,19 +18,19 @@ const contactsWidgetContent = [
   {
     id: 2,
     avatar: avatar2,
-    name: 'John Cena',
+    name: 'Pedro Munoz',
     workplace: 'Google',
   },
   {
-    id: 1,
+    id: 3,
     avatar: avatar3,
-    name: 'John Cena',
+    name: 'Benazir Ibraimova',
     workplace: 'Umbrella',
   },
   {
-    id: 1,
+    id: 4,
     avatar: avatar4,
-    name: 'John Cena',
+    name: 'Jane Doe',
     workplace: 'Dastan',
   }
 ]
@@ -49,6 +51,12 @@ const ContactsWidget = () => {
           workplace={item.workplace}
         />
       )}
+      <div className={style.contactsWidgetSearch}>
+        <input placeholder="Search contact..."></input>
+        <button>
+          <SVG src={search} alt="search" />
+        </button>
+      </div>
     </div>
   )
 }

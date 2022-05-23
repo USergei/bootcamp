@@ -3,6 +3,7 @@
 .contactsWidget {
   @include widgetShadowAndBg;
   margin-bottom: 1em;
+  padding: 1.93em 1.73em 3.66em 1.73em;
   width: 500px;
 }
 
@@ -14,4 +15,51 @@
 
 .contactsWidgetHeader div {
   transform: rotate(-90deg);
+}
+
+.contactsWidgetSearch {
+  display: flex;
+  justify-content: center;
+
+  & input {
+    padding-left: 0.85em;
+    width: 19.5em;
+    height: 3em;
+    font-family: 'Roboto';
+    font-size: 1.2em;
+    font-weight: 300;
+    font-style: italic;
+    opacity: 0.3;
+    background: #282a31;
+    border: 2px solid #000;
+    border-radius: 0.4em;
+
+    &::placeholder {
+      color: #fff;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  & button {
+    margin-left: 0.6em;
+    width: 4em;
+    height: 4em;
+    background: #282a31;
+    border: 2px solid #000;
+    border-radius: 0.4em;
+
+    & svg {
+      padding: 0.5em;
+      fill: #44464c;
+      transition: fill .1s ease-in-out;
+
+      &:hover {
+        fill: #fff;
+        cursor: pointer;
+      }
+    }
+  }
 }

@@ -4,6 +4,7 @@
   @include dFlexSpaceBetween;
   align-items: center;
   border-bottom: solid 2px #33353b;
+  margin-bottom: 0.5em;
 }
 
 .contactUserItems {
@@ -36,6 +37,7 @@
   width: 0.46em;
   height: 0.46em;
   background-color: #6fe7dd;
+  border-radius: 66.6em;
 }
 
 .contactIcons {
@@ -63,7 +65,7 @@
     }
    
     &:last-child svg {
-      margin-top: -0.28em;
+      margin-top: -0.3em;
     }
   }
 }
