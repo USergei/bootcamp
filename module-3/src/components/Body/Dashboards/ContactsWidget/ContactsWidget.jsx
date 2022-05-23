@@ -1,8 +1,37 @@
 import React from "react";
 import style from './ContactsWidget.module.scss'
-import SVG from 'react-inlinesvg'
-import envelope from './../../../../assets/icons/envelope.svg'
-import chat from './../../../../assets/icons/chat.svg'
+import avatar1 from './../../../../assets/images/user-avatar1.jpg'
+import avatar2 from './../../../../assets/images/user-avatar2.jpg'
+import avatar3 from './../../../../assets/images/user-avatar3.jpg'
+import avatar4 from './../../../../assets/images/user-avatar4.jpg'
+import Contact from './Contact'
+
+const contactsWidgetContent = [
+  {
+    id: 1,
+    avatar: avatar1,
+    name: 'John Cena',
+    workplace: 'Microsoft',
+  },
+  {
+    id: 2,
+    avatar: avatar2,
+    name: 'John Cena',
+    workplace: 'Google',
+  },
+  {
+    id: 1,
+    avatar: avatar3,
+    name: 'John Cena',
+    workplace: 'Umbrella',
+  },
+  {
+    id: 1,
+    avatar: avatar4,
+    name: 'John Cena',
+    workplace: 'Dastan',
+  }
+]
 
 const ContactsWidget = () => {
   return (
@@ -11,23 +40,15 @@ const ContactsWidget = () => {
         <h6>Contacts</h6>
         <div>...</div>
       </div>
-      <div className={style.contactsWidgetContent}>
-        <div className={style.contactsWidgetItems}>
-          <div className={style.contactsWidgetUserItems}>
-            <div className={style.contactsWidgetAvatar}>
-              <img></img>
-            </div>
-            <div>
-              <div className={style.contactsWidgetUsername}>John Cena</div><span></span>
-              <div className={style.contactsWidgetWorkplace}>Microsft</div>
-            </div>
-          </div>
-          <div className={style.contactsWidgetIcons}>
-            <SVG src={chat} alt="chat" />
-            <SVG src={envelope} alt="notification" />
-          </div>  
-        </div>
-      </div>
+      {contactsWidgetContent.map((item, i) =>
+        <Contact
+          key={i}
+          id={item.id}
+          avatar={item.avatar}
+          name={item.name}
+          workplace={item.workplace}
+        />
+      )}
     </div>
   )
 }

@@ -3,60 +3,15 @@
 .contactsWidget {
   @include widgetShadowAndBg;
   margin-bottom: 1em;
+  width: 500px;
 }
 
 .contactsWidgetHeader {
+  margin-bottom: 2em;
   @include dFlexSpaceBetween;
   @include widgetTitle;
 }
 
 .contactsWidgetHeader div {
   transform: rotate(-90deg);
-}
-
-.contactsWidgetItems {
-  @include dFlexSpaceBetween;
-  align-items: center;
-}
-
-.contactsWidgetUserItems {
-  display: flex;
-  align-items: center;
-}
-
-.contactsWidgetAvatar {
-  width: 3.4em;
-  height: 3.4em;
-  background-color: #3d404a;
-  border-radius: 66.6em;
-}
-
-.contactsWidgetUsername {
-  font-size: 0.9em;
-  font-weight: 400;
-  color: #fff;
-
-  span {
-    width: 0.46em;
-    height: 0.46em;
-    background-color: #6fe7dd;
-  }
-}
-
-.contactsWidgetWorkplace {
-  font-size: 0.7em;
-  color: #fff;
-}
-
-.contactsWidgetIcons {
-  display: flex;
-  align-items: center;
-  vertical-align: middle;
-  
-  svg {
-    align-self: baseline;
-    width: 20.46em;
-    height: 20.53em;
-    fill: #d9d8d6;
-  }
 }

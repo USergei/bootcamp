@@ -27,7 +27,7 @@ const statsWidgetContent = [
         type: 'attention',
         title: 'Server speed',
         figure: '1180',
-        unitMessure: 'mbps' 
+        unitMeasure: 'mbps' 
     },
     {
         id: 4,
@@ -49,7 +49,7 @@ const StatsWidgetsBar = () => {
                     type={item.type}
                     title={item.title}
                     figure={item.figure}
-                    unitMessure={item.unitMeasure} 
+                    unitMeasure={item.unitMeasure} 
                 />
             )}        
         </div>
