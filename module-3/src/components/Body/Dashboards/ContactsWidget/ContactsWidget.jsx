@@ -51,12 +51,12 @@ const ContactsWidget = () => {
           workplace={item.workplace}
         />
       )}
-      <div className={style.contactsWidgetSearch}>
-        <input placeholder="Search contact..."></input>
+      <form className={style.contactsWidgetSearch}>
+        <input type="search" name="search" placeholder="Search contact..."></input>
         <button>
           <SVG src={search} alt="search" />
         </button>
-      </div>
+      </form>
     </div>
   )
 }

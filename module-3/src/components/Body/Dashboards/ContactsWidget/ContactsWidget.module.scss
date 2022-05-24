@@ -4,7 +4,6 @@
   @include widgetShadowAndBg;
   margin-bottom: 1em;
   padding: 1.93em 1.73em 3.66em 1.73em;
-  width: 500px;
 }
 
 .contactsWidgetHeader {
@@ -29,7 +28,8 @@
     font-size: 1.2em;
     font-weight: 300;
     font-style: italic;
-    opacity: 0.3;
+    color: #fff;
+    opacity: 0.5;
     background: #282a31;
     border: 2px solid #000;
     border-radius: 0.4em;
@@ -41,15 +41,25 @@
     &:hover {
       opacity: 1;
     }
+
+    &:focus {
+      color: #fff;
+      outline: none;
+    }
   }
 
   & button {
     margin-left: 0.6em;
     width: 4em;
     height: 4em;
+    opacity: 0.5;
     background: #282a31;
     border: 2px solid #000;
     border-radius: 0.4em;
+
+    &:hover {
+      opacity: 1;
+    }
 
     & svg {
       padding: 0.5em;

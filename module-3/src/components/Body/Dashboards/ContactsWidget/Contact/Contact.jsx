@@ -9,11 +9,11 @@ const Contact = ({id, avatar, name, workplace}) => {
         <div className={style.contactItems}>
           <div className={style.contactUserItems}>
             <img src={avatar} alt="avatar" className={style.contactAvatar}></img>
-            <div>
+            <div className={style.contactUserInfo}>
               <div className={style.contactUsername}>{name}</div>
               <div className={style.contactWorkplace}>{workplace}</div>
             </div>
-            <div className={style.circle}></div>
+            <div className={style.statusCircleOnline}></div>
           </div>
           <div className={style.contactIcons}>
             <button>
