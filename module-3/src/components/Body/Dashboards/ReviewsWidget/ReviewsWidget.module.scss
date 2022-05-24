@@ -2,4 +2,11 @@
 
 .reviewsWidget {
   @include widgetShadowAndBg;
-} 
+}
+
+.reviewsWidgetHeader {
+  margin-bottom: 2em;
+  @include dFlexSpaceBetween;
+  @include widgetTitle;
+}
+
