@@ -5,9 +5,14 @@
   align-items: center;
   border-bottom: solid 2px #33353b;
   margin-bottom: 0.5em;
+
+  &:last-of-type {
+    margin-bottom: 1em;
+  }
 }
 
 .contactUserItems {
+  position: relative;
   display: flex;
   align-items: center;
   padding-bottom: 0.66em;
@@ -19,10 +24,6 @@
   margin-right: 0.73em;
   background-color: #3d404a;
   border-radius: 66.6em;
-}
-
-.contactUserInfo {
-  position: relative;
 }
 
 .contactUsername {
@@ -39,8 +40,8 @@
 
 .statusCircleOnline {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 1.06em;
+  right: -0.53em;
   width: 0.46em;
   height: 0.46em;
   background-color: #6fe7dd;

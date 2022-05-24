@@ -2,7 +2,6 @@
 
 .contactsWidget {
   @include widgetShadowAndBg;
-  margin-bottom: 1em;
   padding: 1.93em 1.73em 3.66em 1.73em;
 }
 
@@ -21,8 +20,9 @@
   justify-content: center;
 
   & input {
+    margin-right: 0.45em;
     padding-left: 0.85em;
-    width: 19.5em;
+    width: 19em;
     height: 3em;
     font-family: 'Roboto';
     font-size: 1.2em;
@@ -33,10 +33,7 @@
     background: #282a31;
     border: 2px solid #000;
     border-radius: 0.4em;
-
-    &::placeholder {
-      color: #fff;
-    }
+    transition: opacity .2s ease-in-out;
 
     &:hover {
       opacity: 1;
@@ -49,7 +46,6 @@
   }
 
   & button {
-    margin-left: 0.6em;
     width: 4em;
     height: 4em;
     opacity: 0.5;
@@ -62,9 +58,11 @@
     }
 
     & svg {
+      width: 3.5em;
+      height: 3.5em;  
       padding: 0.5em;
       fill: #44464c;
-      transition: fill .1s ease-in-out;
+      transition: fill .2s ease-in-out;
 
       &:hover {
         fill: #fff;
