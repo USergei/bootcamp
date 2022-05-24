@@ -5,7 +5,7 @@ import Review from "./Review"
 const reviewsWidgetContent = [
   {
     id: 1,
-    rating: 4.5,
+    rating: 2.5,
     dateTime: '1h 13min ago',
     text: 'Lorem ipsum dolor sit amet consectetur',
     author: '- Sujit Day '
@@ -19,7 +19,7 @@ const reviewsWidgetContent = [
   },
   {
     id: 3,
-    rating: 1,
+    rating: 0.5,
     dateTime: '30min ago',
     text: 'Lorem ipsum dolor sit amet consectetur',
     author: '- Sujit Day '
