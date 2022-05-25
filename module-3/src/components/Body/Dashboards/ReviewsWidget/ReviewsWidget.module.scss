@@ -1,11 +1,13 @@
 @use '../../../../mixins/' as *;
 
 .reviewsWidget {
+  max-width: 31.4em;
+  padding: 1.93em 1.73em 3.66em 1.73em;
   @include widgetShadowAndBg;
 }
 
 .reviewsWidgetHeader {
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
   @include dFlexSpaceBetween;
   @include widgetTitle;
 }

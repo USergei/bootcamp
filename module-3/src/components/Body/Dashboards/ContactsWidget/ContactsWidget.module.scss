@@ -6,7 +6,7 @@
 }
 
 .contactsWidgetHeader {
-  margin-bottom: 2em;
+  margin-bottom: 1.5em;
   @include dFlexSpaceBetween;
   @include widgetTitle;
 }
@@ -22,7 +22,7 @@
   & input {
     margin-right: 0.45em;
     padding-left: 0.85em;
-    width: 19em;
+    width: 20em;
     height: 3em;
     font-family: 'Roboto';
     font-size: 1.2em;

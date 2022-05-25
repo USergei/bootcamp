@@ -1,5 +1,6 @@
 @use '../../../../mixins/' as *;
 
 .tasksWidget {
+  min-width: 700px;
   @include widgetShadowAndBg;
 } 
