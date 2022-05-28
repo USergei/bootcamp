@@ -1,61 +1,87 @@
-.checkbox.styleD {
-    display: inline-block;
-    position: relative;
-    padding-left: 30px;
+.checkboxItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.93em;
+  border-bottom: solid 2px #33353b;
+}
+
+.checkbox {
+  position: relative;
+  display: inline-block;
+  flex-basis: 90%;
+  padding-left: 2.5em;
+  cursor: pointer;
+  user-select: none;
+
+  & input {
+  position: absolute;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  cursor: pointer;
+  }
+}  
+
+.checkbox input:checked ~ .checkboxCheckmark:after {
+  opacity: 1;
+}
+
+.checkboxCheckmark {
+  position: absolute;
+  top: 0.66em;
+  left: 0;
+  height: 1.6em;
+  width: 1.6em;
+  background-color: #1e1f24;
+  border-radius: 5px;
+
+  &:after {
+  content: "";
+  position: absolute;
+  left: 0.53em;
+  top: 0.26em;
+  width: 0.6em;
+  height: 0.86em;   
+  border: solid #838487;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+  }
+}
+
+.checkboxText {
+  max-width: 38em;
+  font-size: 1.2em;
+  line-height: 1.4;
+  color: #d4d4d6;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.checkboxDelete {
+  padding: 0.2em 0 0.1em 0.2em;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #8d8e92;
+  background-color: #282a31;
+  border: none;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: #fff;
     cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
   }
-  .checkbox.styleD input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-  .checkbox.styleD input:checked ~ .checkboxCheckmark {
-    background-color: #f7cb15;
-  }
-  .checkbox.styleD input:checked ~ .checkboxCheckmark:after {
-    opacity: 1;
-  }
-  .checkbox.styleD:hover input ~ .checkboxCheckmark {
-    background-color: #eee;
-  }
-  .checkbox.styleD:hover input:checked ~ .checkboxCheckmark {
-    background-color: #f7cb15;
-  }
-  .checkbox.styleD:hover input ~ .checkboxBody {
-    color: #f7cb15;
-  }
-  .checkbox.styleD .checkboxCheckmark {
-    position: absolute;
-    top: 1px;
-    left: 0;
-    height: 22px;
-    width: 22px;
-    background-color: #eee;
-    transition: background-color 0.25s ease;
-    border-radius: 11px;
-  }
-  .checkbox.styleD .checkboxCheckmark:after {
-    content: "";
-    position: absolute;
-    left: 9px;
-    top: 5px;
-    width: 5px;
-    height: 10px;
-    border: solid #333;
-    border-width: 0 2px 2px 0;
-    transform: rotate(45deg);
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
-  .checkbox.styleD .checkboxBody {
-    color: #333;
-    line-height: 1.4;
-    font-size: 16px;
-    transition: color 0.25s ease;
-  }
+}
+
+.checkboxName {
+  margin: -0.5em 0 1.53em 2.6em;
+  font-size: 0.93em;
+  color: #7d7e83;
+  font-weight: 100;
+}

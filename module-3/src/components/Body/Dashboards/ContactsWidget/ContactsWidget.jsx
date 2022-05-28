@@ -51,7 +51,7 @@ const ContactsWidget = () => {
           workplace={item.workplace}
         />
       )}
-      <form className={style.contactsWidgetSearch}>
+      <form className={style.contactsWidgetBottom}>
         <input type="search" name="search" placeholder="Search contact..."></input>
         <button>
           <SVG src={search} alt="search" />
