@@ -3,7 +3,7 @@ import style from './StatsWidget.module.scss'
 import SVG from 'react-inlinesvg'
 import classNames from 'classnames'
 
-const StatsWidget = ({id, statsImg, type, title, figure, unitMessure}) => {
+const StatsWidget = ({id, statsImg, type, title, figure, unitMeasure}) => {
     const widgetClassNames = classNames(
         style.statsWidget,
         {
@@ -22,7 +22,7 @@ const StatsWidget = ({id, statsImg, type, title, figure, unitMessure}) => {
             <div className={style.statsText}>
                 <div className={style.statsTitle}>{title}</div>
                 <div className={style.statsFigure}>{figure}
-                    {unitMessure && <span>{unitMessure}</span>}    
+                    {unitMeasure && <span>{unitMeasure}</span>}    
                 </div>
             </div>
         </div>
