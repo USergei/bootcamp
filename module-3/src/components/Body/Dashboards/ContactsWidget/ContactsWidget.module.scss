@@ -15,7 +15,7 @@
   transform: rotate(-90deg);
 }
 
-.contactsWidgetSearch {
+.contactsWidgetBottom {
   display: flex;
   justify-content: center;
 
@@ -29,10 +29,10 @@
     font-weight: 300;
     font-style: italic;
     color: #fff;
-    opacity: 0.5;
     background: #282a31;
     border: 2px solid #000;
     border-radius: 0.4em;
+    opacity: 0.4;
     transition: opacity .2s ease-in-out;
 
     &:hover {
@@ -46,12 +46,12 @@
   }
 
   & button {
-    width: 4em;
-    height: 4em;
-    opacity: 0.5;
+    padding: 0.05em 0.09em 0 0.09em;
     background: #282a31;
     border: 2px solid #000;
     border-radius: 0.4em;
+    opacity: 0.4;
+    transition: opacity .2s ease-in-out;
 
     &:hover {
       opacity: 1;
