@@ -2,7 +2,7 @@ import React, {useState} from "react"
 import style from './Navbar.module.scss'
 import SVG from 'react-inlinesvg'
 import dashboard from './../../../assets/icons/dashboard.svg'
-import envelope from './../../../assets/icons/envelope.svg'
+import envelope from './../../../assets/icons/navbarEnvelope.svg'
 import overview from './../../../assets/icons/overview.svg'
 import statistic from './../../../assets/icons/statistic.svg'
 import invoice from './../../../assets/icons/invoice.svg'
@@ -17,22 +17,6 @@ const Navbar = () => {
         dashboard: {
             icon: dashboard,
             title: 'Dashboard',
-            // compose: {
-            //     title: 'Compose',
-            //     url: '/messages/compose'
-            // },
-            // inbox: {
-            //     title: 'Inbox',
-            //     url: '/messages/inbox'
-            // },
-            // draft: {
-            //     title: 'Draft',
-            //     url: '/messages/draft'
-            // },
-            // sentbox: {
-            //     title: 'Sentbox',
-            //     url: '/messages/sentbox'
-            // }
         },
         messages: {
             icon: envelope,
@@ -94,12 +78,10 @@ const Navbar = () => {
     const menuItemOnClickHandler = menuItemKey => {
         setSideBarMenuState({
             ...sideBarMenuState,
-            [menuItemKey]: sideBarMenuState.menuItemKey? false : true
+            [menuItemKey]: !sideBarMenuState[menuItemKey]
         })
     }
-
-    console.log(sideBarMenuState)
-    
+   
     const buildMenu = menuObject => {
         const menuItems = []
         for (let [topLevelMenuItemKey, topLevelMenu] of Object.entries(menuObject)) {
@@ -107,14 +89,18 @@ const Navbar = () => {
             if (topLevelMenu.submenu ) {
                 for (let subMenuItem of Object.values(topLevelMenu.submenu)) {
                     subMenuItems.push(
-                        <a className={style.subMenuItem} href={subMenuItem.url}>{subMenuItem.title}</a>
+                        <a className={style.subMenu} href={subMenuItem.url}>
+                            <div className={style.subMenuText}>{subMenuItem.title}</div>
+                            <div className={style.subMenuNotification}>3</div>
+                        </a>
                     )
                 }
             }
             menuItems.push(
                 <nav>
-                    <div className={style.navbarFlex}>
+                    <div className={style.navbarItem}>
                         <SVG src={topLevelMenu.icon} alt="icon" />
+                        <div>3</div>
                         <span>{topLevelMenu.title}</span>
                         <button onClick={() => menuItemOnClickHandler(topLevelMenuItemKey)}>+</button>
                     </div>
@@ -132,7 +118,6 @@ const Navbar = () => {
     return (
         <div className={style.navbar}>
             {buildMenu(sidebarNavigationMenu)}
-           
         </div>
     )
 }

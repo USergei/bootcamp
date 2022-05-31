@@ -1,11 +1,12 @@
 import React from "react"
 import style from './HeaderImgLogo.module.scss'
-import logo from './../../../../assets/images/logo.png'
+import SVG from 'react-inlinesvg'
+import logo from './../../../../assets/icons/logo.svg'
 
 const HeaderImgLogo = () => {
     return (
         <div className={style.headerImgLogo}>
-            <img src={logo} alt="logo" />
+            <SVG src={logo} alt="logo" />
         </div>
     )
 }
