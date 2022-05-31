@@ -8,7 +8,9 @@ const Contact = ({id, avatar, name, workplace}) => {
     return (
         <div className={style.contactItems}>
           <div className={style.contactUserItems}>
-            <img src={avatar} alt="avatar" className={style.contactAvatar}></img>
+            <div>
+              <img src={avatar} alt="avatar" className={style.contactAvatar}></img>
+            </div>
             <div className={style.contactUserInfo}>
               <div className={style.contactUsername}>{name}</div>
               <div className={style.contactWorkplace}>{workplace}</div>
