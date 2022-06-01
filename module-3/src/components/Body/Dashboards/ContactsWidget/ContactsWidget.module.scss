@@ -3,16 +3,13 @@
 .contactsWidget {
   @include widgetShadowAndBg;
   padding: 1.93em 1.73em 3.66em 1.73em;
+  margin-right: 1em;
 }
 
 .contactsWidgetHeader {
   margin-bottom: 1.5em;
   @include dFlexSpaceBetween;
   @include widgetTitle;
-}
-
-.contactsWidgetHeader div {
-  transform: rotate(-90deg);
 }
 
 .contactsWidgetBottom {

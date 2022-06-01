@@ -1,6 +1,7 @@
 import React from "react";
 import style from './TasksWidget.module.scss'
 import Task from './Task'
+import ThreeDotsButton from "../../../ThreeDotsButton"
 
 const tasksWidgetContent = [
   {
@@ -30,7 +31,7 @@ const TasksWidget = () => {
     <div className={style.tasksWidget}>
      <div className={style.tasksWidgetHeader}>
         <h6>Tasks</h6>
-        <div>...</div>
+        <ThreeDotsButton/>
       </div>
 
       {tasksWidgetContent.map((item, i) =>
