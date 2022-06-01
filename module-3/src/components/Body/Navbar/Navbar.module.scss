@@ -1,6 +1,6 @@
 .navbar {
     width: 30.66em;
-    height: 1185px;
+    height: 100%;
     background-color: #24262d;
 }
 
@@ -59,7 +59,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.63em 2.1em 1.63em 7.5em;
-    text-decoration: none;  
+    text-decoration: none;
+    background-color: #212228;  
     border-bottom: solid 2px #35373d;
 
     .subMenuText {

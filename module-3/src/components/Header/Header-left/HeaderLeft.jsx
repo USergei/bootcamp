@@ -1,15 +1,21 @@
 import React from "react"
 import style from './Header-left.module.scss'
-import HeaderImgLogo from "./HeaderImgLogo/HeaderImgLogo"
-import TextLogo from "./TextLogo/TextLogo"
-import HamburgerMenu from "./HamburgerMenu/HamburgerMenu"
+import SVG from 'react-inlinesvg'
+import logo from './../../../assets/icons/logo.svg'
+
 
 const HeaderLeft = () => {
     return (
         <div className={style.headerLeft}>
-            <HeaderImgLogo/>
-            <TextLogo/>
-            <HamburgerMenu/>
+            <div className={style.headerImgLogo}>
+                <SVG src={logo} alt="logo" />
+            </div>
+            <div className={style.textLogo}>
+                Space
+            </div>
+            <div className={style.hamburgerMenu}>
+                H
+            </div>
         </div>
     )
 }
