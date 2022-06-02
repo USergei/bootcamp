@@ -4,3 +4,8 @@
   margin-bottom: 1em;
   @include widgetShadowAndBg;
 }
+
+.histogramWidgetHeader {
+  @include dFlexSpaceBetween;
+  @include widgetTitle;
+}

@@ -3,3 +3,8 @@
 .radarWidget {
   @include widgetShadowAndBg;
 }
+
+.radarWidgetHeader {
+  @include dFlexSpaceBetween;
+  @include widgetTitle;
+}

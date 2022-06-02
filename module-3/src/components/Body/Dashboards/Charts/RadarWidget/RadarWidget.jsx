@@ -1,10 +1,14 @@
 import React from "react";
 import style from './RadarWidget.module.scss'
+import ThreeDotsButtonDropdown from "../../../../ThreeDotsButtonDropdown"
 
 const RadarWidget = () => {
   return (
     <div className={style.radarWidget}>
-      <h1>Radar</h1>
+      <div className={style.radarWidgetHeader}>
+        <h6>Radar</h6>
+        <ThreeDotsButtonDropdown/>
+      </div>
     </div>
   )
 }

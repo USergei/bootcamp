@@ -3,3 +3,8 @@
 .scatterWidget {
   @include widgetShadowAndBg;
 } 
+
+.scatterWidgetHeader {
+  @include dFlexSpaceBetween;
+  @include widgetTitle;
+}

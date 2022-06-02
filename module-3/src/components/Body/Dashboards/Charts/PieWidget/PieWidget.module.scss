@@ -3,3 +3,8 @@
 .pieWidget {
   @include widgetShadowAndBg;
 }
+
+.pieWidgetHeader {
+  @include dFlexSpaceBetween;
+  @include widgetTitle;
+}
