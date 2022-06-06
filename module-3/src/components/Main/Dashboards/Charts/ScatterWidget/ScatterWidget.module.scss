@@ -1,0 +1,10 @@
+@use '../../../../../mixins/' as *;
+
+.scatterWidget {
+  @include widgetMainStyles;
+} 
+
+.scatterWidgetHeader {
+  @include dFlexSpaceBetween;
+  @include widgetTitle;
+}

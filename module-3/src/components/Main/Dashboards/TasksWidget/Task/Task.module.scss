@@ -1,0 +1,94 @@
+.checkboxItems {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.93em;
+  border-bottom: solid 2px #33353b;
+}
+
+.checkbox {
+  position: relative;
+  display: inline-block;
+  flex-basis: 90%;
+  padding-left: 2.5em;
+  cursor: pointer;
+  user-select: none;
+
+  & input {
+  position: absolute;
+  height: 0;
+  width: 0;
+  opacity: 0;
+  cursor: pointer;
+  }
+}  
+
+.checkbox input:checked ~ .checkboxCheckmark:after {
+  opacity: 1;
+}
+
+.checkboxCheckmark {
+  position: absolute;
+  top: 0.66em;
+  left: 0;
+  height: 1.6em;
+  width: 1.6em;
+  background-color: #1e1f24;
+  border-radius: 5px;
+
+  &:after {
+  content: "";
+  position: absolute;
+  left: 0.53em;
+  top: 0.26em;
+  width: 0.6em;
+  height: 0.86em;   
+  border: solid #838487;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+  }
+}
+
+.checkboxText {
+  max-width: 38em;
+  font-size: 1.2em;
+  line-height: 1.4;
+  color: #d4d4d6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease-in-out;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.checkboxDelete {
+  padding: 0.2em 0 0.1em 0.2em;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #8d8e92;
+  background-color: #282a31;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    color: #fff;
+    outline: none; 
+  }
+}
+
+.checkboxName {
+  margin: -0.5em 0 1.53em 2.6em;
+  font-size: 0.93em;
+  color: #7d7e83;
+  font-weight: 100;
+}

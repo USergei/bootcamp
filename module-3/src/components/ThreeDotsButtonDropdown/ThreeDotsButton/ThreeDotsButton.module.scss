@@ -1,8 +1,14 @@
 .threeDotsButton {
   padding: 0 0.2em 0.2em 0.2em;
+  font-size: 0.7em;
   color: #fff;
   background: none;
   border: none;
   cursor: pointer;
   transform: rotate(-90deg);
+
+  &:focus {
+    outline: none;
+    background-color: #3d404a;
+  }
 }

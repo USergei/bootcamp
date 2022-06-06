@@ -1,13 +1,13 @@
 import React from 'react'
 import './App.scss'
-import Header from './components/Header/Header'
-import Body from './components/Body/Body'
+import Header from './components/Header'
+import Main from './components/Main'
 
 function App() {
   return (
     <div className="App">
       <Header/>
-      <Body/>  
+      <Main/>  
     </div>
   )
 }
