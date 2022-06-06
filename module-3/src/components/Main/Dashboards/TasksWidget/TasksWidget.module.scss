@@ -25,33 +25,45 @@
     font-style: italic;
     color: #fff;
     background: #282a31;
-    border: 2px solid #000;
+    border: 2px solid #212328;
     border-radius: 0.4em;
-    opacity: 0.4;
-    transition: opacity 0.2s ease-in-out;
+    transition:border-color 0.2s ease-in-out;
 
-    &:hover {
-      opacity: 1;
-    }
-
+    &:hover,
     &:focus {
+      border-color: #000;
       outline: none;
     }
   }
   
   & button {
-    display: flex;
-    padding: 0 0.3em 0 0.3em;
-    font-size: 1.9em;
+    padding: 0.1em;
+    line-height: 0;
     background: #282a31;
-    border: 2px solid #000;
-    border-radius: 0.2em;
-    opacity: 0.4;
-    transition: opacity .2s ease-in-out, color .2s ease-in-out;
+    border: 2px solid #212328;
+    border-radius: 0.4em;
+    cursor: pointer;
+    transition: border-color 0.2s ease-in-out;
 
     &:hover {
-      color: #fff;
+      border-color: #000;
+    }
+
+    &:focus {
+      @include buttonOutlineNone
+    }
+    
+    & svg {
+      width: 2.5em;  
+      padding: 0.5em;
+      fill: #141518;
       opacity: 1;
-    }  
+      cursor: pointer;
+      transition: fill .2s ease-in-out;
+
+      &:hover {
+        fill: #fff;
+      }
+    }    
   }
 }

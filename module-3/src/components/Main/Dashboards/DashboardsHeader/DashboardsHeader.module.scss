@@ -30,17 +30,14 @@
 }
 
 .addWidgetText {
-    margin-right: 2.42em;
+    margin-right: 1.5em;
     font-size: 0.93em;
     font-weight: 400;
     color: #fff;
 }
 
 .addWidgetBtn {
-    height: 30px;
-    padding: 0 0.2em 0 0.2em;
-    font-size: 1.46em;
-    color: #3d404a;
+    padding: 0.2em;
     line-height: 0;
     background: none;
     border: 1.5px solid #646569;
@@ -51,10 +48,18 @@
 
     &:hover,
     &:focus {
-        color: #fff;
         border-color: #fff;
         outline: none;
-         
     }
 
+    svg {
+        width: 1.52em;
+        padding: 0.3em;
+        fill: #3d404a;
+        transition: fill .1s ease-in-out;
+
+        &:hover {
+            fill: #fff;
+        }
+    }
 }

@@ -25,16 +25,13 @@
     font-style: italic;
     color: #fff;
     background: #282a31;
-    border: 2px solid #000;
+    border: 2px solid #212328;
     border-radius: 0.4em;
-    opacity: 0.4;
-    transition: opacity 0.2s ease-in-out;
+    transition: border-color 0.2s ease-in-out;
 
-    &:hover {
-      opacity: 1;
-    }
-
+    &:hover,
     &:focus {
+      border-color: #000;
       outline: none;
     }
   }
@@ -42,28 +39,27 @@
   & button {
     padding: 0.05em 0.09em 0 0.09em;
     background: #282a31;
-    border: 2px solid #000;
+    border: 2px solid #212328;
     border-radius: 0.4em;
-    opacity: 0.4;
-    transition: opacity .2s ease-in-out;
+    transition: border-color .2s ease-in-out;
 
-    &:hover,
+    &:hover {
+      border-color: #000;
+    }
+
     &:focus {
-      opacity: 1;
-      outline: none;
+      @include buttonOutlineNone
     }
 
     & svg {
       width: 2.5em;  
       padding: 0.5em;
-      fill: #fff;
-      opacity: 0.4;
+      fill: #44464c;
       cursor: pointer;
-      transition: fill .2s ease-in-out, opacity .1s ease-in-out;
+      transition: fill .2s ease-in-out;
 
       &:hover {
         fill: #fff;
-        opacity: 1;
       }    
     }
   }

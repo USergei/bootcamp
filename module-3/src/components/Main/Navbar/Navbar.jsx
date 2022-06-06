@@ -99,8 +99,10 @@ const Navbar = () => {
             menuItems.push(
                 <nav>
                     <div className={style.navbarItem}>
-                        <SVG src={topLevelMenu.icon} alt="icon" />
-                        <div>3</div>
+                        <div className={style.navbarIcon}>
+                            <SVG src={topLevelMenu.icon} alt="icon" />
+                            <div className={style.navbarNotification}>3</div>
+                        </div>
                         <span>{topLevelMenu.title}</span>
                         <button onClick={() => menuItemOnClickHandler(topLevelMenuItemKey)}>+</button>
                     </div>
@@ -115,7 +117,7 @@ const Navbar = () => {
 
         return menuItems
     }
-    
+
     return (
         <div className={style.navbar}>
             {buildMenu(sidebarNavigationMenu)}

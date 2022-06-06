@@ -1,7 +1,9 @@
 import React from "react";
+import SVG from 'react-inlinesvg'
 import style from './TasksWidget.module.scss'
 import Task from './Task'
 import ThreeDotsButtonDropdown from "../../../ThreeDotsButtonDropdown"
+import plus from './../../../../assets/icons/plus.svg'
 
 const tasksWidgetContent = [
   {
@@ -43,8 +45,10 @@ const TasksWidget = () => {
         />
       )}
       <form className={style.tasksWidgetBottom}>
-        <input type="" name="" placeholder="Add a new task..."></input>
-        <button className>+</button>
+        <input type="text" name="task" placeholder="Add a new task..."/>
+        <button>
+          <SVG src={plus} alt="plusIcon"/>
+        </button>
       </form>
     </div>
   )  

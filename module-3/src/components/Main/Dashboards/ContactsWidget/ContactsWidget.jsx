@@ -53,9 +53,9 @@ const ContactsWidget = () => {
         />
       )}
       <form className={style.contactsWidgetBottom}>
-        <input type="search" name="search" placeholder="Search contact..."></input>
+        <input type="search" name="search" placeholder="Search contact..."/>
         <button>
-          <SVG src={search} alt="search" />
+          <SVG src={search} alt="search"/>
         </button>
       </form>
     </div>

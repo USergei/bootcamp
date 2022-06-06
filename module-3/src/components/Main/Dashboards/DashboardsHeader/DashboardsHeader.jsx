@@ -1,5 +1,7 @@
 import React from "react"
 import style from './DashboardsHeader.module.scss'
+import SVG from 'react-inlinesvg'
+import plus from './../../../../../src/assets/icons/plus.svg'
 
 const DashboardsHeader = () => {
     return (
@@ -10,7 +12,9 @@ const DashboardsHeader = () => {
             </div>
             <div className={style.addWidget}>
                 <div className={style.addWidgetText}>Add widget</div>
-                <button className={style.addWidgetBtn}>+</button>
+                <button className={style.addWidgetBtn}>
+                    <SVG src={plus} alt="plusIcon"/>
+                </button>
             </div>
         </div>
     )

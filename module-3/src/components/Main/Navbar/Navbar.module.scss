@@ -5,37 +5,11 @@
 }
 
 .navbarItem {
-    position: relative;
     display: flex;
     align-items: center;
     padding: 1.33em 1.86em  1.33em 4.13em;
     box-shadow: 2px 0 2px  rgba(0, 0, 0, .2);
     border-bottom: solid 2px #35373d;
-
-    div {
-        position: absolute;
-        top: 14px;
-        left: 84px;
-        z-index: 1;
-        padding: 1px 0;
-        width: 1.2em;
-        height: 1.2em;
-        font-size: 1.1em;
-        font-weight: 400;
-        color: #fefefe;
-        text-align: center;
-        line-height: 1;
-        border-radius: 66.6em;
-        background-color: #28dcbc;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, .7);
-    }
-
-    svg {
-        width: 2.26em;
-        height: 2.06em;
-        margin-right: 1em;
-        fill: #fff;
-    }
 
     span {
         flex-grow: 1;
@@ -58,22 +32,21 @@
     }
 }
 
-.subMenu {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.63em 2.1em 1.63em 7.5em;
-    text-decoration: none;
-    background-color: #212228;  
-    border-bottom: solid 2px #35373d;
+.navbarIcon {
+    position: relative;
+    margin-right: 1em;
 
-    .subMenuText {
-        font-size: 1.6em;
-        color: #c8c9ca;
-          
+    svg {
+        width: 2.26em;
+        height: 2.06em;
+        fill: #fff;
     }
 
-    .subMenuNotification {
+    div {
+        position: absolute;
+        top: -32%;
+        right: -17%;
+        z-index: 1;
         padding: 1px 0;
         width: 1.2em;
         height: 1.2em;
@@ -86,8 +59,38 @@
         background-color: #28dcbc;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, .7);
     }
+}
+
+.subMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.63em 2.1em 1.63em 7.5em;
+    text-decoration: none;
+    background-color: #212228;  
+    border-bottom: solid 2px #35373d;
 
     &:focus {
         @include buttonOutlineNone;
     }
+}
+
+.subMenuText {
+    font-size: 1.6em;
+    color: #c8c9ca;
+        
+}
+
+.subMenuNotification {
+    padding: 1px 0;
+    width: 1.2em;
+    height: 1.2em;
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #fefefe;
+    text-align: center;
+    line-height: 1;
+    border-radius: 66.6em;
+    background-color: #28dcbc;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .7);
 }
