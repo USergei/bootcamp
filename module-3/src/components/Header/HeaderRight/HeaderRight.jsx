@@ -8,8 +8,11 @@ import admin from './../../../assets/images/admin.jpg'
 const HeaderRight = () => {
     return (
         <div className={style.headerRight}>
-            <div className={style.searchIcon}>
-                <SVG src={searchIcon} alt="search" />
+            <div className={style.searchBox}>
+                <button className={style.btnSearch}>
+                    <SVG src={searchIcon} alt="search" />
+                </button>
+                <input type="text" className={style.inputSearch} placeholder="Type to Search..."/>
             </div>
             <button className={style.bellBtn}>
                 <SVG src={bellIcon} alt="notification" />

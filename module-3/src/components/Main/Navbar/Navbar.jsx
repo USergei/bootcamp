@@ -11,8 +11,20 @@ import calendar from './../../../assets/icons/calendar.svg'
 import feedbackStar from './../../../assets/icons/feedbackStar.svg'
 import statement from './../../../assets/icons/statement.svg'
 import settings from './../../../assets/icons/settings.svg'
+import classNames from 'classnames'
 
-const Navbar = () => {
+
+const Navbar = ({isNavbarOpen}) => {
+    const sideBarClassNames = classNames(
+        style.navbar,
+        {
+            [style.isNavbarMinimised]: isNavbarOpen
+        }
+    )
+    
+    console.log({sideBarClassNames});
+    console.log({isNavbarOpen});
+    
     const sidebarNavigationMenu = {
         dashboard: {
             icon: dashboard,
@@ -119,7 +131,7 @@ const Navbar = () => {
     }
 
     return (
-        <div className={style.navbar}>
+        <div className={sideBarClassNames}>
             {buildMenu(sidebarNavigationMenu)}
         </div>
     )

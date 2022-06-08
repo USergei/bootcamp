@@ -1,5 +1,10 @@
 .StatsWidgetsBar {
     display: flex;
-    justify-content: center;
     margin-bottom: 1em;
+}
+
+@media (max-width: 1300px) {
+    .StatsWidgetsBar {
+        flex-wrap: wrap;
+    }
 }

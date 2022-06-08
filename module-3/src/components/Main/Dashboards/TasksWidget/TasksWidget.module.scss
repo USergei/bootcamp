@@ -16,9 +16,10 @@
   justify-content: center;
 
   & input {
+    width: 100%;
+    max-width: 30em;
     margin-right: 0.45em;
     padding: 0 0.85em 0 0.85em;
-    width: 30em;
     font-family: "Roboto";
     font-size: 1.2em;
     font-weight: 300;

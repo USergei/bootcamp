@@ -1,6 +1,5 @@
 .dashboards {
-    padding: 1.07em 3em 0 1em;
-    width: 100%;
+    margin: 1.07em 3em 0 1em;
 }
 
 .charts {
@@ -21,4 +20,21 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 1em; 
+}
+
+@media (max-width: 1300px) {
+    .charts {
+        flex-direction: column;
+    }
+
+    .mainChart {
+        margin: 0 0 1em 0;
+        flex-grow: 0;
+    }
+}
+
+@media (max-width: 1160px) {
+    .dashboards {
+        margin: 1.07em 1em 0 1em;
+    }
 }

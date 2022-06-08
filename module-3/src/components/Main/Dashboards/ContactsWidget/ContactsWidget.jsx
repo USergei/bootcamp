@@ -7,7 +7,7 @@ import avatar2 from './../../../../assets/images/user-avatar2.jpg'
 import avatar3 from './../../../../assets/images/user-avatar3.jpg'
 import avatar4 from './../../../../assets/images/user-avatar4.jpg'
 import Contact from './Contact'
-import ThreeDotsButtonDropdown from "../../../ThreeDotsButtonDropdown"
+import ThreeDotsButtonDropdown from '../../../ThreeDotsButtonDropdown'
 
 const contactsWidgetContent = [
   {

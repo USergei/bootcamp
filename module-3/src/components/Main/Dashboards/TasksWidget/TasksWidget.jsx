@@ -31,7 +31,7 @@ const tasksWidgetContent = [
 const TasksWidget = () => {
   return (
     <div className={style.tasksWidget}>
-     <div className={style.tasksWidgetHeader}>
+      <div className={style.tasksWidgetHeader}>
         <h6>Tasks</h6>
         <ThreeDotsButtonDropdown/>
       </div>

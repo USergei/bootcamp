@@ -43,6 +43,11 @@
   font-size: 0.9em;
   font-weight: 400;
   color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .contactWorkplace {

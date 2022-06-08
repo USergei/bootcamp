@@ -2,8 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2.2em;
-    margin-right: 0.5em;
+    margin: 0 0.5em 2.2em 1.12em;
 }
 
 .dashboardText {
@@ -12,13 +11,14 @@
 }
 
 .title {
-    margin: 0 0.95em 0 1.12em;
+    margin-right:0.95em;
     font-size: 1.6em;
     font-weight: 400;
     color: #939496;
 }
 
 .greeting {
+    margin-right: 0.9em;
     font-size: 0.8em;
     font-weight: 100;
     color: #c3c2c2;
@@ -63,3 +63,13 @@
         }
     }
 }
+
+// @media (max-width: 940px) {
+//     .dashboardText {
+//         flex-direction: column;
+//     }
+
+//     .title  {
+//         align-self: flex-start;
+//     }  
+// }

@@ -1,11 +1,12 @@
 .headerLeft {
     display: flex;
     align-items: center;
+    padding-left:  7.9em;
     background-color: #212228;
 }
 
 .headerImgLogo {
-    margin: 0 1.4em 0 7.9em;
+    margin-right: 1.4em;
 
     svg {
         width: 100%;
@@ -27,7 +28,7 @@
 }
 
 .hamburgerMmenu {
-  margin-right: 1.9em;
+  margin-right: 1.5em;
   padding: 0.5em;
 }
 
@@ -56,8 +57,8 @@
   position: absolute;
   top: 2.42em;
   z-index: 1;
-  width: 26px;
-  height: 26px;
+  width: 1.73em;
+  height: 1.73em;
   cursor: pointer;
 
   & span,
@@ -79,6 +80,12 @@
   & span::after {
     content: '';
     top: 8px;
+  }
+}
+
+@media (max-width: 1160px) {
+  .headerLeft {
+     padding-left: 1.5em;
   }
 }
 

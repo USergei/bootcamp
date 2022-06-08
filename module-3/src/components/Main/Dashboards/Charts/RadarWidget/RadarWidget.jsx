@@ -1,6 +1,6 @@
 import React from "react";
 import style from './RadarWidget.module.scss'
-import ThreeDotsButtonDropdown from "../../../../ThreeDotsButtonDropdown"
+import ThreeDotsButtonDropdown from '../../../../ThreeDotsButtonDropdown'
 
 const RadarWidget = () => {
   return (

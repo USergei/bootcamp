@@ -4,10 +4,10 @@ import Navbar from './Navbar'
 import Dashboards from './Dashboards'
 
 
-const Main = () => {
+const Main = ({isNavbarOpen}) => {
     return (
         <main className={style.main}>
-            <Navbar/>
+            <Navbar isNavbarOpen={isNavbarOpen}/>
             <Dashboards/>
         </main>
     )

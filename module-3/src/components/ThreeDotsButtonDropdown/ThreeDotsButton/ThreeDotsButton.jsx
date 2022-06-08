@@ -1,7 +1,7 @@
 import React from "react"
 import style from './ThreeDotsButton.module.scss'
 
-const ThreeDotsButton = ({ onClick }) => {
+const ThreeDotsButton = ({onClick}) => {
   return (
     <button className={style.threeDotsButton} onClick={onClick}>...</button>
   )

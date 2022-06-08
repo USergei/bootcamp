@@ -1,7 +1,7 @@
 import React from "react";
 import style from './ReviewsWidget.module.scss'
 import Review from "./Review"
-import ThreeDotsButtonDropdown from "../../../ThreeDotsButtonDropdown"
+import ThreeDotsButtonDropdown from '../../../ThreeDotsButtonDropdown'
 
 const reviewsWidgetContent = [
   {

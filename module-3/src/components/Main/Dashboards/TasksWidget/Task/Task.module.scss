@@ -53,12 +53,11 @@
 }
 
 .checkboxText {
-  max-width: 38em;
   font-size: 1.2em;
   line-height: 1.4;
   color: #d4d4d6;
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;

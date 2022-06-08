@@ -1,10 +1,10 @@
 import React from "react"
 import style from './Dashboards.module.scss'
-import DashboardsHeader from "./DashboardsHeader"
-import StatsWidgetsBar from "./StatsWidgetsBar"
-import ContactsWidget from "./ContactsWidget"
-import ReviewsWidget from "./ReviewsWidget"
-import TasksWidget from "./TasksWidget"
+import DashboardsHeader from './DashboardsHeader'
+import StatsWidgetsBar from './StatsWidgetsBar'
+import ContactsWidget from './ContactsWidget'
+import ReviewsWidget from './ReviewsWidget'
+import TasksWidget from './TasksWidget'
 import {
     HistogramWidget,
     PieWidget,

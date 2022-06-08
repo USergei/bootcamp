@@ -1,7 +1,29 @@
 @use './../../../mixins/' as *;
 
+
 .navbar {
-    width: 30.66em;
+    width: 39.2em;
+}
+
+.isNavbarMinimised {
+    width: auto;
+
+    .navbarItem {
+        padding: 1.33em 1.5em 1.33em 1.5em;
+        transition: padding .4s ease-in-out;
+
+        span {
+            display: none;
+        }
+
+        button {
+            display: none;
+        }
+    }
+
+    .navbarIcon {
+        margin-right: 0;
+    }
 }
 
 .navbarItem {
@@ -18,14 +40,14 @@
     }
 
     button {
-        padding: 0.2em;
+        padding: 0 0.2em;
         font-size: 1.6em;
         font-weight: 600;
         color: #c8c9ca;
         background: none;
         border: none;
         cursor: pointer;
-
+        
         &:focus {
             @include buttonOutlineNone;
         }

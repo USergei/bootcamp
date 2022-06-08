@@ -4,7 +4,7 @@ import SVG from 'react-inlinesvg'
 import logo from './../../../assets/icons/logo.svg'
 
 
-const HeaderLeft = () => {
+const HeaderLeft = ({isNavbarOpen, setIsNavbarOpen}) => {
     return (
         <div className={style.headerLeft}>
             <div className={style.headerImgLogo}>
@@ -13,9 +13,9 @@ const HeaderLeft = () => {
             <div className={style.textLogo}>
                 Space
             </div>
-            <div class={style.hamburgerMmenu}>
-                <input id={style.menuToggle} type="checkbox" />
-                <label class={style.menuBtn} for={style.menuToggle}>
+            <div className={style.hamburgerMmenu}>
+                <input id={style.menuToggle} type="checkbox"/>
+                <label className={style.menuBtn} htmlFor={style.menuToggle}  onClick={() => setIsNavbarOpen(!isNavbarOpen)}>
                      <span></span>
                 </label>
             </div>
