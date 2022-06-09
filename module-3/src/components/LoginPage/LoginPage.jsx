@@ -11,14 +11,15 @@ const LoginPage = () => {
             <form className={style.form} action="">
                <input type="text" placeholder="Email"/>
                <input type="password" placeholder="Password"/>
-               <button>Sign in</button>
+               <div className={style.loginPageBtns}>
+                    <button>Sign in</button>
+                    <span>or
+                        <a href="#">
+                            <SVG src={google} alt="google" />
+                        </a>
+                    </span>
+                </div>
             </form>
-            <div className={style.socialLoginPage}>
-                <span>Sign in with</span>
-                <a href="#">
-                    <SVG src={google} alt="google" />
-                </a>
-            </div>
             <div className={style.loginPageLinks}>
                 <a href="#">Forget Password?</a>
                 <a href="#">Don’t have an account? Sign up</a>
