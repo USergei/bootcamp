@@ -46,8 +46,7 @@
     cursor: pointer;
     transition: color .1s ease-in-out, border-color .03s ease-in-out;
 
-    &:hover,
-    &:focus {
+    &:hover {
         border-color: #fff;
         outline: none;
     }

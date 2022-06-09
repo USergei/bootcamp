@@ -21,10 +21,7 @@ const Navbar = ({isNavbarOpen}) => {
             [style.isNavbarMinimised]: isNavbarOpen
         }
     )
-    
-    console.log({sideBarClassNames});
-    console.log({isNavbarOpen});
-    
+      
     const sidebarNavigationMenu = {
         dashboard: {
             icon: dashboard,

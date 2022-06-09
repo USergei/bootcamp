@@ -16,7 +16,7 @@ const HeaderLeft = ({isNavbarOpen, setIsNavbarOpen}) => {
             <div className={style.hamburgerMmenu}>
                 <input id={style.menuToggle} type="checkbox"/>
                 <label className={style.menuBtn} htmlFor={style.menuToggle}  onClick={() => setIsNavbarOpen(!isNavbarOpen)}>
-                     <span></span>
+                    <span></span>
                 </label>
             </div>
         </div>

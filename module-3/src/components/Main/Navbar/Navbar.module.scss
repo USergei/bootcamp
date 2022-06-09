@@ -48,8 +48,12 @@
         border: none;
         cursor: pointer;
         
-        &:focus {
-            @include buttonOutlineNone;
+        // &:focus {
+        //     @include buttonOutlineNone;
+        // }
+
+        &:active {
+            background: none;
         }
     }
 }
@@ -91,10 +95,6 @@
     text-decoration: none;
     background-color: #212228;  
     border-bottom: solid 2px #35373d;
-
-    &:focus {
-        @include buttonOutlineNone;
-    }
 }
 
 .subMenuText {

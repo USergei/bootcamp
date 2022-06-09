@@ -23,15 +23,19 @@
     font-family: "Roboto";
     font-size: 1.2em;
     font-weight: 300;
-    font-style: italic;
     color: #fff;
     background: #282a31;
     border: 2px solid #212328;
     border-radius: 0.4em;
     transition:border-color 0.2s ease-in-out;
 
+    &::placeholder {
+      font-style: italic;
+    }
+
     &:hover,
-    &:focus {
+    &:focus,
+    &:active {
       border-color: #000;
       outline: none;
     }
@@ -48,10 +52,6 @@
 
     &:hover {
       border-color: #000;
-    }
-
-    &:focus {
-      @include buttonOutlineNone
     }
     
     & svg {
