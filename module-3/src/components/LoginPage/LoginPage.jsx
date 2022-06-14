@@ -1,15 +1,17 @@
 import React from "react";
 import style from './LoginPage.module.scss'
+import mainStyles from '../../App.module.scss'
 import SVG from 'react-inlinesvg'
 import google from '../../assets/icons/googleIcon.svg'
 
 
 const LoginPage = () => {
     return (
-        <div className={style.loginPage}>
+        <div className={`${mainStyles.mainWrapper} ${style.LoginPageWrapper}`}>
+            <div className={style.loginMenu}>
             <h1 className={style.title}>Sign in</h1>
             <form className={style.form} action="">
-               <input type="text" placeholder="Email"/>
+               <input type="email" placeholder="Email"/>
                <input type="password" placeholder="Password"/>
                <div className={style.loginPageBtns}>
                     <button>Sign in</button>
@@ -21,9 +23,10 @@ const LoginPage = () => {
                 </div>
             </form>
             <div className={style.loginPageLinks}>
-                <a href="#">Forget Password?</a>
                 <a href="#">Don’t have an account? Sign up</a>
+                <a href="#">Forget Password?</a>
             </div>
+        </div>
         </div>
     )
 

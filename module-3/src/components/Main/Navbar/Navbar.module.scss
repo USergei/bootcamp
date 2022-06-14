@@ -1,16 +1,21 @@
 @use './../../../mixins/' as *;
 
-
 .navbar {
-    width: 39.2em;
+    min-width: 300px;
+    transition: .1s ease-in-out;
+    
 }
 
 .isNavbarMinimised {
-    width: auto;
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    
 
     .navbarItem {
-        padding: 1.33em 1.5em 1.33em 1.5em;
-        transition: padding .4s ease-in-out;
+        // padding: 1.33em 1.5em 1.33em 1.5em;
+        // transition: padding .4s ease-in-out;
 
         span {
             display: none;
