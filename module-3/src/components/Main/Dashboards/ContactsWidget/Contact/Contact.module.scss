@@ -1,0 +1,100 @@
+@use './../../../../../mixins/' as *;
+
+.contactItems {
+  @include dFlexSpaceBetween;
+  align-items: center;
+  border-bottom: solid 2px #33353b;
+  margin-bottom: 0.5em;
+
+  &:last-of-type {
+    margin-bottom: 1em;
+  }
+}
+
+.contactUserItems {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-bottom: 0.66em;
+}
+
+.contactAvatar {
+  position: relative;
+  overflow: hidden;
+  width: 3.4em;
+  height: 3.4em;
+  margin-right: 0.73em;
+  background-color: #3d404a;
+  border-radius: 66.6em;
+
+  & img {
+    position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 3.4em;
+      height: 3.4em;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+  }
+}
+
+.contactUsername {
+  margin-right: 0.33em;
+  font-size: 0.9em;
+  font-weight: 400;
+  color: #fff;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.contactWorkplace {
+  font-size: 0.7em;
+  color: #fff;
+}
+
+.statusCircleOnline {
+  position: absolute;
+  top: 26%;
+  right: -4%;
+  width: 0.46em;
+  height: 0.46em;
+  background-color: #6fe7dd;
+  border-radius: 66.6em;
+}
+
+.statusCircleOffline {
+  background-color: #000;
+}
+
+.contactIcons {
+  display: flex;
+  
+  button {
+    margin-right: 1.13em;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+     
+  &:last-of-type {
+    margin-right: 0;
+  }
+    
+    svg {
+      width: 1.8em;
+      height: 1.8em;
+      fill: #a1a1a5;
+
+      &:hover {
+        fill: #fff;
+      }
+    }
+   
+    &:last-child svg {
+      margin-top: -0.3em;
+    }
+  }
+}

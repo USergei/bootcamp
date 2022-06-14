@@ -1,0 +1,13 @@
+@use '../../../../mixins/' as *;
+
+.reviewsWidget {
+  flex-basis: 50%;
+  @include widgetMainStyles;
+}
+
+.reviewsWidgetHeader {
+  margin-bottom: 1.5em;
+  @include dFlexSpaceBetween;
+  @include widgetTitle;
+}
+

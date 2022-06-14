@@ -1,0 +1,119 @@
+@use './../../../mixins/' as *;
+
+.navbar {
+    min-width: 300px;
+    transition: .1s ease-in-out;
+    
+}
+
+.isNavbarMinimised {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+    
+
+    .navbarItem {
+        // padding: 1.33em 1.5em 1.33em 1.5em;
+        // transition: padding .4s ease-in-out;
+
+        span {
+            display: none;
+        }
+
+        button {
+            display: none;
+        }
+    }
+
+    .navbarIcon {
+        margin-right: 0;
+    }
+}
+
+.navbarItem {
+    display: flex;
+    align-items: center;
+    padding: 1.33em 1.86em  1.33em 4.13em;
+    box-shadow: 2px 0 2px  rgba(0, 0, 0, .2);
+    border-bottom: solid 2px #35373d;
+
+    span {
+        flex-grow: 1;
+        font-size: 1.6em;
+        color: #c8c9ca;
+    }
+
+    button {
+        padding: 0 0.2em;
+        font-size: 1.6em;
+        font-weight: 600;
+        color: #c8c9ca;
+        background: none;
+        border: none;
+        cursor: pointer;
+       
+        &:active {
+            background: none;
+        }
+    }
+}
+
+.navbarIcon {
+    position: relative;
+    margin-right: 1em;
+
+    svg {
+        width: 2.26em;
+        height: 2.06em;
+        fill: #fff;
+    }
+
+    div {
+        position: absolute;
+        top: -32%;
+        right: -17%;
+        z-index: 1;
+        padding: 1px 0;
+        width: 1.2em;
+        height: 1.2em;
+        font-size: 1.1em;
+        font-weight: 400;
+        color: #fefefe;
+        text-align: center;
+        line-height: 1;
+        border-radius: 66.6em;
+        background-color: #28dcbc;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, .7);
+    }
+}
+
+.subMenu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.63em 2.1em 1.63em 7.5em;
+    text-decoration: none;
+    background-color: #212228;  
+    border-bottom: solid 2px #35373d;
+}
+
+.subMenuText {
+    font-size: 1.6em;
+    color: #c8c9ca;
+        
+}
+
+.subMenuNotification {
+    padding: 1px 0;
+    width: 1.2em;
+    height: 1.2em;
+    font-size: 1.1em;
+    font-weight: 400;
+    color: #fefefe;
+    text-align: center;
+    line-height: 1;
+    border-radius: 66.6em;
+    background-color: #28dcbc;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .7);
+}

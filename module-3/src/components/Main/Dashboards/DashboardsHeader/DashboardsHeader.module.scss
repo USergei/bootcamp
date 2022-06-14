@@ -1,0 +1,74 @@
+.dashboardsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0.5em 2.2em 1.12em;
+}
+
+.dashboardText {
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    margin-right:0.95em;
+    font-size: 1.6em;
+    font-weight: 400;
+    color: #939496;
+}
+
+.greeting {
+    margin-right: 0.9em;
+    font-size: 0.8em;
+    font-weight: 100;
+    color: #c3c2c2;
+}
+
+.addWidget {
+    display: flex;
+    align-items: center;
+}
+
+.addWidgetText {
+    margin-right: 1.5em;
+    font-size: 0.93em;
+    font-weight: 400;
+    color: #fff;
+}
+
+.addWidgetBtn {
+    padding: 0.2em;
+    line-height: 0;
+    background: none;
+    border: 1.5px solid #646569;
+    border-radius: 4px;
+    opacity: .7;
+    cursor: pointer;
+    transition: color .1s ease-in-out, border-color .03s ease-in-out;
+
+    &:hover {
+        border-color: #fff;
+        outline: none;
+    }
+
+    svg {
+        width: 1.52em;
+        padding: 0.3em;
+        fill: #3d404a;
+        transition: fill .1s ease-in-out;
+
+        &:hover {
+            fill: #fff;
+        }
+    }
+}
+
+// @media (max-width: 940px) {
+//     .dashboardText {
+//         flex-direction: column;
+//     }
+
+//     .title  {
+//         align-self: flex-start;
+//     }  
+// }

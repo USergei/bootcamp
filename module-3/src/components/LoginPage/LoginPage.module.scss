@@ -1,0 +1,142 @@
+@use '../../mixins/' as *;
+
+.LoginPageWrapper {
+    display: flex;
+    height: 100%;
+}
+
+.loginMenu {
+    align-self: center;
+    width: 33.34em;
+    margin: 0 auto;
+    @include widgetMainStyles;
+}
+
+.title {
+    font-size: 3em;
+    margin-bottom: 1.78em;
+    color: #fff;
+    text-align: left;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 4em;
+    
+    & > input {
+        width: 100%;
+        height: 2.23em;
+        margin-bottom: 1.12em;
+        padding: 0 0.85em;
+        font-family: "Roboto";
+        font-size: 1.2em;
+        font-weight: 300;
+        color: #fff;
+        background: #383a42;
+        border: 2px solid #212328;
+        border-radius: 0.4em;
+        transition: border-color 0.2s ease-in-out;
+
+        &::placeholder {
+            font-size: 0.9em;
+            font-weight: 400;
+        }
+
+        &:hover,
+        &:focus {
+        border-color: #000;
+        outline: none;
+        }
+    }
+
+    & div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    & button {
+        position: relative;
+        width: 7.33em;
+        margin-right: 2em;
+        padding: 0.67em;
+        font-family: "Roboto", sans-serif;
+        font-size: 1em;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        color: #fff;
+        background: #383a42;
+        border: 2px solid #212328;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background .2s ease-in-out, border-color .2s ease-in-out;
+
+        &:hover {
+            border-color: #000;
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 13%;
+            right: -20%;
+            display: block;
+            width: 2px;
+            height: 72%;
+            background-color: #bfc0c2;
+            opacity: .4;
+        }
+    }
+
+    & span {
+        display: flex;
+        align-items: center;
+        font-weight: 400;
+    }
+
+    & a {
+        padding: 0.5em;
+        cursor: pointer;
+
+        svg {
+            width: 2.94em;
+            height: 2.54em;
+        }
+    }
+}
+
+.loginPageLinks {
+    display: flex;
+    justify-content: space-between;
+
+    & a {
+        display: block;
+        font-weight: 400;
+        text-decoration: none;
+        color: #bfc0c2;
+        cursor: pointer;
+        transition: color .2s ease-in-out;
+
+        &:hover {
+            color: #fff
+        }
+    }
+}
+
+@media (max-width: 530px) {
+    .loginMenu {
+        margin: 0 1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .loginPageLinks {
+        flex-direction: column;
+        align-items: center;
+
+        & a:nth-child(odd) {
+            margin-bottom: 2em;
+        }
+    }
+}

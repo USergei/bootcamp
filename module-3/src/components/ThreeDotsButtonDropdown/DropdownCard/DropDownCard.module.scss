@@ -1,0 +1,31 @@
+.dropdownContainer {
+  position: absolute;
+  top: 6px;
+  left: -83px;
+  z-index: 999;
+
+}
+
+.dropdownList {
+  list-style: none;
+}
+
+.dropdownItem {
+  display: block;
+  padding: 0.5em;
+  font-size: 0.7em;
+  line-height: 1;
+  color: #fff;
+  background-color: #212228;
+  border-bottom: solid 2px #33353b;
+  box-shadow: 5px 5px 5px 0px rgb(1 1 1 / 70%);
+
+  &:hover {
+    background-color: #282a31; 
+    cursor: pointer;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}

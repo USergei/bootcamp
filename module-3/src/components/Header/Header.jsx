@@ -1,15 +1,15 @@
-import React from 'react';
-import style from './Header.module.scss'
-import HeaderLeft from './Header-left/HeaderLeft'
-import HeaderRight from './Header-right/HeaderRight'
+import React from "react";
+import style from "./Header.module.scss"
+import HeaderLeft from "./HeaderLeft"
+import HeaderRight from "./HeaderRight"
 
-const Header = () => {
-    return(
-        <header className={style.header}>
-            <HeaderLeft/>
-            <HeaderRight/>
-        </header>
-    )
-}
+const Header = ({isNavbarOpen, setIsNavbarOpen}) => {
+  return (
+    <header className={style.header}>
+      <HeaderLeft isNavbarOpen={isNavbarOpen} setIsNavbarOpen={setIsNavbarOpen}/>
+      <HeaderRight />
+    </header>
+  );
+};
 
-export default Header
+export default Header;
