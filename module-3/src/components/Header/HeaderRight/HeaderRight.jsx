@@ -47,7 +47,7 @@ const HeaderRight = () => {
                 </div>
             </div>
             <div className={style.dropDownHeader} ref={container}>
-                <button type="button" class={style.dropDownBtn} onClick={() => setOpen(!open)}>
+                <button type="button" className={style.dropDownBtn} onClick={() => setOpen(!open)}>
                  ∨
                 </button>
                 {open && (

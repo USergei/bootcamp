@@ -11,12 +11,12 @@ const Review = ({id, rating, dateTime, text, author}) => {
       const indexes = []
       for (let i = 1; i <= 5; i++) {
           if (i <= rating) {
-            indexes.push(<SVG src={fullStar} alt="rating-star" />)
+            indexes.push(<SVG key={i} src={fullStar} alt="rating-star" />)
           }
           if (i - rating === 0.5) {
-            indexes.push(<SVG src={halfStar} alt="rating-star" />)
+            indexes.push(<SVG key={i} src={halfStar} alt="rating-star" />)
           } else if (i > rating) {
-            indexes.push(<SVG src={emptyStar} alt="rating-star" />)
+            indexes.push(<SVG key={i} src={emptyStar} alt="rating-star" />)
           }
       }
 

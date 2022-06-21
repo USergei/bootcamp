@@ -8,9 +8,10 @@ import google from '../../assets/icons/googleIcon.svg'
 const Registration = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const [firstname, setUsername] = useState('')
-    const [lastname, setFamilyname] = useState('')
-    const [jobTitle, setJobTitle] = useState('')
+    const [name, setUsername] = useState('')
+    // const [firstname, setUsername] = useState('')
+    // const [lastname, setFamilyname] = useState('')
+    // const [jobTitle, setJobTitle] = useState('')
 
     const onSubmit = (event) => {
         event.preventDefault()
@@ -19,15 +20,15 @@ const Registration = () => {
 
         attributeList.push({
             "Name": "name",
-            "Value": firstname
+            "Value": name
         }, 
         {
             "Name": "family_name",
-            "Value": lastname
+            "Value": "Surname"
         }, 
         {
             "Name": "custom:jobtitle",
-            "Value": jobTitle
+            "Value": "jobTitle"
         })
 
         UserPool.signUp(email, password, attributeList, null, (err, data) => {
@@ -61,20 +62,8 @@ const Registration = () => {
                <input
                     type="name"
                     placeholder="Name"
-                    value={firstname}
+                    value={name}
                     onChange={(event) => setUsername(event.target.value)}
-                />
-               <input
-                    type="familyname"
-                    placeholder="Familyname"
-                    value={lastname}
-                    onChange={(event) => setFamilyname(event.target.value)}
-                />
-               <input
-                    type="jobtitle"
-                    placeholder="Job title"
-                    value={jobTitle}
-                    onChange={(event) => setJobTitle(event.target.value)}
                 />
                <div className={style.RegistrationBtns}>
                     <button type="submit">Register</button>

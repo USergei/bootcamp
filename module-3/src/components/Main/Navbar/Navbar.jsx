@@ -96,9 +96,9 @@ const Navbar = ({isNavbarOpen}) => {
         for (let [topLevelMenuItemKey, topLevelMenu] of Object.entries(menuObject)) {
             const subMenuItems = []
             if (topLevelMenu.submenu ) {
-                for (let subMenuItem of Object.values(topLevelMenu.submenu)) {
+                for (let [subMenuLevelItemKey, subMenuItem] of Object.entries(topLevelMenu.submenu)) {
                     subMenuItems.push(
-                        <a className={style.subMenu} href={subMenuItem.url}>
+                        <a key={subMenuLevelItemKey} className={style.subMenu} href={subMenuItem.url}>
                             <div className={style.subMenuText}>{subMenuItem.title}</div>
                             <div className={style.subMenuNotification}>3</div>
                         </a>
@@ -106,7 +106,7 @@ const Navbar = ({isNavbarOpen}) => {
                 }
             }
             menuItems.push(
-                <nav>
+                <nav key={topLevelMenuItemKey}>
                     <div className={style.navbarItem}>
                         <div className={style.navbarIcon}>
                             <SVG src={topLevelMenu.icon} alt="icon" />
