@@ -1,10 +1,24 @@
-import React, {createContext, useContext} from "react";
+import React, {createContext, useEffect, useState} from "react";
 import {CognitoUser, AuthenticationDetails} from "amazon-cognito-identity-js";
 import Pool from "./UserPool"
 
 const AccountContext = createContext()
 
 const Account = (props) => {
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  // useEffect(() => {
+  //   getSession()
+  //     .then(session => {
+  //       console.log("Session", session)
+  //       setIsAuthenticated(true)
+  //     })
+  //     .catch((error) => {
+  //       console.log("No cookie: ", error)
+  //       setIsAuthenticated(false)
+  //     })
+  // }, [])
 
   const getSession = async () => {
     return await new Promise((resolve, reject) => {
@@ -31,16 +45,19 @@ const Account = (props) => {
 
       user.authenticateUser(AuthDetails, {
             onSuccess: (data) => {
-                console.log("onSuccess: ", data)
-                resolve(data)
+              setIsAuthenticated(true)
+              console.log("onSuccess: ", data)
+              resolve(data)
             },
             onFailure: (err) => {
-                console.error("onFailure: ", err)
-                reject(err)
+              setIsAuthenticated(false)
+              console.error("onFailure: ", err)
+              reject(err)
             },
             newPasswordRequired: (data) => {
-                console.log("newPasswordRequired: ", data)
-                resolve(data)
+              setIsAuthenticated(false)
+              console.log("newPasswordRequired: ", data)
+              resolve(data)
             }
       })
     })
@@ -54,7 +71,12 @@ const Account = (props) => {
   }
 
   return (
-    <AccountContext.Provider value={{ authenticate, getSession, logout }}>
+    <AccountContext.Provider value={{ 
+      isAuthenticated, 
+      authenticate, 
+      getSession, 
+      logout
+    }}>
       {props.children}
     </AccountContext.Provider>
   )

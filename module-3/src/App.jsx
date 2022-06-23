@@ -1,6 +1,6 @@
 import React from 'react'
 import style from './App.module.scss'
-import {Account} from './components/Account'
+import {Account as AccountContext} from './components/AccountContext'
 import Routes from './Routes'
 import Status from './components/Status'
 
@@ -9,10 +9,10 @@ function App() {
 
   return (
     <div className={style.mainWrapper}>
-      <Account>
+      <AccountContext>
         <Status />
         <Routes />
-      </Account>  
+      </AccountContext>  
     </div>
   )
 }
