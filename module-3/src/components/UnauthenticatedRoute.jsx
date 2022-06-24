@@ -17,6 +17,7 @@ function querystring(name, url = window.location.href) {
 export default function UnauthenticatedRoute({children}) {
   const { isAuthenticated } = useContext(AccountContext)
   const redirect = querystring("redirect")
+  console.log({isAuthenticated});
   
   if (isAuthenticated) {
     return <Navigate to={redirect || "/login"} />

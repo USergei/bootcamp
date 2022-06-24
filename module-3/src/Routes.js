@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from './components/Home'
 import LoginPage from './components/LoginPage'
 import Registration from './components/Registration'
+import NotFound from "./components/Header/NotFound"
 import UnauthenticatedRoute from './components/UnauthenticatedRoute'
 import AuthenticatedRoute from './components/AuthenticatedRoute'
 
@@ -31,6 +32,12 @@ export default function Links() {
             <UnauthenticatedRoute>
               <Registration/>
             </UnauthenticatedRoute>
+          }
+        /> 
+        <Route
+          path="/404"
+          element={
+            <NotFound/>
           }
         /> 
     </Routes>

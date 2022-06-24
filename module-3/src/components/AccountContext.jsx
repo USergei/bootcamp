@@ -7,7 +7,7 @@ const AccountContext = createContext()
 const Account = (props) => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false)
-
+  
   const getSession = async () => {
     return await new Promise((resolve, reject) => {
       const user = Pool.getCurrentUser()
@@ -16,11 +16,13 @@ const Account = (props) => {
           if (err) {
             reject(err)
           } else {
+            setIsAuthenticated(true)
             resolve(session)
           }
         })
       } else {
         reject("Unauthenticated")
+        setIsAuthenticated(false)
       }
     })
   }
