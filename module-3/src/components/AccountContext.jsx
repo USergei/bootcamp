@@ -8,18 +8,6 @@ const Account = (props) => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-  // useEffect(() => {
-  //   getSession()
-  //     .then(session => {
-  //       console.log("Session", session)
-  //       setIsAuthenticated(true)
-  //     })
-  //     .catch((error) => {
-  //       console.log("No cookie: ", error)
-  //       setIsAuthenticated(false)
-  //     })
-  // }, [])
-
   const getSession = async () => {
     return await new Promise((resolve, reject) => {
       const user = Pool.getCurrentUser()

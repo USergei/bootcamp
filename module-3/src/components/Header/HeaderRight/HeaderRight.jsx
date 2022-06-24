@@ -24,7 +24,6 @@ const HeaderRight = () => {
         }
     })
 
-
     return (
         <div className={style.headerRight}>
             <div className={style.searchBox}>

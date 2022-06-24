@@ -1,14 +1,14 @@
 import React, {useState} from 'react'
-import style from './Home.module.scss'
+import mainStyles from '../../App.module.scss'
 import Header from '../Header'
 import Main from '../Main'
 
 
-function Home() {
+const Home = () => {
   const [isNavbarOpen, setIsNavbarOpen] = useState(false)
 
   return (
-    <div className={style.mainWrapper}>
+    <div className={mainStyles.mainWrapper}>
       <Header isNavbarOpen={isNavbarOpen} setIsNavbarOpen={setIsNavbarOpen}/>
       <Main isNavbarOpen={isNavbarOpen}/>
     </div>

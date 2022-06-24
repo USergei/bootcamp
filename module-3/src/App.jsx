@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './App.module.scss'
+import mainStyles from './App.module.scss'
 import {Account as AccountContext} from './components/AccountContext'
 import Routes from './Routes'
 import Status from './components/Status'
@@ -8,7 +8,7 @@ import Status from './components/Status'
 function App() {
 
   return (
-    <div className={style.mainWrapper}>
+    <div className={mainStyles.mainWrapper}>
       <AccountContext>
         <Status />
         <Routes />

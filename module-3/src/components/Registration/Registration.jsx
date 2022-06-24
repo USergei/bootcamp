@@ -9,10 +9,7 @@ const Registration = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setUsername] = useState('')
-    // const [firstname, setUsername] = useState('')
-    // const [lastname, setFamilyname] = useState('')
-    // const [jobTitle, setJobTitle] = useState('')
-
+  
     const onSubmit = (event) => {
         event.preventDefault()
 
