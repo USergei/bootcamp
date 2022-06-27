@@ -4,6 +4,7 @@ import SVG from 'react-inlinesvg'
 import bellIcon from './../../../assets/icons/bell.svg'
 import searchIcon from './../../../assets/icons/search.svg'
 import admin from './../../../assets/images/admin.jpg'
+import Status from '../../Status'
 
 const HeaderRight = () => {
 
@@ -53,6 +54,7 @@ const HeaderRight = () => {
                 <div class={style.dropdownWrapper}>
                     <ul class={style.dropdownMenu}>
                         <li><a href="">Item 1</a></li>
+                        <Status/>
                     </ul>
                 </div>
                 )}

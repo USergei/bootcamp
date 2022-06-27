@@ -35,7 +35,7 @@ export default function Links() {
           }
         /> 
         <Route
-          path="/404"
+          path="*"
           element={
             <NotFound/>
           }

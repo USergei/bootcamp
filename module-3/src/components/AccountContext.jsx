@@ -1,6 +1,9 @@
-import React, {createContext, useEffect, useState} from "react";
+import React, {createContext, useEffect, useState, useMemo} from "react";
 import {CognitoUser, AuthenticationDetails} from "amazon-cognito-identity-js";
+import { CognitoJwtVerifier } from "aws-jwt-verify"
 import Pool from "./UserPool"
+import {CognitopoolCredentionals} from '../configs/awsCognitoConfig'
+
 
 const AccountContext = createContext()
 
@@ -35,6 +38,7 @@ const Account = (props) => {
 
       user.authenticateUser(AuthDetails, {
             onSuccess: (data) => {
+              sessionStorage.setItem('accessToken', JSON.stringify(data))
               setIsAuthenticated(true)
               console.log("onSuccess: ", data)
               resolve(data)
@@ -57,9 +61,40 @@ const Account = (props) => {
     const user = Pool.getCurrentUser()
     if (user) {
       user.signOut()
+      setIsAuthenticated(false)
+      sessionStorage.removeItem('accessToken')
     }
   }
 
+  const verifyToken = async () => {
+  
+    const verifier = CognitoJwtVerifier.create({
+      userPoolId: CognitopoolCredentionals.UserPoolId,
+      tokenUse: "access",
+      clientId: CognitopoolCredentionals.ClientId
+    })
+
+    try {
+      const payload = await verifier.verify(
+        JSON.parse(sessionStorage.getItem('accessToken')).accessToken.jwtToken
+      )
+      console.log("Token is valid. Payload:", payload)
+      return true
+    } catch {
+      console.log("Token not valid!")
+      return false
+    }
+  }
+
+  useMemo(() => {
+    // console.log({isAuthenticated})
+    // if (verifyToken()) {
+    //   setIsAuthenticated(true)
+    // } else {
+    //   setIsAuthenticated(false)
+    // }
+  }, [isAuthenticated])
+  
   return (
     <AccountContext.Provider value={{ 
       isAuthenticated, 
