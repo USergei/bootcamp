@@ -1,14 +1,16 @@
-import React, { useEffect, useState, useRef} from "react"
+import React, { useEffect, useState, useRef, useContext} from "react"
 import style from './HeaderRight.module.scss'
 import SVG from 'react-inlinesvg'
 import bellIcon from './../../../assets/icons/bell.svg'
 import searchIcon from './../../../assets/icons/search.svg'
 import admin from './../../../assets/images/admin.jpg'
+import {AccountContext} from '../../AccountContext'
 
 const HeaderRight = () => {
 
     const [open, setOpen] = useState(false)
     const container = useRef(null)
+    const {logout} = useContext(AccountContext)
   
     const handleClickOutside = event => {
         if (container.current && !container.current.contains(event.target)) {
@@ -23,7 +25,6 @@ const HeaderRight = () => {
             document.removeEventListener("mousedown", handleClickOutside);
         }
     })
-
 
     return (
         <div className={style.headerRight}>
@@ -47,16 +48,13 @@ const HeaderRight = () => {
                 </div>
             </div>
             <div className={style.dropDownHeader} ref={container}>
-                <button type="button" class={style.dropDownBtn} onClick={() => setOpen(!open)}>
+                <button type="button" className={style.dropDownBtn} onClick={() => setOpen(!open)}>
                  ∨
                 </button>
                 {open && (
-                <div class={style.dropdownWrapper}>
-                    <ul class={style.dropdownMenu}>
-                        <li><a href="">Item 1</a></li>
-                        <li><a href="">Item 2</a></li>
-                        <li><a href="">Item 3</a></li>
-                        <li><a href="">Item 4</a></li>
+                <div className={style.dropdownWrapper}>
+                    <ul className={style.dropdownMenu}>
+                        <li><a href="" onClick={logout}>Logout</a></li>
                     </ul>
                 </div>
                 )}
