@@ -3,6 +3,11 @@
   height: 100vh;
   justify-content: center;
 
+  & h1 {
+    font-size: 5em;
+    margin-bottom: 1em;
+  }
+
   & div {
     display: flex;
     align-self: center;
@@ -17,13 +22,8 @@
   }
 }
 
-.notFoundTitle {
-  font-size: 5em;
-  margin-bottom: 1em;
-}
-
   @media (max-width: 575px) {
-    .notFoundTitle {
+    .notFoundPageWrapper h1 {
       font-size: 3em;
     }
   }

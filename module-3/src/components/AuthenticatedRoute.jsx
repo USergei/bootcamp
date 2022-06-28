@@ -5,10 +5,11 @@ import { AccountContext } from "./AccountContext"
 export default function AuthenticatedRoute({ children }) {
   const { pathname, search } = useLocation()
   const { isAuthenticated } = useContext(AccountContext)
+  console.log('isAuthenticated', isAuthenticated);
 
   if (!isAuthenticated) {
-    return <Navigate to={`/login?redirect=${pathname}${search}`} />;
+    return <Navigate to={`/login?redirect=${pathname}${search}`} />
   }
 
-  return children;
+  return children
 }

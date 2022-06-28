@@ -28,7 +28,6 @@ const LoginPage = () => {
                     <h1 className={style.title}>Sign in</h1>
                     <form
                         className={style.form}
-                        action=""
                         onSubmit={onSubmit}>
                         <input
                             type="email"
@@ -43,7 +42,7 @@ const LoginPage = () => {
                             onChange={(event) => setPassword(event.target.value)}
                         />
                     <div className={style.loginPageBtns}>
-                        <button type="submit">Sign in</button>
+                        <button >Sign in</button>
                         <span>or
                             <a href="google.com">
                                 <SVG src={google} alt="google" />

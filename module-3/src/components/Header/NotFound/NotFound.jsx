@@ -7,7 +7,7 @@ const NotFound = () => {
     return (
         <div className={`${mainStyles.mainWrapper} ${style.notFoundPageWrapper}`}>
             <div>
-                <h1 className={style.notFoundTitle}>404 - Not Found!</h1>
+                <h1>404 - Not Found!</h1>
                 <Link to="/">Go Home</Link>
             </div>
         </div>
