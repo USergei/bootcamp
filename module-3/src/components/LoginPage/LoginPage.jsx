@@ -1,24 +1,27 @@
 import React, {useState, useContext} from "react";
+import { NavLink } from 'react-router-dom'
 import style from './LoginPage.module.scss'
 import mainStyles from '../../App.module.scss'
 import SVG from 'react-inlinesvg'
 import google from '../../assets/icons/googleIcon.svg'
-import {AccountContext} from "../AccountContext";
+import {AccountContext} from "../AccountContext"
 
 const LoginPage = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {authenticate} = useContext(AccountContext)
+    const [errorMessage, setErrorMessage] = useState('')
 
     const onSubmit = (event) => {
         event.preventDefault()
 
         authenticate(email, password)
-            .then(data => {
-                console.log("Logged in!", data)
-            })
+            // .then(data => {
+            //     console.log("Logged in!", data)
+            // })
             .catch(err => {
-                console.error("Failed to login!", err)
+                console.log("Failed to login!", err)
+                setErrorMessage('Incorrect username or password.')
             })
     }
 
@@ -28,7 +31,8 @@ const LoginPage = () => {
                     <h1 className={style.title}>Sign in</h1>
                     <form
                         className={style.form}
-                        onSubmit={onSubmit}>
+                        onSubmit={onSubmit}
+                    >
                         <input
                             type="email"
                             placeholder="Email"
@@ -41,6 +45,7 @@ const LoginPage = () => {
                             value={password}
                             onChange={(event) => setPassword(event.target.value)}
                         />
+                    {errorMessage && <p>{errorMessage}</p>}
                     <div className={style.loginPageBtns}>
                         <button >Sign in</button>
                         <span>or
@@ -51,7 +56,7 @@ const LoginPage = () => {
                     </div>
                     </form>
                     <div className={style.loginPageLinks}>
-                        <a href="#">Don’t have an account? Sign up</a>
+                        <NavLink  to='/registration'>Don’t have an account? Sign up</NavLink>
                         <a href="#">Forget Password?</a>
                     </div>
                 </div>
