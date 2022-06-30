@@ -9,6 +9,7 @@ const Registration = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setUsername] = useState('')
+    const [errorMessage, setErrorMessage] = useState('')
 
   
     const onSubmit = (event) => {
@@ -31,7 +32,8 @@ const Registration = () => {
 
         UserPool.signUp(email, password, attributeList, null, (err, data) => {
             if (err) {
-                console.log('registrationErr', err)
+                console.log('registrationErr', err.message)
+                setErrorMessage(err.message)
             }
             console.log('registrationData', data)
         })
@@ -63,7 +65,8 @@ const Registration = () => {
                     value={password}
                     onChange={(event) => setPassword(event.target.value)}
                 />
-               <div className={style.RegistrationBtns}>
+                {errorMessage && <p>{errorMessage}</p>}
+                <div className={style.RegistrationBtns}>
                     <button type="submit">Register</button>
                     <span>or
                         <a href="#">
