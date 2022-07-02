@@ -26,7 +26,7 @@ const LoginPage = () => {
     }
 
     return (
-            <div className={`${mainStyles.mainWrapper} ${style.LoginPageWrapper}`}>
+            <div className={`${mainStyles.mainWrapper} ${style.loginPageWrapper}`}>
                 <div className={style.loginMenu}>
                     <h1 className={style.title}>Sign in</h1>
                     <form
@@ -46,7 +46,7 @@ const LoginPage = () => {
                             onChange={(event) => setPassword(event.target.value)}
                         />
                     {errorMessage && <p>{errorMessage}</p>}
-                    <div className={style.loginPageBtns}>
+                    <div>
                         <button >Sign in</button>
                         <span>or
                             <a href="google.com">

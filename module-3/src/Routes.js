@@ -6,6 +6,7 @@ import Registration from './components/Registration'
 import NotFound from "./components/Header/NotFound"
 import UnauthenticatedRoute from './components/UnauthenticatedRoute'
 import AuthenticatedRoute from './components/AuthenticatedRoute'
+import ForgotPassword from "./components/ForgotPassword"
 
 export default function Links() {
   return (
@@ -23,6 +24,14 @@ export default function Links() {
           element={
             <UnauthenticatedRoute>
               <LoginPage/>
+            </UnauthenticatedRoute>
+          }
+        /> 
+        <Route
+          path="/forgot_password"
+          element={
+            <UnauthenticatedRoute>
+              <ForgotPassword/>
             </UnauthenticatedRoute>
           }
         /> 
