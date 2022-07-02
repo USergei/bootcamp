@@ -7,6 +7,7 @@ import NotFound from "./components/Header/NotFound"
 import UnauthenticatedRoute from './components/UnauthenticatedRoute'
 import AuthenticatedRoute from './components/AuthenticatedRoute'
 import ForgotPassword from "./components/ForgotPassword"
+import ProseMirror from "./components/ProseMirror"
 
 export default function Links() {
   return (
@@ -40,6 +41,14 @@ export default function Links() {
           element={
             <UnauthenticatedRoute>
               <Registration/>
+            </UnauthenticatedRoute>
+          }
+        />
+        <Route
+          path="/editor"
+          element={
+            <UnauthenticatedRoute>
+              <ProseMirror/>
             </UnauthenticatedRoute>
           }
         /> 
