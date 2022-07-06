@@ -7,6 +7,7 @@ import {schema} from "prosemirror-schema-basic"
 import {addListNodes} from "prosemirror-schema-list"
 import {exampleSetup} from "prosemirror-example-setup"
 import "./ProseMirror.css"
+import GetDataFromEditorPlugin from "./GetDataFromEditorPlugin"
 
 function ProseMirror() {
     useEffect(() => {
@@ -19,7 +20,16 @@ function ProseMirror() {
             state: EditorState.create({
                 doc: DOMParser.fromSchema(mySchema).parse(document.querySelector("#content")),
                 plugins: exampleSetup({schema: mySchema})
-            })
+            }),
+            dispatchTransaction(transaction) {
+                console.log("Document size went from", transaction.before.content.size,
+                            "to", transaction.doc.content.size)
+                
+                let newState = window.view.state.apply(transaction)
+                window.view.updateState(newState)
+                let content = window.view.state.toJSON().doc
+                console.log({content}) 
+            }
         })
     })
 
