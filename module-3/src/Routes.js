@@ -1,6 +1,8 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import Main from './components/Main'
 import Home from './components/Home'
+import Editor from './components/Pages/Editor'
 import LoginPage from './components/LoginPage'
 import Registration from './components/Registration'
 import NotFound from "./components/Header/NotFound"
@@ -16,7 +18,9 @@ export default function Links() {
           path="/"
           element={
             <AuthenticatedRoute>
-              <Home/>
+              <Main>
+                <Home/>
+              </Main>
             </AuthenticatedRoute>
           }
         />
@@ -47,9 +51,11 @@ export default function Links() {
         <Route
           path="/editor"
           element={
-            <UnauthenticatedRoute>
-              <ProseMirror/>
-            </UnauthenticatedRoute>
+            <AuthenticatedRoute>
+              <Main>
+                <Editor/>
+              </Main>
+            </AuthenticatedRoute>
           }
         /> 
         <Route
