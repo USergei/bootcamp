@@ -1,7 +1,5 @@
 import React, {createContext, useEffect, useState} from "react";
 import {CognitoUser, AuthenticationDetails} from "amazon-cognito-identity-js";
-// import {CognitoJwtVerifier} from "aws-jwt-verify"
-// import {CognitoPoolCredentionals} from '../configs/awsCognitoConfig'
 import Pool from "./UserPool"
 
 
@@ -10,17 +8,42 @@ const AccountContext = createContext()
 const Account = (props) => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [currentUser, setCurrentUser] = useState({})
   
   const getSession = async () => {
     return await new Promise((resolve, reject) => {
       const user = Pool.getCurrentUser()
       if (user) {
-        user.getSession((err, session) => {
+        user.getSession(async (err, session) => {
           if (err) {
             reject(err)
           } else {
             setIsAuthenticated(true)
-            resolve(session)
+            const attributes = await new Promise((resolve, reject) => {
+              user.getUserAttributes((err, attributes) => {
+                if (err) {
+                  reject(err)
+                } else {
+                  const results = {}
+
+                  for (let attribute of attributes) {
+                    const { Name, Value } = attribute
+                    results[Name] = Value
+                  }
+                  setCurrentUser({
+                    name: `${results.name} ${results.family_name}`,
+                    jobTitle: results['custom:jobtitle']
+                  })
+                  resolve(results)
+                }
+              })
+            })
+
+            resolve({
+              user,
+              ...session,
+              ...attributes
+            })
           }
         })
       } else {
@@ -29,6 +52,8 @@ const Account = (props) => {
       }
     })
   }
+
+  
 
   const authenticate = async (Username, Password) => {
     return await new Promise((resolve, reject) => {
@@ -39,17 +64,17 @@ const Account = (props) => {
             onSuccess: (data) => {
               sessionStorage.setItem('accessToken', JSON.stringify(data))
               setIsAuthenticated(true)
-              console.log("onSuccess: ", data)
+              // console.log("onSuccess: ", data)
               resolve(data)
             },
             onFailure: (err) => {
               setIsAuthenticated(false)
-              console.error("onFailure: ", err)
+              // console.error("onFailure: ", err)
               reject(err)
             },
             newPasswordRequired: (data) => {
               setIsAuthenticated(false)
-              console.log("newPasswordRequired: ", data)
+              // console.log("newPasswordRequired: ", data)
               resolve(data)
             }
       })
@@ -68,7 +93,7 @@ const Account = (props) => {
   useEffect(() => {
     getSession()
     .catch((error) => {
-      console.log('Unauthenticated', error)
+      // console.log('Unauthenticated', error)
     })
   }, [])
   
@@ -77,7 +102,8 @@ const Account = (props) => {
       isAuthenticated, 
       authenticate, 
       getSession, 
-      logout
+      logout,
+      currentUser
     }}>
       {props.children}
     </AccountContext.Provider>

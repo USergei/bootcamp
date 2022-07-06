@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useContext} from "react"
+import React, {useEffect, useState, useRef, useContext} from "react"
 import style from './HeaderRight.module.scss'
 import SVG from 'react-inlinesvg'
 import bellIcon from './../../../assets/icons/bell.svg'
@@ -10,8 +10,7 @@ const HeaderRight = () => {
 
     const [open, setOpen] = useState(false)
     const container = useRef(null)
-    const {logout} = useContext(AccountContext)
-  
+    const {logout, currentUser} = useContext(AccountContext)
     const handleClickOutside = event => {
         if (container.current && !container.current.contains(event.target)) {
             setOpen(false)
@@ -40,11 +39,11 @@ const HeaderRight = () => {
             </button>
             <div className={style.headerUser}>
                 <div className={style.headerAvatar}>
-                    <img src={admin} alt="user-avatar" />
+                    <img src={admin} alt="user-avatar"/>
                 </div>
                 <div>
-                    <div className={style.userName}>Ozz Dima</div>
-                    <div className={style.userRights}>Administrator</div>
+                    <div className={style.userName}>{currentUser.name}</div>
+                    <div className={style.userRights}>{currentUser.jobTitle}</div>
                 </div>
             </div>
             <div className={style.dropDownHeader} ref={container}>

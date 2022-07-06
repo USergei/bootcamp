@@ -43,11 +43,20 @@
             font-weight: 400;
         }
 
+        &:last-of-type {
+            margin-bottom: 4em;
+        }
+
         &:hover,
         &:focus {
         border-color: #000;
         outline: none;
         }
+    }
+
+    & p {
+        margin: -0.5rem 0 1em 2px;
+        color: #e13d3d;
     }
 
     & div {
