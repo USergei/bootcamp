@@ -1,7 +1,7 @@
-import React from "react";
-import style from './ReviewsWidget.module.scss'
+import React from "react"
+import style from "./ReviewsWidget.module.scss"
 import Review from "./Review"
-import ThreeDotsButtonDropdown from '../../../ThreeDotsButtonDropdown'
+import ThreeDotsButtonDropdown from "../../../ThreeDotsButtonDropdown"
 
 const reviewsWidgetContent = [
   {
@@ -29,8 +29,8 @@ const reviewsWidgetContent = [
 
 const ReviewsWidget = () => {
   return (
-    <div className={style.reviewsWidget}>
-      <div className={style.reviewsWidgetHeader}>
+    <div className={style.widget}>
+      <div className={style.widgetHeader}>
         <h6>Reviews</h6>
         <ThreeDotsButtonDropdown/>
       </div>

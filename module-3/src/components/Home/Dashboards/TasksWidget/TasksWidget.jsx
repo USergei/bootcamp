@@ -1,9 +1,9 @@
-import React from "react";
-import SVG from 'react-inlinesvg'
-import style from './TasksWidget.module.scss'
-import Task from './Task'
+import React from "react"
+import SVG from "react-inlinesvg"
+import style from "./TasksWidget.module.scss"
+import Task from "./Task"
 import ThreeDotsButtonDropdown from "../../../ThreeDotsButtonDropdown"
-import plus from './../../../../assets/icons/plus.svg'
+import plus from "../../../../assets/icons/plus.svg"
 
 const tasksWidgetContent = [
   {
@@ -30,8 +30,8 @@ const tasksWidgetContent = [
 
 const TasksWidget = () => {
   return (
-    <div className={style.tasksWidget}>
-      <div className={style.tasksWidgetHeader}>
+    <div className={style.widget}>
+      <div className={style.widgetHeader}>
         <h6>Tasks</h6>
         <ThreeDotsButtonDropdown/>
       </div>
@@ -44,7 +44,7 @@ const TasksWidget = () => {
           name={item.name}
         />
       )}
-      <form className={style.tasksWidgetBottom}>
+      <form className={style.widgetBottom}>
         <input type="text" name="task" placeholder="Add a new task..."/>
         <button>
           <SVG src={plus} alt="plusIcon"/>

@@ -1,13 +1,13 @@
-import React from "react";
-import style from './ContactsWidget.module.scss'
-import SVG from 'react-inlinesvg'
-import search from './../../../../assets/icons/search.svg'
-import avatar1 from './../../../../assets/images/user-avatar1.jpg'
-import avatar2 from './../../../../assets/images/user-avatar2.jpg'
-import avatar3 from './../../../../assets/images/user-avatar3.jpg'
-import avatar4 from './../../../../assets/images/user-avatar4.jpg'
-import Contact from './Contact'
-import ThreeDotsButtonDropdown from '../../../ThreeDotsButtonDropdown'
+import React from "react"
+import style from "./ContactsWidget.module.scss"
+import SVG from "react-inlinesvg"
+import search from "../../../../assets/icons/search.svg"
+import avatar1 from "../../../../assets/images/user-avatar1.jpg"
+import avatar2 from "../../../../assets/images/user-avatar2.jpg"
+import avatar3 from "../../../../assets/images/user-avatar3.jpg"
+import avatar4 from "../../../../assets/images/user-avatar4.jpg"
+import Contact from "./Contact"
+import ThreeDotsButtonDropdown from "../../../ThreeDotsButtonDropdown"
 
 const contactsWidgetContent = [
   {
@@ -38,8 +38,8 @@ const contactsWidgetContent = [
 
 const ContactsWidget = () => {
   return (
-    <div className={style.contactsWidget}>
-      <div className={style.contactsWidgetHeader}>
+    <div className={style.widget}>
+      <div className={style.header}>
         <h6>Contacts</h6>
         <ThreeDotsButtonDropdown/>
       </div>
@@ -52,7 +52,7 @@ const ContactsWidget = () => {
           workplace={item.workplace}
         />
       )}
-      <form className={style.contactsWidgetBottom}>
+      <form className={style.bottom}>
         <input type="search" name="search" placeholder="Search contact..."/>
         <button>
           <SVG src={search} alt="search"/>

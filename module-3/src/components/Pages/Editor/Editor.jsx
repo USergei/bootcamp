@@ -1,5 +1,5 @@
 import React from "react"
-import style from './Editor.module.scss'
+import style from "./Editor.module.scss"
 import ProseMirror from "../../ProseMirror"
 
 const Editor = () => {

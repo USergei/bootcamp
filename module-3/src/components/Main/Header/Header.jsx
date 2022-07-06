@@ -1,4 +1,4 @@
-import React from "react";
+import React from "react"
 import style from "./Header.module.scss"
 import HeaderLeft from "./HeaderLeft"
 import HeaderRight from "./HeaderRight"
@@ -9,7 +9,7 @@ const Header = ({isNavbarOpen, setIsNavbarOpen}) => {
       <HeaderLeft isNavbarOpen={isNavbarOpen} setIsNavbarOpen={setIsNavbarOpen}/>
       <HeaderRight />
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

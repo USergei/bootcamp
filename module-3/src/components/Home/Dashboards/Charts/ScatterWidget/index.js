@@ -1,3 +1,3 @@
-import ScatterWidget from "./ScatterWidget";
+import ScatterWidget from "./ScatterWidget"
 
 export default ScatterWidget

@@ -4,8 +4,8 @@ import ThreeDotsButtonDropdown from '../../../../ThreeDotsButtonDropdown'
 
 const ScatterWidget = () => {
   return (
-    <div className={style.scatterWidget}>
-      <div className={style.scatterWidgetHeader}>
+    <div className={style.widget}>
+      <div className={style.widgetHeader}>
         <h6>Scatter</h6>
         <ThreeDotsButtonDropdown/>
       </div>

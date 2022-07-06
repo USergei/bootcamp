@@ -1,7 +1,7 @@
 import React from "react"
-import Dashboards from './Dashboards'
+import Dashboards from "./Dashboards"
 
-const Home = ({isNavbarOpen}) => {
+const Home = () => {
     return (
         <Dashboards/>
     )

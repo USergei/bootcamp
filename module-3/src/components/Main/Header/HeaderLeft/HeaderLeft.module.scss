@@ -1,11 +1,11 @@
-.headerLeft {
+.left {
     display: flex;
     align-items: center;
     padding-left:  7.9em;
     background-color: #212228;
 }
 
-.headerImgLogo {
+.imgLogo {
     margin-right: 1.4em;
 
     svg {
@@ -22,13 +22,13 @@
     font-weight: 600;
     letter-spacing: .04em;
     color: transparent;
-    background: url('./../../../assets/gif/backgroundText.gif'); 
+    background: url('../../../../assets/gif/backgroundText.gif'); 
     background-size: cover; 
     background-position: center; 
     -webkit-background-clip: text; 
 }
 
-.hamburgerMmenu {
+.hamburgerMenu {
   margin-right: 1.5em;
   padding: 0.5em;
 }
@@ -50,7 +50,6 @@
     transform: rotate(90deg);
   }
 }
-
 
 .menuBtn {
   display: flex;
@@ -84,9 +83,4 @@
   }
 }
 
-@media (max-width: 1160px) {
-  .headerLeft {
-     padding-left: 1.5em;
-  }
-}
 

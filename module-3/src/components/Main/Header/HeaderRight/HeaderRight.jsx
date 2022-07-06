@@ -1,10 +1,10 @@
 import React, {useEffect, useState, useRef, useContext} from "react"
-import style from './HeaderRight.module.scss'
-import SVG from 'react-inlinesvg'
-import bellIcon from './../../../assets/icons/bell.svg'
-import searchIcon from './../../../assets/icons/search.svg'
-import admin from './../../../assets/images/admin.jpg'
-import {AccountContext} from '../../AccountContext'
+import style from "./HeaderRight.module.scss"
+import SVG from "react-inlinesvg"
+import bellIcon from "../../../../assets/icons/bell.svg"
+import searchIcon from "../../../../assets/icons/search.svg"
+import admin from "../../../../assets/images/admin.jpg"
+import {AccountContext} from "../../../AccountContext"
 
 const HeaderRight = () => {
 
@@ -35,10 +35,10 @@ const HeaderRight = () => {
             </div>
             <button className={style.bellBtn}>
                 <SVG src={bellIcon} alt="notification" />
-                <div className={style.headerNotification}>7</div>
+                <div className={style.notification}>7</div>
             </button>
-            <div className={style.headerUser}>
-                <div className={style.headerAvatar}>
+            <div className={style.user}>
+                <div className={style.avatar}>
                     <img src={admin} alt="user-avatar"/>
                 </div>
                 <div>

@@ -1,11 +1,11 @@
 @use '../../../../../mixins/' as *;
 
-.radarWidget {
+.widget {
   flex-basis: 50%;
   @include widgetMainStyles;
 }
 
-.radarWidgetHeader {
+.widgetHeader {
   @include dFlexSpaceBetween;
   @include widgetTitle;
 }

@@ -1,3 +1,3 @@
-import StatsWidget from "./StatsWidget";
+import StatsWidget from "./StatsWidget"
 
 export default StatsWidget

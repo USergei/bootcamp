@@ -1,9 +1,9 @@
-import React from "react";
-import style from './Review.module.scss'
-import SVG from 'react-inlinesvg'
-import fullStar from './../../../../../assets/icons/fullStar.svg'
-import emptyStar from './../../../../../assets/icons/emptyStar.svg'
-import halfStar from './../../../../../assets/icons/halfStar.svg'
+import React from "react"
+import style from "./Review.module.scss"
+import SVG from"react-inlinesvg"
+import fullStar from "../../../../../assets/icons/fullStar.svg"
+import emptyStar from "../../../../../assets/icons/emptyStar.svg"
+import halfStar from "../../../../../assets/icons/halfStar.svg"
 
 const Review = ({id, rating, dateTime, text, author}) => {
 
@@ -24,19 +24,19 @@ const Review = ({id, rating, dateTime, text, author}) => {
   }
 
   return (
-    <div className={style.reviewItems}>
-      <div className={style.reviewStatus}>
-        <div className={style.reviewRaiting}>
+    <div className={style.items}>
+      <div className={style.status}>
+        <div className={style.raiting}>
           {getRating(rating)}
         </div>
-        <div className={style.reviewTime}>
+        <div className={style.time}>
             {dateTime}
         </div>
       </div>
-      <div className={style.reviewText}>
+      <div className={style.text}>
         {text}
       </div>
-      <div className={style.reviewName}>
+      <div className={style.name}>
         - {author}
       </div>
   </div>

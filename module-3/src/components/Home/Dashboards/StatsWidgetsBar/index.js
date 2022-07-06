@@ -1,3 +1,3 @@
-import StatsWidgetsBar from "./StatsWidgetsBar";
+import StatsWidgetsBar from "./StatsWidgetsBar"
 
 export default StatsWidgetsBar

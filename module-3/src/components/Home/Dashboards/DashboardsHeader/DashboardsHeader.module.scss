@@ -1,11 +1,11 @@
-.dashboardsHeader {
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 0 0.5em 2.2em 1.12em;
 }
 
-.dashboardText {
+.text {
     display: flex;
     align-items: center;
 }
@@ -44,31 +44,22 @@
     border-radius: 4px;
     opacity: .7;
     cursor: pointer;
-    transition: color .1s ease-in-out, border-color .03s ease-in-out;
+    transition: color .2s ease-in-out, border-color .2s ease-in-out;
 
     &:hover {
         border-color: #fff;
         outline: none;
     }
+        
+    &:hover > svg {
+    fill: #fff;
+    } 
 
     svg {
         width: 1.52em;
         padding: 0.3em;
         fill: #3d404a;
-        transition: fill .1s ease-in-out;
-
-        &:hover {
-            fill: #fff;
-        }
+        transition: fill .2s ease-in-out;
     }
 }
 
-// @media (max-width: 940px) {
-//     .dashboardText {
-//         flex-direction: column;
-//     }
-
-//     .title  {
-//         align-self: flex-start;
-//     }  
-// }

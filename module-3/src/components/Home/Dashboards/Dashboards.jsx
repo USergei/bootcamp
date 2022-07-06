@@ -1,10 +1,10 @@
 import React from "react"
-import style from './Dashboards.module.scss'
-import DashboardsHeader from './DashboardsHeader'
-import StatsWidgetsBar from './StatsWidgetsBar'
-import ContactsWidget from './ContactsWidget'
-import ReviewsWidget from './ReviewsWidget'
-import TasksWidget from './TasksWidget'
+import style from "./Dashboards.module.scss"
+import DashboardsHeader from "./DashboardsHeader"
+import StatsWidgetsBar from "./StatsWidgetsBar"
+import ContactsWidget from "./ContactsWidget"
+import ReviewsWidget from "./ReviewsWidget"
+import TasksWidget from "./TasksWidget"
 import {
     HistogramWidget,
     PieWidget,
@@ -26,11 +26,11 @@ const Dashboards = () => {
                     <PieWidget/>
                 </div>
             </div>  
-            <div className={style.dashboardTwoColumnRow}>
+            <div className={style.twoColumnRow}>
                 <ContactsWidget/>
                 <ReviewsWidget/>
             </div>
-            <div className={style.dashboardTwoColumnRow}>
+            <div className={style.twoColumnRow}>
                 <TasksWidget/>
                 <RadarWidget/>
             </div>

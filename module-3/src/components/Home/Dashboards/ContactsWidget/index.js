@@ -1,3 +1,3 @@
-import ContactsWidget from "./ContactsWidget";
+import ContactsWidget from "./ContactsWidget"
 
 export default ContactsWidget

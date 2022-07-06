@@ -1,5 +1,5 @@
-import React, {createContext, useEffect, useState} from "react";
-import {CognitoUser, AuthenticationDetails} from "amazon-cognito-identity-js";
+import React, {createContext, useEffect, useState} from "react"
+import {CognitoUser, AuthenticationDetails} from "amazon-cognito-identity-js"
 import Pool from "./UserPool"
 
 
@@ -64,17 +64,14 @@ const Account = (props) => {
             onSuccess: (data) => {
               sessionStorage.setItem('accessToken', JSON.stringify(data))
               setIsAuthenticated(true)
-              // console.log("onSuccess: ", data)
               resolve(data)
             },
             onFailure: (err) => {
               setIsAuthenticated(false)
-              // console.error("onFailure: ", err)
               reject(err)
             },
             newPasswordRequired: (data) => {
               setIsAuthenticated(false)
-              // console.log("newPasswordRequired: ", data)
               resolve(data)
             }
       })
@@ -93,7 +90,6 @@ const Account = (props) => {
   useEffect(() => {
     getSession()
     .catch((error) => {
-      // console.log('Unauthenticated', error)
     })
   }, [])
   
