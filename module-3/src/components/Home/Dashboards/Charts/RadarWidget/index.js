@@ -1,3 +1,3 @@
-import RadarWidget from "./RadarWidget";
+import RadarWidget from "./RadarWidget"
 
 export default RadarWidget

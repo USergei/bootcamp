@@ -1,12 +1,12 @@
 import React from "react"
-import style from './DashboardsHeader.module.scss'
-import SVG from 'react-inlinesvg'
-import plus from './../../../../../src/assets/icons/plus.svg'
+import style from "./DashboardsHeader.module.scss"
+import SVG from "react-inlinesvg"
+import plus from "../../../../../src/assets/icons/plus.svg"
 
 const DashboardsHeader = () => {
     return (
-        <div className={style.dashboardsHeader}>
-            <div className={style.dashboardText}>
+        <div className={style.header}>
+            <div className={style.text}>
                 <h1 className={style.title}>Dashboard</h1>
                 <div className={style.greeting}>Wellcome back Ozz Dima - Last log in on 15 february at 1:30 pm</div>
             </div>

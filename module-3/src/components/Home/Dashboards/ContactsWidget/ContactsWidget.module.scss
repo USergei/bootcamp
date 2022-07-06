@@ -1,17 +1,17 @@
 @use '../../../../mixins/' as *;
 
-.contactsWidget {
+.widget {
   @include widgetMainStyles;
   flex-basis: 50%;
   margin-right: 1em;
 }
 
-.contactsWidgetHeader {
+.header {
   @include dFlexSpaceBetween;
   @include widgetTitle;
 }
 
-.contactsWidgetBottom {
+.bottom {
   display: flex;
   justify-content: center;
 
@@ -46,22 +46,22 @@
     background: #282a31;
     border: 2px solid #212328;
     border-radius: 0.4em;
+    cursor: pointer;
     transition: border-color .2s ease-in-out;
 
     &:hover {
       border-color: #000;
     }
 
+    &:hover > svg {
+      fill: #fff;
+    }  
+
     & svg {
       width: 2.5em;  
       padding: 0.5em;
       fill: #44464c;
-      cursor: pointer;
-      transition: fill .2s ease-in-out;
-
-      &:hover {
-        fill: #fff;
-      }    
+      transition: fill .2s ease-in-out;  
     }
   }
 }

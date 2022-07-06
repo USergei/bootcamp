@@ -1,3 +1,3 @@
-import DashboardsHeader from "./DashboardsHeader";
+import DashboardsHeader from "./DashboardsHeader"
 
 export default DashboardsHeader

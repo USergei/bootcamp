@@ -1,10 +1,10 @@
 @use '../../../../../mixins/' as *;
 
-.pieWidget {
+.widget {
   @include widgetMainStyles;
 }
 
-.pieWidgetHeader {
+.widgetHeader {
   @include dFlexSpaceBetween;
   @include widgetTitle;
 }

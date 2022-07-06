@@ -1,8 +1,8 @@
-import React, {useState} from 'react'
-import mainStyles from '../../App.module.scss'
-import style from './Main.module.scss'
-import Header from '../Header'
-import Navbar from '../Home/Navbar'
+import React, {useState} from "react"
+import mainStyles from "../../App.module.scss"
+import style from "./Main.module.scss"
+import Header from "./Header"
+import Navbar from "./Navbar"
 
 
 const Main = ({children}) => {

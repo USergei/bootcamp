@@ -1,6 +1,6 @@
-@use '../../mixins/' as *;
+@use '../../../mixins/' as *;
 
-.loginPageWrapper {
+.RegistrationWrapper {
     display: flex;
     height: 100vh;
 }
@@ -41,6 +41,10 @@
         &::placeholder {
             font-size: 0.9em;
             font-weight: 400;
+        }
+
+        &:last-of-type {
+            margin-bottom: 4em;
         }
 
         &:hover,

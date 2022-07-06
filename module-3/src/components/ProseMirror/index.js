@@ -1,3 +1,3 @@
-import ProseMirror from './ProseMirror'
+import ProseMirror from "./ProseMirror"
 
 export default ProseMirror

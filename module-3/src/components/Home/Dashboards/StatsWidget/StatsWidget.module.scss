@@ -1,4 +1,4 @@
-.statsWidget {
+.widget {
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -29,7 +29,7 @@
     border-color: #6fe7dd;
 }
 
-.statsImg {
+.img {
     display: flex; 
     justify-content: center;
     align-items: center;
@@ -46,18 +46,18 @@
     }
 }
 
-.statsText {
+.text {
     text-align: right;
 }
 
-.statsTitle {
+.title {
     font-size: 0.7em;
     color: #909094;
     font-weight: 400;
     text-transform: uppercase;
 }
 
-.statsFigure {
+.figure {
     font-size: 1.6em;
     color: #b1b2b5;
     font-weight: 400;
@@ -65,20 +65,5 @@
     & span {
         margin-left: 0.5em;
         font-size: 0.5em;
-    }
-}
-
-@media (max-width: 1300px) {
-    .statsWidget {
-        width: 49.3%;
-        margin: 0;
-        
-        &:nth-child(odd) {
-            margin-right: 0.73em;
-        }
-
-        &:nth-child(-n+2) {
-            margin-bottom: 0.73em;
-        }
     }
 }

@@ -1,3 +1,3 @@
-import ReviewsWidget from "./ReviewsWidget";
+import ReviewsWidget from "./ReviewsWidget"
 
 export default ReviewsWidget

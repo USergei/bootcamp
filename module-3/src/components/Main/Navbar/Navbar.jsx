@@ -1,17 +1,17 @@
 import React, {useState} from "react"
-import style from './Navbar.module.scss'
-import SVG from 'react-inlinesvg'
-import dashboard from './../../../assets/icons/dashboard.svg'
-import envelope from './../../../assets/icons/navbarEnvelope.svg'
-import overview from './../../../assets/icons/overview.svg'
-import statistic from './../../../assets/icons/statistic.svg'
-import invoice from './../../../assets/icons/invoice.svg'
-import myAds from './../../../assets/icons/myAds.svg'
-import calendar from './../../../assets/icons/calendar.svg'
-import feedbackStar from './../../../assets/icons/feedbackStar.svg'
-import statement from './../../../assets/icons/statement.svg'
-import settings from './../../../assets/icons/settings.svg'
-import classNames from 'classnames'
+import style from "./Navbar.module.scss"
+import SVG from "react-inlinesvg"
+import dashboard from "../../../assets/icons/dashboard.svg"
+import envelope from "../../../assets/icons/navbarEnvelope.svg"
+import overview from "../../../assets/icons/overview.svg"
+import statistic from "../../../assets/icons/statistic.svg"
+import invoice from "../../../assets/icons/invoice.svg"
+import myAds from "../../../assets/icons/myAds.svg"
+import calendar from "../../../assets/icons/calendar.svg"
+import feedbackStar from "../../../assets/icons/feedbackStar.svg"
+import statement from "../../../assets/icons/statement.svg"
+import settings from "../../../assets/icons/settings.svg"
+import classNames from "classnames"
 
 
 const Navbar = ({isNavbarOpen}) => {

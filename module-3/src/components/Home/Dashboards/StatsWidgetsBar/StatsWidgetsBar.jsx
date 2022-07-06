@@ -1,10 +1,10 @@
-import React from "react";
-import style from './StatsWidgetsBar.module.scss'
-import StatsWidget from "../StatsWidget";
-import eye from './../../../../assets/icons/eye.svg'
-import rocket from './../../../../assets/icons/rocket.svg'
-import envelope from './../../../../assets/icons/envelope.svg'
-import users from './../../../../assets/icons/users.svg'
+import React from "react"
+import style from "./StatsWidgetsBar.module.scss"
+import StatsWidget from "../StatsWidget"
+import eye from "../../../../assets/icons/eye.svg"
+import rocket from "../../../../assets/icons/rocket.svg"
+import envelope from "../../../../assets/icons/envelope.svg"
+import users from "../../../../assets/icons/users.svg"
 
 const statsWidgetContent = [
     {
@@ -40,7 +40,7 @@ const statsWidgetContent = [
 
 const StatsWidgetsBar = () => {
     return (
-        <div className={style.StatsWidgetsBar}>
+        <div className={style.widgetsBar}>
             {statsWidgetContent.map((item, i) => 
                 <StatsWidget
                     key={i}

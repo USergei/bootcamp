@@ -1,6 +1,6 @@
 @use './../../../../../mixins/' as *;
 
-.contactItems {
+.items {
   @include dFlexSpaceBetween;
   align-items: center;
   border-bottom: solid 2px #33353b;
@@ -11,14 +11,14 @@
   }
 }
 
-.contactUserItems {
+.userItems {
   position: relative;
   display: flex;
   align-items: center;
   padding-bottom: 0.66em;
 }
 
-.contactAvatar {
+.avatar {
   position: relative;
   overflow: hidden;
   width: 3.4em;
@@ -29,16 +29,16 @@
 
   & img {
     position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 3.4em;
-      height: 3.4em;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
+    top: 50%;
+    left: 50%;
+    width: 3.4em;
+    height: 3.4em;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
   }
 }
 
-.contactUsername {
+.username {
   margin-right: 0.33em;
   font-size: 0.9em;
   font-weight: 400;
@@ -50,12 +50,12 @@
   text-overflow: ellipsis;
 }
 
-.contactWorkplace {
+.workplace {
   font-size: 0.7em;
   color: #fff;
 }
 
-.statusCircleOnline {
+.circleOnline {
   position: absolute;
   top: 26%;
   right: -4%;
@@ -65,34 +65,35 @@
   border-radius: 66.6em;
 }
 
-.statusCircleOffline {
+.circleOffline {
   background-color: #000;
 }
 
-.contactIcons {
+.icons {
   display: flex;
   
-  button {
-    margin-right: 1.13em;
-    background: none;
-    border: none;
-    cursor: pointer;
+  & button {
+  margin-right: 1.13em;
+  background: none;
+  border: none;
+  cursor: pointer;
 
      
-  &:last-of-type {
-    margin-right: 0;
-  }
+    &:last-of-type {
+      margin-right: 0;
+    }
     
-    svg {
+    & svg {
       width: 1.8em;
       height: 1.8em;
       fill: #a1a1a5;
+      transition: fill .2s ease-in-out;
 
       &:hover {
         fill: #fff;
       }
-    }
-   
+  }
+    
     &:last-child svg {
       margin-top: -0.3em;
     }

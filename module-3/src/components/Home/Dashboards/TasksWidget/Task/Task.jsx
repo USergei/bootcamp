@@ -1,5 +1,5 @@
-import React from "react";
-import style from './Task.module.scss'
+import React from "react"
+import style from "./Task.module.scss"
 
 const Task = ({id, text, name}) => {
   return (
@@ -14,4 +14,5 @@ const Task = ({id, text, name}) => {
     </div>
   )
 }
+
 export default Task

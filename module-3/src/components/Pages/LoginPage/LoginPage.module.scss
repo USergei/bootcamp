@@ -1,11 +1,11 @@
-@use '../../mixins/' as *;
+@use '../../../mixins/' as *;
 
-.RegistrationWrapper {
+.pageWrapper {
     display: flex;
     height: 100vh;
 }
 
-.loginMenu {
+.menu {
     align-self: center;
     width: 33.34em;
     margin: 0 auto;
@@ -41,10 +41,6 @@
         &::placeholder {
             font-size: 0.9em;
             font-weight: 400;
-        }
-
-        &:last-of-type {
-            margin-bottom: 4em;
         }
 
         &:hover,
@@ -115,7 +111,7 @@
     }
 }
 
-.loginPageLinks {
+.pageLinks {
     display: flex;
     justify-content: space-between;
 

@@ -1,3 +1,3 @@
-import PieWidget from "./PieWidget";
+import PieWidget from "./PieWidget"
 
 export default PieWidget

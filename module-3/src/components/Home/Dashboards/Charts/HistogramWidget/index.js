@@ -1,3 +1,3 @@
-import HistogramWidget from "./HistogramWidget";
+import HistogramWidget from "./HistogramWidget"
 
 export default HistogramWidget

@@ -1,11 +1,11 @@
 @use '../../../../../mixins/' as *;
 
-.histogramWidget {
+.widget {
   margin-bottom: 1em;
   @include widgetMainStyles;
 }
 
-.histogramWidgetHeader {
+.widgetHeader {
   @include dFlexSpaceBetween;
   @include widgetTitle;
 }
