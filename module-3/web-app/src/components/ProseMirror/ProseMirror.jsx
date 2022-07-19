@@ -1,5 +1,4 @@
 import React, {useEffect} from "react";
-// import style from './ProseMirror.module.scss'
 import {EditorState} from "prosemirror-state"
 import {EditorView} from "prosemirror-view"
 import {Schema, DOMParser} from "prosemirror-model"
@@ -7,7 +6,7 @@ import {schema} from "prosemirror-schema-basic"
 import {addListNodes} from "prosemirror-schema-list"
 import {exampleSetup} from "prosemirror-example-setup"
 import "./ProseMirror.css"
-import GetDataFromEditorPlugin from "./GetDataFromEditorPlugin"
+// import GetDataFromEditorPlugin from "./GetDataFromEditorPlugin"
 
 function ProseMirror() {
     useEffect(() => {
