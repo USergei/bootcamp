@@ -7,34 +7,21 @@ const config = {
 
 const Model = (config) => {
 
-    const create = async values => {
-        const insertData = {
-            title: values.title,
-            content: values.content,
-            author_id: values.author_id,
-            project_id: values.project_id,
-            status_id: values.status_id
-        }
+    const create = async document => {
 
-        return await knex(config.tableName).insert(insertData, [
+        return await knex(config.tableName).insert(document, [
             'title',
             'content',
+            'author_id',
             'project_id',
             'status_id',
             'updated_at'
         ])
     }
 
-    const update = async (id, values) => {
-        const updatedData = {
-            title: values.title,
-            content: values.content,
-            project_id: values.project_id,
-            status_id: values.status_id,
-            updated_at: new Date
-        }
+    const update = async document => {
         
-        return await knex(config.tableName).where('id', id).update(updatedData, [
+        return await knex(config.tableName).where('id', document.id).update(document, [
             'title',
             'content',
             'project_id',
