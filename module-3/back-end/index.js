@@ -7,11 +7,6 @@ app.use(bodyParser.json())
 app.use(express.static(__dirname + '/dist'))
 app.use(express.urlencoded({extended:true}))
 
-function isValidId(req, res, next) {
-  if(!isNaN(req.params.id)) return next()
-  next(new Error('Invalid ID'))
-}
-
 app.post('/writeDocumentData', async (req, res) => {
   try {
     const result = await Document.create(req.body)
@@ -21,15 +16,19 @@ app.post('/writeDocumentData', async (req, res) => {
     res.status(500).send(err)
   }
 })
-
-app.put('/updateDocumentData/:id', isValidId, async (req, res) => {
+//TODO create select all documents
+//TODO create select document by ID
+//TODO find document by title
+//TODO create data object from req.body
+app.put('/updateDocumentData/:id', async (req, res) => {
   try {
     const result = await Document.update(req.params.id, req.body)
-    if (result) {
-      res.status(200).json({updated: result})
-    } else {
-      res.status(404).json({message: "Record not found"})
-    }
+    res.status(200).json(result)
+    // if (result) {
+    //   res.status(200).json({updated: result})
+    // } else {
+    //   res.status(404).json({message: "Record not found"})
+    // }
   }
   catch(err) {
     res.status(500).json({message: "Internal server error", error: err})

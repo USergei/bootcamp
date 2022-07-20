@@ -16,7 +16,13 @@ const Model = (config) => {
             status_id: values.status_id
         }
 
-        return await knex(config.tableName).insert(insertData)
+        return await knex(config.tableName).insert(insertData, [
+            'title',
+            'content',
+            'project_id',
+            'status_id',
+            'updated_at'
+        ])
     }
 
     const update = async (id, values) => {
@@ -28,7 +34,13 @@ const Model = (config) => {
             updated_at: new Date
         }
         
-        return await knex(config.tableName).where('id', id).update(updatedData)
+        return await knex(config.tableName).where('id', id).update(updatedData, [
+            'title',
+            'content',
+            'project_id',
+            'status_id',
+            'updated_at'
+        ])
     }
 
     return {
