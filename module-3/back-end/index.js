@@ -24,7 +24,6 @@ app.post('/writeDocumentData', async (req, res) => {
   }
 })
 
-//TODO find document by title
 app.get('/selectAllDocuments', async (req, res) => {
   try {
     const result = await Document.getAll()
@@ -35,7 +34,7 @@ app.get('/selectAllDocuments', async (req, res) => {
   }
 })
 
-app.get('/selectDocument/:idOrTitle', async (req, res) => {
+app.get('/selectDocument/:id', async (req, res) => {
   try {
     const result = await Document.findById(req.params.id)
     res.status(200).json({result: result})
