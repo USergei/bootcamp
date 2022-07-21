@@ -30,11 +30,16 @@ const Model = (config) => {
         ])
     }
 
+    const selectByTitle = async title => {
+        return await knex(config.tableName).whereILike('title', `%${title}%`)
+    }
+
     return {
         ...canGetAll(config),
         ...canFindById(config),
         create,
         update,
+        selectByTitle,
         ...canDeleteById(config)
     }
 }

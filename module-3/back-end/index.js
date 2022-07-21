@@ -23,9 +23,37 @@ app.post('/writeDocumentData', async (req, res) => {
     res.status(500).send(err)
   }
 })
-//TODO create select all documents
-//TODO create select document by ID
+
 //TODO find document by title
+app.get('/selectAllDocuments', async (req, res) => {
+  try {
+    const result = await Document.getAll()
+    res.status(200).json({result: result})
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
+app.get('/selectDocument/:idOrTitle', async (req, res) => {
+  try {
+    const result = await Document.findById(req.params.id)
+    res.status(200).json({result: result})
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
+app.get('/searchDocument/:searchstring', async (req, res) => {
+  try {
+    const result = await Document.selectByTitle(req.params.searchstring)
+    res.status(200).json({updated: result})
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
 
 app.put('/updateDocumentData/:id', async (req, res) => {
   try {
