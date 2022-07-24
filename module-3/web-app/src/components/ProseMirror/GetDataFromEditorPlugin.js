@@ -1,13 +1,12 @@
-import {Plugin} from 'prosemirror-state';
-import {updateFromView, getActiveMarks, getAvailableNodeTypes, getAvailableMarks, getHTMLStringFromState} from 'client/features/story-editor/prosemirror/utils.js'
+import {Plugin} from 'prosemirror-state'
 
-export default (dispatchUpdateCallback) => {
+export const GetDataFromEditorPlugin = dispatchUpdateCallback => {
 	return new Plugin({
 		view() {
 			return {
 				update (updatedView) {
-					const json = updatedView.state.toJSON()
-					dispatchUpdateCallback(json)
+					const editorContent = updatedView.state.toJSON()
+					dispatchUpdateCallback(editorContent)	
 				}
 			}
 		}

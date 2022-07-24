@@ -1,7 +1,14 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const app = express()
+const cors = require('cors')
 const {Document} = require('./src/models/document')
+
+const app = express()
+
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}))
 
 app.use(bodyParser.json())
 app.use(express.static(__dirname + '/dist'))
@@ -17,10 +24,10 @@ app.post('/writeDocumentData', async (req, res) => {
       status_id: req.body.status_id,
     }
     const result = await Document.create(document)
-    res.status(200).send(result)
+    res.status(200).json({result: result})
   }
   catch(err) {
-    res.status(500).send(err)
+    res.status(500).json({message: "Internal server error", error: err})
   }
 })
 
