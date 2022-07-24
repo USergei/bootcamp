@@ -27,7 +27,7 @@ async function postData(url = '', data = {}) {
 
 const ProseMirror = () => {
     const [contentState, setEditorState] = useState({})
-    const debouncedContentState = useDebounce(contentState, 500)
+    // const debouncedContentState = useDebounce(contentState, 500)
     // const editorRef = useRef()
     // const contentRef = useRef()
     console.log('contentState', contentState)
