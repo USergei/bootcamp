@@ -10,6 +10,7 @@ const Model = (config) => {
     const create = async document => {
 
         return await knex(config.tableName).insert(document, [
+            'id',
             'title',
             'content',
             'author_id',
