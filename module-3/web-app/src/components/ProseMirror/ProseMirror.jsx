@@ -1,4 +1,5 @@
-import React, {useEffect, useState, useDebounce, useRef} from "react";
+import React, {useEffect, useState, useRef, useMemo} from "react"
+// import { useDebounce } from 'use-debounce'
 import {EditorState} from "prosemirror-state"
 import {EditorView} from "prosemirror-view"
 import {Schema, DOMParser} from "prosemirror-model"
@@ -25,17 +26,34 @@ async function postData(url = '', data = {}) {
     return response.json();
 }
 
+const useDebounce = () => {
+    const [typingTimeout, setTypingTimeout] = useState('');
+  
+    function debounce(func, wait) {
+      clearTimeout(typingTimeout);
+      const timeout = setTimeout(() => {
+        func();
+      }, wait);
+  
+      setTypingTimeout(timeout);
+    }
+  
+    return debounce;
+  }
+
 const ProseMirror = () => {
     const [contentState, setEditorState] = useState({})
-    const debouncedContentState = useDebounce(contentState, 500)
+    const debouncedContentState = useDebounce(contentState, 12000)
+    // const debouncedContentState = useDebounce(contentState, 12000)
     // const editorRef = useRef()
     // const contentRef = useRef()
-    console.log('contentState', contentState)
+    // console.log('debouncedContentState', debouncedContentState)
+    // console.log('contentState', contentState)
     
     const onEditorContentUpdate = documentContent => {
         console.log('documentContent', documentContent)
         const dbData = {
-            "title": "YYYYTT",
+            "title": "OOOOO",
             "content": documentContent,
             "author_id": "authyyyyyorid",
             "project_id": "1",
@@ -43,8 +61,14 @@ const ProseMirror = () => {
         }
         postData('http://localhost:3001/writeDocumentData', dbData)
     }
-// TODO useMemo onEditorContentUpdate
+
+    useMemo(() => {
+        console.log('debouncedContentState', debouncedContentState)
+        // return onEditorContentUpdate(debouncedContentState[0].doc)
+    }, [debouncedContentState])
+
     useEffect(() => {
+        console.log('However')
         const mySchema = new Schema({
             nodes: addListNodes(schema.spec.nodes, "paragraph block*", "block"),
             marks: schema.spec.marks
@@ -58,17 +82,17 @@ const ProseMirror = () => {
                     ...exampleSetup({schema: mySchema})
                 ]
             }),
-            dispatchTransaction(transaction) {
-                console.log("Document size went from", transaction.before.content.size,
-                            "to", transaction.doc.content.size)
+            // dispatchTransaction(transaction) {
+            //     console.log("Document size went from", transaction.before.content.size,
+            //                 "to", transaction.doc.content.size)
                 
-                let newState = window.view.state.apply(transaction)
-                window.view.updateState(newState)
-                let content = window.view.state.toJSON().doc
-                console.log({content}) 
-            }
+            //     let newState = window.view.state.apply(transaction)
+            //     window.view.updateState(newState)
+            //     let content = window.view.state.toJSON().doc
+            //     console.log({content}) 
+            // }
         })
-    })
+    }, [])
 
     return (
         <div className="App">
