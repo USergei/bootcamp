@@ -51,6 +51,8 @@
     "amazon-cognito-identity-js": "^5.2.9",
     "classnames": "^2.3.1",
     "react-inlinesvg": "^3.0.0",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "redux": "^4.2.0",
+    "use-debounce": "^8.0.2"
   }
 }
