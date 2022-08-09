@@ -9,7 +9,7 @@
   - [Screenshots](#screenshots)
 
 ## General info
-It is an educational project aimed to studying JS. Here we connected google-translate-api in order to translate content to any language and used Amazon SES to send emails.   
+It is an educational project aimed to studying JS. Here we connected "google-translate-api" in order to translate content to any language. Also it utilizes "Amazon SES" to answer messages which were sent with the contact form. When a user leaves his message and email, it is being saved in a database and automatically populated to the admin page where it can be processed.     
 	
 ## Technologies
 Project was created with:
