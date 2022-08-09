@@ -31,6 +31,5 @@ $ docker-compose up
 ## Screenshots
 ![Dropdown with languages list](./screenshots/dropdown_lang_list.png)
 ![Original english](./screenshots/original_eng.png)
-![Translated to some language 1](./screenshots/translated_to_lang1.png)
-![Translated to some language 2](./screenshots/translated_to_lang2.png)
-![Contact form](./screenshots/dropdown_lang_list.png)
+![Translated to some language](./screenshots/translated_to_lang1.png)
+![Contact form](./screenshots/contact_form.png)
