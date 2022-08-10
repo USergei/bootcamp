@@ -3,23 +3,23 @@
 ## Table of contents
 - [Fashion](#fashion)
   - [Table of contents](#table-of-contents)
-  - [General info](#general-info)
+  - [Info](#info)
   - [Technologies](#technologies)
   - [Setup](#setup)
   - [Screenshots](#screenshots)
 
-## General info
-It is an educational project aimed to studying JS. Here we connected "google-translate-api" in order to translate content to any language. Also it utilizes "Amazon SES" to answer messages which were sent with the contact form. When a user leaves his message and email, it is being saved in a database and automatically populated to the admin page where it can be processed.     
+## Info
+It is an educational project, which was started with **HTML+SCSS** and as result a landing page was created. After that we breathed life in it with vanilla **JS**(to feel the taste of the old web dev.), **Node** plus **Express** as our backend and added some **EJS**. Then we decided to explore some api and here we connected **google-translate-api** in order to translate content to any language. Also we observed necessity of database and some public email service, as parts of functionality of a contact form and stopped on **MySQL** and **AWS SES**. Firstly, with an ajax request the data from the contact form is being saved in a database. Secondly, at an admin page that data automatically populated from the database and displayed in a table. Finally, it can be answered or deleted.
 	
 ## Technologies
 Project was created with:
-* Node.js: 16.15.1
-* MySQL: 2.18.1
-* express: 4.17.3
-* ejs: 3.1.6
-* google-cloud/translate: 6.3.1
-* vitalets/google-translate-api: 8.0.0
-* aws-sdk: 2.1110.0
+* Node.js
+* MySQL
+* express
+* ejs
+* google-cloud/translate
+* vitalets/google-translate-api
+* aws-sdk
 	
 ## Setup
 To run this project:
@@ -29,7 +29,11 @@ $ docker-compose -f docker-compose.builder.yml run --rm install
 $ docker-compose up
 ```
 ## Screenshots
+*Dropdown with languages list*
 ![Dropdown with languages list](./screenshots/dropdown_lang_list.png)
-![Original english](./screenshots/original_eng.png)
-![Translated to some language](./screenshots/translated_to_lang1.png)
+*Original English*
+![Original English](./screenshots/original_eng.png)
+*Translated to Amharic*
+![Translated to Amharic](./screenshots/translated_to_lang1.png)
+*Contact form*
 ![Contact form](./screenshots/contact_form.png)
