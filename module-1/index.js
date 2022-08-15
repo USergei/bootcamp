@@ -55,8 +55,8 @@ const {Translate} = require('@google-cloud/translate').v2;
 //  Creates a client
 const translate = new Translate(
   {
-  projectId: 'proven-dryad-336215', //eg my-project-0o0o0o0o'
-  keyFilename: './proven-dryad-336215-e3afa0dbd68d.json' //eg my-project-0fwewexyz.json
+  projectId: 'alert-flames-347314', //eg my-project-0o0o0o0o'
+  keyFilename: './alert-flames-347314-d118c34616b9.json' //eg my-project-0fwewexyz.json
   }
 );
 
@@ -87,6 +87,7 @@ app.get('/', async (req, res) =>{
 });
 
 app.get('/getContactRequest/:key?', async (req, res) =>{
+  const langList = await listLanguagesWithTarget()
   const key = req.params.key
   let queryString = "SELECT * FROM contacts"
   if (key) {
@@ -98,7 +99,7 @@ app.get('/getContactRequest/:key?', async (req, res) =>{
       return
     }
     data = JSON.parse(JSON.stringify(result))
-    res.render('contacts-admin.ejs', {data, PAGE_CONTENT})
+    res.render('contacts-admin.ejs', {langList, data, PAGE_CONTENT})
   });  
 });
 

@@ -18,7 +18,6 @@ Project was created with:
 * express
 * ejs
 * google-cloud/translate
-* vitalets/google-translate-api
 * aws-sdk
 	
 ## Setup
@@ -37,3 +36,11 @@ $ docker-compose up
 ![Translated to Amharic](./screenshots/translated_to_lang1.png)
 *Contact form*
 ![Contact form](./screenshots/contact_form.png)
+*Admin page - an overall view*
+![Admin page - an overall view](./screenshots/admin_page_1.png)
+*Admin page with an opened response form*
+![Admin page with an opened response form](./screenshots/admin_page_2.png)
+*Admin page - a response has been sent*
+![Admin page - a response has been sent](./screenshots/admin_page_3.png)
+*The response was delivered*
+![The response was delivered](./screenshots/response_from_admin_page.png)
