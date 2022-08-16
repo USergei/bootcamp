@@ -1,13 +1,13 @@
-import React, {useEffect, useState, useDebounce, useRef} from "react";
+import React, {useEffect, useState, useRef, useMemo} from "react"
 import {EditorState} from "prosemirror-state"
 import {EditorView} from "prosemirror-view"
 import {Schema, DOMParser} from "prosemirror-model"
 import {schema} from "prosemirror-schema-basic"
 import {addListNodes} from "prosemirror-schema-list"
 import {exampleSetup} from "prosemirror-example-setup"
+// import {useDebounce} from "use-debounce"
 import {GetDataFromEditorPlugin} from "./GetDataFromEditorPlugin"
 import "./ProseMirror.css"
-
 
 async function postData(url = '', data = {}) {
     const response = await fetch(url, {
@@ -43,7 +43,11 @@ const ProseMirror = () => {
         }
         postData('http://localhost:3001/writeDocumentData', dbData)
     }
-// TODO useMemo onEditorContentUpdate
+
+    useMemo(() => {
+        return onEditorContentUpdate(contentState)
+    }, [contentState])
+
     useEffect(() => {
         const mySchema = new Schema({
             nodes: addListNodes(schema.spec.nodes, "paragraph block*", "block"),
@@ -65,10 +69,10 @@ const ProseMirror = () => {
                 let newState = window.view.state.apply(transaction)
                 window.view.updateState(newState)
                 let content = window.view.state.toJSON().doc
-                console.log({content}) 
+                console.log('content', content) 
             }
         })
-    })
+    }, [])
 
     return (
         <div className="App">
