@@ -9,6 +9,11 @@ import {exampleSetup} from "prosemirror-example-setup"
 import {GetDataFromEditorPlugin} from "./GetDataFromEditorPlugin"
 import "./ProseMirror.css"
 
+// Redux
+import { useDispatch, useSelector } from 'react-redux'
+import { saveDocument } from '../../store/actions/documentActions'
+import { getDocumentInEdit } from '../../store/selectors'
+
 async function postData(url = '', data = {}) {
     const response = await fetch(url, {
         method: 'POST',
@@ -26,6 +31,10 @@ async function postData(url = '', data = {}) {
 }
 
 const ProseMirror = () => {
+    //redux
+    const dispatch = useDispatch()
+    const documentInEdit = useSelector(getDocumentInEdit)
+    //end redux
     const [contentState, setEditorState] = useState({})
     // const debouncedContentState = useDebounce(contentState, 500)
     // const editorRef = useRef()
@@ -49,6 +58,17 @@ const ProseMirror = () => {
     }, [contentState])
 
     useEffect(() => {
+        // redux
+        dispatch(saveDocument({document: {
+            id: null,
+            title: '',
+            content: {},
+            author_id: null,
+            project_id: null,
+            status_id: null,
+            updated_at: null
+        }}))
+        // end redux
         const mySchema = new Schema({
             nodes: addListNodes(schema.spec.nodes, "paragraph block*", "block"),
             marks: schema.spec.marks
@@ -62,15 +82,6 @@ const ProseMirror = () => {
                     ...exampleSetup({schema: mySchema})
                 ]
             }),
-            dispatchTransaction(transaction) {
-                console.log("Document size went from", transaction.before.content.size,
-                            "to", transaction.doc.content.size)
-                
-                let newState = window.view.state.apply(transaction)
-                window.view.updateState(newState)
-                let content = window.view.state.toJSON().doc
-                console.log('content', content) 
-            }
         })
     }, [])
 
