@@ -5,7 +5,7 @@ import style from "./ForgotPassword.module.scss"
 import mainStyles from "../../App.module.scss"
 
 const ForgotPassword = () => {
-    const [stage, setStage] = useState(1) // 1 = email stage, 2 = code stage
+    const [stage, setStage] = useState(1)
     const [email, setEmail] = useState("")
     const [code, setCode] = useState("")
     const [password, setPassword] = useState("")
