@@ -1,0 +1,1 @@
+export const getDocumentInEdit = state => state.documentReducer.documentInEdit
