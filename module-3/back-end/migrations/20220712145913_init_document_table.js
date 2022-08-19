@@ -4,6 +4,7 @@
  */
 exports.up = function(knex) {
     return knex.schema.createTable('document', function(table) {
+        table.increments('id').primary()
         table.string('title').notNull()
         table.json('content').nullable()
         table.string('author_id').notNull()

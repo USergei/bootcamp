@@ -7,7 +7,7 @@ exports.up = function(knex) {
         table.increments('id').primary()
         table.integer('document_id').unsigned().notNull()
         table.foreign('document_id').references('document.id').onDelete('CASCADE')
-        table.string('project_id').notNull()
+        table.integer('project_id').notNull()
         table.foreign('project_id').references('project.id').onDelete('CASCADE')        
     })
 };

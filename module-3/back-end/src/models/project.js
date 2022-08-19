@@ -10,10 +10,8 @@ const Model = (config) => {
     const create = async project => {
 
         return await knex(config.tableName).insert(project, [
-            'id',
             'title',
-            'description',
-            'updated_at'
+            'description'
         ])
     }
 

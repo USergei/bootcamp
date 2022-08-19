@@ -2,6 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const {Document} = require('./src/models/document')
+const {Project} = require('./src/models/project')
+
 
 const app = express()
 
@@ -14,7 +16,7 @@ app.use(bodyParser.json())
 app.use(express.static(__dirname + '/dist'))
 app.use(express.urlencoded({extended:true}))
 
-app.post('/writeDocumentData', async (req, res) => {
+app.post('/createDocument', async (req, res) => {
   try {
     document = {
       title: req.body.title,
@@ -61,7 +63,7 @@ app.get('/searchDocument/:searchstring', async (req, res) => {
   }
 })
 
-app.put('/updateDocumentData/:id', async (req, res) => {
+app.put('/updateDocument/:id', async (req, res) => {
   try {
     document = {
       id: req.params.id,
@@ -84,6 +86,60 @@ app.put('/updateDocumentData/:id', async (req, res) => {
     res.status(500).json({message: "Internal server error", error: err})
   }
 })
+
+app.post('/createProject', async (req, res) => {
+  try {
+    project = {
+      title: req.body.title,
+      description: req.body.description
+    }
+    const result = await Project.create(project)
+    res.status(200).json({result: result})
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
+app.put('/updateProject/:id', async (req, res) => {
+  console.log('REQ', req.params);
+  try {
+    project = {
+      id: req.params.id,
+      title: req.body.title,
+      description: req.body.description,
+      updated_at: new Date
+    }
+    
+    const result = await Project.update(project)
+    
+    if (result) {
+      res.status(200).json({updated: result})
+    } else {
+      res.status(404).json({message: "Record not found"})
+    }
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
+app.delete('/deleteProject/:id', async (req, res) => {
+  try {
+    const id = req.params.id
+    const result = await Project.delete(id)
+    
+    if (result) {
+      res.status(200).json({updated: result})
+    } else {
+      res.status(404).json({message: "Record not found"})
+    }
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
 
 const PORT = process.env.PORT || 3001
 
