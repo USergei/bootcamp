@@ -4,12 +4,9 @@
  */
 exports.up = function(knex) {
     return knex.schema.createTable('document', function(table) {
-        table.increments('id').primary()
         table.string('title').notNull()
         table.json('content').nullable()
         table.string('author_id').notNull()
-        table.integer('project_id').unsigned().notNull()
-        table.foreign('project_id').references('project.id').onDelete('CASCADE')
         table.integer('status_id').unsigned()
         table.foreign('status_id').references('status.id').onDelete('SET NULL')
         table.timestamp('created_at').defaultTo(knex.fn.now())
