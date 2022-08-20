@@ -2,6 +2,8 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const {Document} = require('./src/models/document')
+const {Project} = require('./src/models/project')
+
 
 const app = express()
 
@@ -14,7 +16,7 @@ app.use(bodyParser.json())
 app.use(express.static(__dirname + '/dist'))
 app.use(express.urlencoded({extended:true}))
 
-app.post('/writeDocumentData', async (req, res) => {
+app.post('/createDocument', async (req, res) => {
   try {
     document = {
       title: req.body.title,
@@ -24,7 +26,7 @@ app.post('/writeDocumentData', async (req, res) => {
       status_id: req.body.status_id,
     }
     const result = await Document.create(document)
-    res.status(200).json({result: result})
+    res.status(200).json(result)
   }
   catch(err) {
     res.status(500).json({message: "Internal server error", error: err})
@@ -34,7 +36,7 @@ app.post('/writeDocumentData', async (req, res) => {
 app.get('/selectAllDocuments', async (req, res) => {
   try {
     const result = await Document.getAll()
-    res.status(200).json({result: result})
+    res.status(200).json(result)
   }
   catch(err) {
     res.status(500).json({message: "Internal server error", error: err})
@@ -44,7 +46,7 @@ app.get('/selectAllDocuments', async (req, res) => {
 app.get('/selectDocument/:id', async (req, res) => {
   try {
     const result = await Document.findById(req.params.id)
-    res.status(200).json({result: result})
+    res.status(200).json({result)
   }
   catch(err) {
     res.status(500).json({message: "Internal server error", error: err})
@@ -54,14 +56,14 @@ app.get('/selectDocument/:id', async (req, res) => {
 app.get('/searchDocument/:searchstring', async (req, res) => {
   try {
     const result = await Document.selectByTitle(req.params.searchstring)
-    res.status(200).json({updated: result})
+    res.status(200).json(result)
   }
   catch(err) {
     res.status(500).json({message: "Internal server error", error: err})
   }
 })
 
-app.put('/updateDocumentData/:id', async (req, res) => {
+app.put('/updateDocument/:id', async (req, res) => {
   try {
     document = {
       id: req.params.id,
@@ -75,7 +77,7 @@ app.put('/updateDocumentData/:id', async (req, res) => {
     const result = await Document.update(document)
     
     if (result) {
-      res.status(200).json({updated: result})
+      res.status(200).json(result)
     } else {
       res.status(404).json({message: "Record not found"})
     }
@@ -84,6 +86,59 @@ app.put('/updateDocumentData/:id', async (req, res) => {
     res.status(500).json({message: "Internal server error", error: err})
   }
 })
+
+app.post('/createProject', async (req, res) => {
+  try {
+    const projectData = {
+      title: req.body.title,
+      description: req.body.description
+    }
+    const result = await Project.create(projectData)
+    res.status(200).json(result)
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
+app.put('/updateProject/:id', async (req, res) => {
+  try {
+    const projectData = {
+      id: req.params.id,
+      title: req.body.title,
+      description: req.body.description,
+      updated_at: new Date
+    }
+    
+    const result = await Project.update(projectData)
+    
+    if (result) {
+      res.status(200).json(result)
+    } else {
+      res.status(404).json({message: "Record not found"})
+    }
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
+app.delete('/deleteProject/:id', async (req, res) => {
+  try {
+    const id = req.params.id
+    const result = await Project.delete(id)
+    
+    if (result) {
+      res.status(200).json(result)
+    } else {
+      res.status(404).json({message: "Record not found"})
+    }
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
 
 const PORT = process.env.PORT || 3001
 

@@ -13,6 +13,7 @@ const Model = (config) => {
             'id',
             'title',
             'description',
+            'created_at',
             'updated_at'
         ])
     }
@@ -20,8 +21,10 @@ const Model = (config) => {
     const update = async project => {
         
         return await knex(config.tableName).where('id', project.id).update(project, [
+            'id',
             'title',
             'description',
+            'created_at',
             'updated_at'
         ])
     }
