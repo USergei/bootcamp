@@ -10,10 +10,10 @@ export const saveDocument = document => {
           type: "SAVE_DOCUMENT",
           payload: {document: savedDocument}
         })
-    } catch (err) {
+    } catch (error) {
       dispatch({
         type: "SAVE_DOCUMENT_REJECTED",
-        payload: err
+        payload: {error}
       })
     }
   }

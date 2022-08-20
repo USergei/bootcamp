@@ -14,61 +14,30 @@ import { useDispatch, useSelector } from 'react-redux'
 import { saveDocument } from '../../store/actions/documentActions'
 import { getDocumentInEdit } from '../../store/selectors'
 
-async function postData(url = '', data = {}) {
-    const response = await fetch(url, {
-        method: 'POST',
-        mode: 'cors',
-        cache: 'no-cache',
-        credentials: 'same-origin',
-        headers: {
-        'Content-Type': 'application/json'
-        },
-        redirect: 'follow',
-        referrerPolicy: 'no-referrer',
-        body: JSON.stringify(data)
-    });
-    return response.json();
-}
-
 const ProseMirror = () => {
-    //redux
     const dispatch = useDispatch()
     const documentInEdit = useSelector(getDocumentInEdit)
-    //end redux
-    const [contentState, setEditorState] = useState({})
-    // const debouncedContentState = useDebounce(contentState, 500)
+    const [editorState, setEditorState] = useState({})
+    // const eebouncedEditorState = useDebounce(editorState, 500)
     // const editorRef = useRef()
     // const contentRef = useRef()
-    console.log('contentState', contentState)
     
     const onEditorContentUpdate = documentContent => {
-        console.log('documentContent', documentContent)
-        const dbData = {
-            "title": "YYYYTT",
+        const documentData = {
+            "title": "YYYYT",
             "content": documentContent,
             "author_id": "authyyyyyorid",
-            "project_id": "1",
-            "status_id": "1"
+            "status_id": 1
         }
-        postData('http://localhost:3001/writeDocumentData', dbData)
+
+        dispatch(saveDocument(documentData))
     }
 
     useMemo(() => {
-        return onEditorContentUpdate(contentState)
-    }, [contentState])
+        return onEditorContentUpdate(editorState)
+    }, [editorState])
 
     useEffect(() => {
-        // redux
-        dispatch(saveDocument({document: {
-            id: null,
-            title: '',
-            content: {},
-            author_id: null,
-            project_id: null,
-            status_id: null,
-            updated_at: null
-        }}))
-        // end redux
         const mySchema = new Schema({
             nodes: addListNodes(schema.spec.nodes, "paragraph block*", "block"),
             marks: schema.spec.marks

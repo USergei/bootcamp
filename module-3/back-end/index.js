@@ -22,8 +22,7 @@ app.post('/createDocument', async (req, res) => {
       title: req.body.title,
       content: req.body.content,
       author_id: req.body.author_id,
-      project_id: req.body.project_id,
-      status_id: req.body.status_id,
+      status_id: req.body.status_id
     }
     const result = await Document.create(document)
     res.status(200).json(result)
@@ -46,7 +45,7 @@ app.get('/selectAllDocuments', async (req, res) => {
 app.get('/selectDocument/:id', async (req, res) => {
   try {
     const result = await Document.findById(req.params.id)
-    res.status(200).json({result)
+    res.status(200).json(result)
   }
   catch(err) {
     res.status(500).json({message: "Internal server error", error: err})
