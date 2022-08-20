@@ -10,16 +10,21 @@ const Model = (config) => {
     const create = async project => {
 
         return await knex(config.tableName).insert(project, [
+            'id',
             'title',
-            'description'
+            'description',
+            'created_at',
+            'updated_at'
         ])
     }
 
     const update = async project => {
         
         return await knex(config.tableName).where('id', project.id).update(project, [
+            'id',
             'title',
             'description',
+            'created_at',
             'updated_at'
         ])
     }
