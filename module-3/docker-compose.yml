@@ -1,0 +1,43 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    volumes:
+      - ./back-end/db/:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: 123123
+    ports: 
+      - 5432:5432  
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+    depends_on:
+      - "db"  
+
+  back-end:
+    image: node:13
+    volumes:
+      - ./back-end:/usr/src/service
+    working_dir: /usr/src/service
+    command: npm run dev-server
+    ports:
+      - 3001:3001
+    depends_on:
+      - "db"  
+
+  front-end:
+    image: node:13
+    volumes:
+      - ./web-app:/usr/src/service
+    working_dir: /usr/src/service
+    command: npm run start
+    ports:
+      - 80:3000
+    depends_on:
+      - "db"
+      - "back-end"    

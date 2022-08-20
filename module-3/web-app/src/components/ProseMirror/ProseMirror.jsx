@@ -43,14 +43,14 @@ const ProseMirror = () => {
     
     const onEditorContentUpdate = documentContent => {
         console.log('documentContent', documentContent)
-        const dbData = {
-            "title": "YYYYTT",
+        const documentData = {
+            "title": "YYYYT",
             "content": documentContent,
             "author_id": "authyyyyyorid",
             "project_id": "1",
             "status_id": "1"
         }
-        postData('http://localhost:3001/writeDocumentData', dbData)
+        postData('http://localhost:3001/createDocument', documentData)
     }
 
     useMemo(() => {
