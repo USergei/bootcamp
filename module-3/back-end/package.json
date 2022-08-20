@@ -9,7 +9,9 @@
   "main": "index.js",
   "scripts": {
     "init-db": "node init-db.js",
-    "web-service": "ENVIRONMENT=development nodemon --legacy-watch index.js"
+    "dev-server": "ENVIRONMENT=development nodemon --legacy-watch index.js",
+    "migrations": "npx knex migrate:latest",
+    "seed-db": "npx knex seed:run"
   },
   "author": "",
   "license": "ISC",

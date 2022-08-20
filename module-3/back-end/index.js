@@ -8,7 +8,7 @@ const {Project} = require('./src/models/project')
 const app = express()
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost',
   credentials: true
 }))
 
@@ -46,7 +46,7 @@ app.get('/selectAllDocuments', async (req, res) => {
 app.get('/selectDocument/:id', async (req, res) => {
   try {
     const result = await Document.findById(req.params.id)
-    res.status(200).json({result)
+    res.status(200).json(result)
   }
   catch(err) {
     res.status(500).json({message: "Internal server error", error: err})
