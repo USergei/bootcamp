@@ -39,10 +39,8 @@ const ProseMirror = () => {
     // const debouncedContentState = useDebounce(contentState, 500)
     // const editorRef = useRef()
     // const contentRef = useRef()
-    console.log('contentState', contentState)
     
     const onEditorContentUpdate = documentContent => {
-        console.log('documentContent', documentContent)
         const documentData = {
             "title": "YYYYT",
             "content": documentContent,

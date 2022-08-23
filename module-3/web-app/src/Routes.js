@@ -6,6 +6,7 @@ import Document from "./components/Pages/Document"
 import LoginPage from "./components/Pages/LoginPage"
 import Registration from "./components/Pages/Registration"
 import NotFound from "./components/Pages/NotFound"
+import Projects from "./components/Pages/Projects"
 import UnauthenticatedRoute from "./components/UnauthenticatedRoute"
 import AuthenticatedRoute from "./components/AuthenticatedRoute"
 import ForgotPassword from "./components/ForgotPassword"
@@ -53,6 +54,16 @@ const Links = () => {
             <AuthenticatedRoute>
               <Main>
                 <Document/>
+              </Main>
+            </AuthenticatedRoute>
+          }
+        /> 
+        <Route
+          path="/projects"
+          element={
+            <AuthenticatedRoute>
+              <Main>
+                <Projects/>
               </Main>
             </AuthenticatedRoute>
           }

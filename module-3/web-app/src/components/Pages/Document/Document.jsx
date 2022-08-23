@@ -2,7 +2,6 @@ import React from "react"
 import style from "./Document.module.scss"
 import Editor from "../../Editor"
 
-
 const Document = () => {
     return (
         <div className={style.editorContainer}>

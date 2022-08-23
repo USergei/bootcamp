@@ -8,7 +8,7 @@ const {Project} = require('./src/models/project')
 const app = express()
 
 app.use(cors({
-  origin: 'http://localhost',
+  origin: 'http://localhost:3000',
   credentials: true
 }))
 
@@ -133,6 +133,26 @@ app.delete('/deleteProject/:id', async (req, res) => {
     } else {
       res.status(404).json({message: "Record not found"})
     }
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
+app.get('/selectAllProjects', async (req, res) => {
+  try {
+    const result = await Project.getAll()
+    res.status(200).json(result)
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
+app.get('/selectProject/:id', async (req, res) => {
+  try {
+    const result = await Project.findById(req.params.id)
+    res.status(200).json(result)
   }
   catch(err) {
     res.status(500).json({message: "Internal server error", error: err})
