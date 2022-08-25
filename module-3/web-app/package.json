@@ -52,6 +52,7 @@
   },
   "devDependencies": {
     "amazon-cognito-identity-js": "^5.2.9",
+    "axios": "^0.27.2",
     "classnames": "^2.3.1",
     "react-inlinesvg": "^3.0.0",
     "react-router-dom": "^6.3.0",
