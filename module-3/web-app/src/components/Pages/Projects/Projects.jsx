@@ -9,12 +9,15 @@ const Projects = () => {
         axios.get("http://localhost:3001/selectAllProjects")
             .then(res => {
                 setProjects(res.data)
+                console.log({projects: res.data})
             })
     }, [])
       
     return (
         <div> 
-            {projects.title}
+            {projects.length > 0 && projects.map((project, i) => (
+                <p key={i}>{project.title}</p>
+            ))}
         </div>
     )
 }
