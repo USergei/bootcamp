@@ -1,8 +1,14 @@
 import {apiHostUrl} from '../configs/connectionVariables'
 
-async function postData(url = '', data = {}) {
+const postMethods = {
+    post: 'POST',
+    put: 'PUT',
+    get: 'GET'
+}
+
+async function postData(url = '', data = {}, method = 'post') {
     const response = await fetch(url, {
-        method: 'POST',
+        method: postMethods[method],
         mode: 'cors',
         cache: 'no-cache',
         credentials: 'same-origin',
@@ -16,5 +22,13 @@ async function postData(url = '', data = {}) {
     return response.json();
 }
 
-export const saveDocument = async documentData => 
-    postData(`${apiHostUrl}/createDocument`, documentData)
+export const saveDocument = async (documentData, id = null) => {
+    console.log("***********", id)
+    if (id) {
+        console.log("iffffffffffffffffffffff")
+        return postData(`${apiHostUrl}/updateDocument/${id}`, documentData, 'put')
+    } else {
+        console.log("elseeeeeeeeeeeeeeeeeeeeeee")
+        return postData(`${apiHostUrl}/createDocument`, documentData)
+    }
+}   

@@ -17,12 +17,14 @@ import { getDocumentInEdit } from '../../store/selectors'
 const ProseMirror = () => {
     const dispatch = useDispatch()
     const documentInEdit = useSelector(getDocumentInEdit)
+    console.log("Document in edit prosemirror component", documentInEdit)
     const [editorState, setEditorState] = useState({})
     // const eebouncedEditorState = useDebounce(editorState, 500)
     // const editorRef = useRef()
     // const contentRef = useRef()
     
     const onEditorContentUpdate = documentContent => {
+        console.log("Document in edit prosemirror component: onEditorContentUpdate", documentInEdit)
         const documentData = {
             "title": "YYYYT",
             "content": documentContent,
@@ -30,7 +32,7 @@ const ProseMirror = () => {
             "status_id": 1
         }
 
-        dispatch(saveDocument(documentData))
+        dispatch(saveDocument(documentData, documentInEdit.id))
     }
 
     useMemo(() => {
