@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react"
 import style from "./Projects.module.scss"
 
-//TODO
+//TODO in progress projects catalogue page
 const Projects = () => {
     const [projects, setProjects] = useState('')
    
@@ -17,9 +17,14 @@ const Projects = () => {
     }, [])
      
     return (
-        <div> 
+        <div className={style.container}> 
             {projects.length > 0 && projects.map((project, i) => (
-                <p key={i}>{project.title}</p> 
+                <div className={style.project} key={i}>
+                    <div className={style.title}>{project.title}</div> 
+                    <div>{project.description}</div> 
+                    <div>Created: {project.created_at}</div> 
+                    <div>Updated: {project.updated_at}</div> 
+                </div>
             ))}
         </div>   
     )

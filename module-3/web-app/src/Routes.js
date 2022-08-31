@@ -2,7 +2,8 @@ import React from "react"
 import {Route, Routes} from "react-router-dom"
 import Main from "./components/Main"
 import Home from "./components/Home"
-import Document from "./components/Pages/Document"
+import Editor from "./components/Pages/Editor"
+import Documents from "./components/Pages/Documents"
 import LoginPage from "./components/Pages/LoginPage"
 import Registration from "./components/Pages/Registration"
 import NotFound from "./components/Pages/NotFound"
@@ -49,11 +50,21 @@ const Links = () => {
           }
         />
         <Route
-          path="/document"
+          path="/editor"
           element={
             <AuthenticatedRoute>
               <Main>
-                <Document/>
+                <Editor/>
+              </Main>
+            </AuthenticatedRoute>
+          }
+        /> 
+        <Route
+          path="/documents"
+          element={
+            <AuthenticatedRoute>
+              <Main>
+                <Documents/>
               </Main>
             </AuthenticatedRoute>
           }
