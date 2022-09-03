@@ -3,6 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const {Document} = require('./src/models/document')
 const {Project} = require('./src/models/project')
+const {projectDocuments} = require('./src/models/projectDocuments')
 
 
 const app = express()
@@ -36,6 +37,16 @@ app.post('/createDocument', async (req, res) => {
 app.get('/selectAllDocuments', async (req, res) => {
   try {
     const result = await Document.getAll()
+    res.status(200).json(result)
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
+app.get('/selectAllDocuments/:projectId', async (req, res) => {
+  try {
+    const result = await projectDocuments.findById(req.params.id)
     res.status(200).json(result)
   }
   catch(err) {
