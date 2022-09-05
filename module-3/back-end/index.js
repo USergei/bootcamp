@@ -3,8 +3,6 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const {Document} = require('./src/models/document')
 const {Project} = require('./src/models/project')
-const {projectDocuments} = require('./src/models/projectDocuments')
-
 
 const app = express()
 
@@ -46,7 +44,7 @@ app.get('/selectAllDocuments', async (req, res) => {
 
 app.get('/selectAllDocuments/:projectId', async (req, res) => {
   try {
-    const result = await projectDocuments.findById(req.params.id)
+    const result = await Document.selectAllDocumentsByProject(req.params.projectId)
     res.status(200).json(result)
   }
   catch(err) {

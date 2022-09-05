@@ -7,8 +7,6 @@ const Documents = () => {
     const [documents, setDocuments] = useState('')
     const [searchParams, setSearchParams] = useSearchParams()
     const projectId = searchParams.get('projectid')
-
-    console.log({projectId})
    
     useEffect(() => {
         fetch("http://localhost:3001/selectAllDocuments/")

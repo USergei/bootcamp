@@ -65,15 +65,33 @@ const Model = (config) => {
         // TODO add joins
         return await knex(config.tableName).whereILike('title', `%${title}%`)
     }
+   
+    const selectAllDocumentsByProject = async projectId => {
+        const documents = await knex.select(
+            'document.id as id',
+            'document.title as title',
+            'document.content as content',
+            'document.author_id as authorId',
+            'document.status_id as statusId',
+            'document.updated_at as updatedAt',
+            'project_documents.document_id as documentId',
+            'project_documents.project_id as projectId'
+        )
+        .from(config.tableName)
+        .where({'project_documents.project_id': projectId})
+        .leftJoin('project_documents', {'document.id': 'project_documents.document_id'})
 
-    // TODO add selectAll with joins 
-    // TODO add selectById with joins 
+        return documents
+    }
 
+     // TODO add selectAll with joins 
+    
     return {
         create,
         update,
         selectByTitle,
-        ...canDeleteById(config)
+        ...canDeleteById(config),
+        selectAllDocumentsByProject
     }
 }
 
