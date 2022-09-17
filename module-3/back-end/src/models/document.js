@@ -22,8 +22,10 @@ const Model = (config) => {
     const update = async document => {
         
         return await knex(config.tableName).where('id', document.id).update(document, [
+            'id',
             'title',
             'content',
+            'author_id',
             'status_id',
             'updated_at'
         ])

@@ -1,15 +1,13 @@
-import React, {useEffect, useState, useRef, useMemo} from "react"
+import React, {useEffect, useState} from "react"
 import {EditorState} from "prosemirror-state"
 import {EditorView} from "prosemirror-view"
 import {Schema, DOMParser} from "prosemirror-model"
 import {schema} from "prosemirror-schema-basic"
 import {addListNodes} from "prosemirror-schema-list"
 import {exampleSetup} from "prosemirror-example-setup"
-// import {useDebounce} from "use-debounce"
 import {GetDataFromEditorPlugin} from "./GetDataFromEditorPlugin"
 import "./ProseMirror.css"
-
-// Redux
+import { useDebouncedEffect } from "../../../src/reactCustomHooks/useDebouncedEffect"
 import { useDispatch, useSelector } from 'react-redux'
 import { saveDocument } from '../../store/actions/documentActions'
 import { getDocumentInEdit } from '../../store/selectors'
@@ -17,27 +15,20 @@ import { getDocumentInEdit } from '../../store/selectors'
 const ProseMirror = () => {
     const dispatch = useDispatch()
     const documentInEdit = useSelector(getDocumentInEdit)
-    console.log("Document in edit prosemirror component", documentInEdit)
     const [editorState, setEditorState] = useState({})
-    // const eebouncedEditorState = useDebounce(editorState, 500)
-    // const editorRef = useRef()
-    // const contentRef = useRef()
-    
+
     const onEditorContentUpdate = documentContent => {
-        console.log("Document in edit prosemirror component: onEditorContentUpdate", documentInEdit)
         const documentData = {
             "title": "YYYYT",
             "content": documentContent,
             "author_id": "authyyyyyorid",
             "status_id": 1
         }
-
+        
         dispatch(saveDocument(documentData, documentInEdit.id))
     }
-
-    useMemo(() => {
-        return onEditorContentUpdate(editorState)
-    }, [editorState])
+    
+    useDebouncedEffect(() => onEditorContentUpdate(editorState), [editorState], 1000)
 
     useEffect(() => {
         const mySchema = new Schema({
@@ -48,7 +39,6 @@ const ProseMirror = () => {
             state: EditorState.create({
                 doc: DOMParser.fromSchema(mySchema).parse(document.querySelector("#content")),
                 plugins: [
-                    // GetDataFromEditorPlugin(onEditorContentUpdate),
                     GetDataFromEditorPlugin(setEditorState),
                     ...exampleSetup({schema: mySchema})
                 ]

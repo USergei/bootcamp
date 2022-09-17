@@ -23,12 +23,9 @@ async function postData(url = '', data = {}, method = 'post') {
 }
 
 export const saveDocument = async (documentData, id = null) => {
-    console.log("***********", id)
     if (id) {
-        console.log("iffffffffffffffffffffff")
         return postData(`${apiHostUrl}/updateDocument/${id}`, documentData, 'put')
     } else {
-        console.log("elseeeeeeeeeeeeeeeeeeeeeee")
         return postData(`${apiHostUrl}/createDocument`, documentData)
     }
 }   
