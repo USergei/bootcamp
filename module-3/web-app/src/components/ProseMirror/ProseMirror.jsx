@@ -11,6 +11,7 @@ import { useDebouncedEffect } from "../../../src/reactCustomHooks/useDebouncedEf
 import { useDispatch, useSelector } from 'react-redux'
 import { saveDocument } from '../../store/actions/documentActions'
 import { getDocumentInEdit } from '../../store/selectors'
+import { useMemo } from "react"
 
 const ProseMirror = () => {
     const dispatch = useDispatch()
@@ -28,9 +29,14 @@ const ProseMirror = () => {
         dispatch(saveDocument(documentData, documentInEdit.id))
     }
     
+    useMemo(() => {
+        //TODO Push to history API if id is not empty
+    }, [documentInEdit.id])
+
     useDebouncedEffect(() => onEditorContentUpdate(editorState), [editorState], 1000)
 
     useEffect(() => {
+        //TODO If documentInEdit.id is not empty read editor initial state from database
         const mySchema = new Schema({
             nodes: addListNodes(schema.spec.nodes, "paragraph block*", "block"),
             marks: schema.spec.marks
