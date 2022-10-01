@@ -4,7 +4,6 @@ const cors = require('cors')
 const {Document} = require('./src/models/document')
 const {Project} = require('./src/models/project')
 
-
 const app = express()
 
 app.use(cors({
@@ -35,6 +34,16 @@ app.post('/createDocument', async (req, res) => {
 app.get('/selectAllDocuments', async (req, res) => {
   try {
     const result = await Document.getAll()
+    res.status(200).json(result)
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
+app.get('/selectAllDocuments/:projectId', async (req, res) => {
+  try {
+    const result = await Document.selectAllDocumentsByProjectId(req.params.projectId)
     res.status(200).json(result)
   }
   catch(err) {
