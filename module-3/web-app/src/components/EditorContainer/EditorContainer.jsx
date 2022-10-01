@@ -1,5 +1,5 @@
 import React from "react"
-import style from "./Editor.module.scss"
+import style from "./EditorContainer.module.scss"
 import EditorTitle from "./EditorTitle"
 import ProseMirror from "../ProseMirror/ProseMirror"
 
@@ -12,4 +12,4 @@ const Editor = ({documentId}) => {
     )
 }
 
-export default Editor
+export default EditorContainer

@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    margin: 0 auto;
+}
+
+.project {
+    margin-right: 2em;
+    height: fit-content;
+    border: 2px #fff solid;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

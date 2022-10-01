@@ -18,4 +18,4 @@ const Document = () => {
     )
 }
 
-export default Document
+export default Editor

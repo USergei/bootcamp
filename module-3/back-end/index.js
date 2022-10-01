@@ -138,6 +138,26 @@ app.delete('/deleteProject/:id', async (req, res) => {
   }
 })
 
+app.get('/selectAllProjects', async (req, res) => {
+  try {
+    const result = await Project.getAll()
+    res.status(200).json(result)
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
+app.get('/selectProject/:id', async (req, res) => {
+  try {
+    const result = await Project.findById(req.params.id)
+    res.status(200).json(result)
+  }
+  catch(err) {
+    res.status(500).json({message: "Internal server error", error: err})
+  }
+})
+
 
 const PORT = process.env.PORT || 3001
 
