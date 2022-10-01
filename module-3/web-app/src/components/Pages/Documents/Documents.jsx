@@ -3,11 +3,13 @@ import {useSearchParams} from "react-router-dom"
 import style from "./Documents.module.scss"
 
 //TODO in progress documents catalogue page
+//TODO move this in component fetch to a redux action later on
 const Documents = () => {
+
     const [documents, setDocuments] = useState('')
     const [searchParams, setSearchParams] = useSearchParams()
     const projectId = searchParams.get('projectid')
-   
+
     useEffect(() => {
         fetch("http://localhost:3001/selectAllDocuments/")
             .then(res => res.json())

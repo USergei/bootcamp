@@ -12,12 +12,6 @@ const Projects = () => {
             .then(res => res.json())
             .then(data => setProjects(data))
     }, [])
-
-    // useEffect(() => {
-    //     fetch("http://localhost:3001/selectAllDocuments/")
-    //         .then(res => res.json())
-    //         .then(data => setDocuments(data))
-    // }, [])
      
     return (
         <div className={style.container}> 
