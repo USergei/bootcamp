@@ -44,7 +44,7 @@ app.get('/selectAllDocuments', async (req, res) => {
 
 app.get('/selectAllDocuments/:projectId', async (req, res) => {
   try {
-    const result = await Document.selectAllDocumentsByProject(req.params.projectId)
+    const result = await Document.selectAllDocumentsByProjectId(req.params.projectId)
     res.status(200).json(result)
   }
   catch(err) {

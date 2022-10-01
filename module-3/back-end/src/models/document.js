@@ -66,21 +66,20 @@ const Model = (config) => {
         return await knex(config.tableName).whereILike('title', `%${title}%`)
     }
    
-    const selectAllDocumentsByProject = async projectId => {
+    const selectAllDocumentsByProjectId = async projectId => {
         const documents = await knex.select(
-            'document.id as id',
+            'document.id as documentId',
             'document.title as title',
             'document.content as content',
             'document.author_id as authorId',
             'document.status_id as statusId',
             'document.updated_at as updatedAt',
-            'project_documents.document_id as documentId',
             'project_documents.project_id as projectId'
         )
         .from(config.tableName)
         .where({'project_documents.project_id': projectId})
         .leftJoin('project_documents', {'document.id': 'project_documents.document_id'})
-
+        console.log({projectId});
         return documents
     }
 
@@ -91,7 +90,7 @@ const Model = (config) => {
         update,
         selectByTitle,
         ...canDeleteById(config),
-        selectAllDocumentsByProject
+        selectAllDocumentsByProjectId
     }
 }
 
