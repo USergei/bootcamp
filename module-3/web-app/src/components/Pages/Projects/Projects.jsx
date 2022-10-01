@@ -1,30 +1,29 @@
 import React, {useState, useEffect} from "react"
+import {Link} from "react-router-dom"
 import style from "./Projects.module.scss"
 
 //TODO in progress projects catalogue page
 const Projects = () => {
     const [projects, setProjects] = useState('')
+    const [documents, setDocuments] = useState('')
    
     useEffect(() => {
-        async function getData(url = "http://localhost:3001/selectAllProjects") {
-            const response = await fetch(url, {
-                method: 'GET'
-            })
-
-            return response.json() 
-        }
-        getData().then(res => setProjects(res))
+        fetch("http://localhost:3001/selectAllProjects/")
+            .then(res => res.json())
+            .then(data => setProjects(data))
     }, [])
      
     return (
         <div className={style.container}> 
             {projects.length > 0 && projects.map((project, i) => (
-                <div className={style.project} key={i}>
-                    <div className={style.title}>{project.title}</div> 
-                    <div>{project.description}</div> 
-                    <div>Created: {project.created_at}</div> 
-                    <div>Updated: {project.updated_at}</div> 
-                </div>
+                <Link key={i} to={`/documents/?projectid=${project.id}`}>    
+                    <div className={style.project}>
+                        <div className={style.title}>{project.title}</div> 
+                        <div>{project.description}</div> 
+                        <div>Created: {project.created_at}</div> 
+                        <div>Updated: {project.updated_at}</div> 
+                    </div>
+                </Link>
             ))}
         </div>   
     )
