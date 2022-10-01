@@ -14,7 +14,6 @@ import { getDocumentInEdit } from '../../store/selectors'
 import { useNavigate } from "react-router-dom"
 
 const ProseMirror = ({documentId}) => {
-    console.log({sdasdsdsd:documentId})
     const dispatch = useDispatch()
     const documentInEdit = useSelector(getDocumentInEdit)
     const [editorState, setEditorState] = useState({})
@@ -32,18 +31,10 @@ const ProseMirror = ({documentId}) => {
         }
     }
     
-    useMemo(() => {
-        if (documentInEdit.id) {
-            navigate(`/document/${documentInEdit.id}`)
-        }
-    }, [documentInEdit.id])
+    const initEditor = (initialEditorContent = undefined) => {
+        //Destroy prev editor instance if it exists to force editor re-render
+        window.view && window.view.destroy()
 
-    useDebouncedEffect(() => onEditorContentUpdate(editorState), [editorState], 1000)
-    const initialValue = undefined
-    useEffect(() => {
-        //TODO If documentInEdit.id is not empty read editor initial state from database
-        dispatch(readDocument(documentId))
-        console.log({documentInEdit});
         const mySchema = new Schema({
             nodes: addListNodes(schema.spec.nodes, "paragraph block*", "block"),
             marks: schema.spec.marks
@@ -52,13 +43,29 @@ const ProseMirror = ({documentId}) => {
             state: EditorState.create({
                 doc: DOMParser.fromSchema(mySchema).parse(document.querySelector("#content")),
                 plugins: [
-                    GetDataFromEditorPlugin(initialValue, json => setEditorState(json)),
+                    GetDataFromEditorPlugin(initialEditorContent, json => setEditorState(json)),
                     // GetDataFromEditorPlugin(setEditorState),
                     ...exampleSetup({schema: mySchema})
                 ]
             }),
         })
+    }
+
+    useMemo(() => {
+        if (documentInEdit.id) {
+            navigate(`/document/${documentInEdit.id}`)
+        }
+    }, [documentInEdit.id])
+
+    useDebouncedEffect(() => onEditorContentUpdate(editorState), [editorState], 1000)
+    useEffect(() => {
+        dispatch(readDocument(documentId))
     }, [])
+    const initialValue = undefined
+    useEffect(() => {
+        //TODO If documentInEdit.id is not empty read editor initial state from database
+        initEditor(documentInEdit?.content)
+    }, [documentInEdit])
 
     return (
         <div className="App">

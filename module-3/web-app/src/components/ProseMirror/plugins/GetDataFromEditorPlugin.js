@@ -16,7 +16,7 @@ import {Plugin} from 'prosemirror-state'
 export const GetDataFromEditorPlugin = (initialStateContent, dispatchUpdateCallback) => new Plugin({
 	state: {
 		init(config, state) {
-			if (typeof initialStateContent !== 'undefined') {
+			if (typeof initialStateContent !== 'undefined' && Object.keys(initialStateContent).length > 0) {
 				state.doc = state.schema.nodeFromJSON(initialStateContent)
 			}
 		},

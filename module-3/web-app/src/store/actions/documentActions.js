@@ -24,10 +24,8 @@ export const saveDocument = (document, id = null) => {
 
 export const readDocument = (id = null) => {
   return async (dispatch) => {
-    console.log({readDocument:id})
     try {
       const fetchedDocument = await getDocument(id)
-      console.log({fetchID:fetchedDocument.id});
       fetchedDocument.id &&
         dispatch({
           type: "READ_DOCUMENT",

@@ -1,5 +1,5 @@
 const {knex} = require('../db/knex')
-const {canDeleteById} = require('./baseModel')
+const {canDeleteById, canFindById} = require('./baseModel')
 
 const config = {
     tableName: 'document',
@@ -81,7 +81,7 @@ const Model = (config) => {
         .from(config.tableName)
         .where({'project_documents.project_id': projectId})
         .leftJoin('project_documents', {'document.id': 'project_documents.document_id'})
-        console.log({projectId});
+
         return documents
     }
 
@@ -92,6 +92,7 @@ const Model = (config) => {
         update,
         selectByTitle,
         ...canDeleteById(config),
+        ...canFindById(config),
         selectAllDocumentsByProjectId
     }
 }

@@ -23,7 +23,6 @@ const documentReducer = (state = initialState, action) => {
                 error: action.payload.error
             }
         case "READ_DOCUMENT":
-            console.log({ACTION:action});
             return {
                 ...state,
                 documentInEdit: action.payload.document

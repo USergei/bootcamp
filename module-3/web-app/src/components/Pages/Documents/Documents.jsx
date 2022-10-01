@@ -14,7 +14,6 @@ const Documents = () => {
         fetch("http://localhost:3001/selectAllDocuments/")
             .then(res => res.json())
             .then(data => setDocuments(data))
-            .then(data => console.log(data))
     }, [])
      
     return (

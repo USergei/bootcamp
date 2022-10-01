@@ -3,7 +3,7 @@ import style from "./EditorContainer.module.scss"
 import EditorTitle from "./EditorTitle"
 import ProseMirror from "../ProseMirror/ProseMirror"
 
-const Editor = ({documentId}) => {
+const EditorContainer = ({documentId}) => {
     return (
         <div>
             <EditorTitle/>

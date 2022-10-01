@@ -18,7 +18,7 @@ async function fetchData(url = '', method = 'post', data = {}) {
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
         body: JSON.stringify(data)
-    });
+    })
     return response.json();
 }
 async function getData(url = '', method = 'get') {
