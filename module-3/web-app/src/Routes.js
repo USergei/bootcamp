@@ -56,7 +56,14 @@ const Links = () => {
               </Main>
             </AuthenticatedRoute>
           }
-        /> 
+        >
+          <Route path=":id" element={
+            <Document/>
+          } />
+          <Route path="" element={
+            <Document/>
+          } />
+        </Route>
         <Route
           path="*"
           element={
