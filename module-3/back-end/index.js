@@ -17,11 +17,13 @@ app.use(express.urlencoded({extended:true}))
 
 app.post('/createDocument', async (req, res) => {
   try {
+    console.log({REQBODY:req.body});
     document = {
       title: req.body.title,
       content: req.body.content,
       author_id: req.body.author_id,
-      status_id: req.body.status_id
+      status_id: req.body.status_id,
+      project_id: req.body.project_id
     }
     const result = await Document.create(document)
     res.status(200).json(result)

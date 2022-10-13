@@ -18,6 +18,7 @@ const Model = (config) => {
                 author_id: document.author_id,
                 status_id: document.status_id
             }
+            console.log({documentData})
             const createdDocument = await trx(config.tableName).insert(documentData, [
                 'id',
                 'title',
@@ -26,7 +27,7 @@ const Model = (config) => {
                 'status_id',
                 'updated_at'
             ])
-        
+            console.log({createdDocument, documentProjectID:document.project_id});
             const projectDocumentsRelation = {
                 document_id: createdDocument[0].id,
                 project_id: document.project_id 
