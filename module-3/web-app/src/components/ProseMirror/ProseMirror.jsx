@@ -28,7 +28,6 @@ const ProseMirror = ({documentId}) => {
             "project_id": 5
         }
         if (Object.keys(documentContent).length > 0) {
-            console.log({documentContent, documentData})
             dispatch(saveDocument(documentData, documentInEdit.id))
         }
     }

@@ -17,7 +17,6 @@ app.use(express.urlencoded({extended:true}))
 
 app.post('/createDocument', async (req, res) => {
   try {
-    console.log({REQBODY:req.body});
     document = {
       title: req.body.title,
       content: req.body.content,

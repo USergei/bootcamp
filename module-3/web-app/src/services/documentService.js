@@ -28,7 +28,7 @@ async function fetchData(url = '', method = 'POST', data = {}) {
     }
     
 }
-async function getData(url = '', method = 'get') {
+async function getData(url = '', method = 'GET') {
     const response = await fetch(url, {
         method: postMethods[method],
         mode: 'cors',

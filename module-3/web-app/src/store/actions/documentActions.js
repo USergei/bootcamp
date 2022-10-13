@@ -7,7 +7,6 @@ export const saveDocument = (document, id = null) => {
   return async (dispatch) => {
     try {
       const savedDocument = await writeDocument(document, id)
-      console.log({savedDocument});
       savedDocument.length > 0 &&
         dispatch({
           type: "SAVE_DOCUMENT",
