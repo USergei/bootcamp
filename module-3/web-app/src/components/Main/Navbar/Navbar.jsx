@@ -1,15 +1,12 @@
 import React, {useState} from "react"
+import { NavLink } from "react-router-dom"
 import style from "./Navbar.module.scss"
 import SVG from "react-inlinesvg"
 import dashboard from "../../../assets/icons/dashboard.svg"
 import envelope from "../../../assets/icons/navbarEnvelope.svg"
-import overview from "../../../assets/icons/overview.svg"
-import statistic from "../../../assets/icons/statistic.svg"
-import invoice from "../../../assets/icons/invoice.svg"
-import myAds from "../../../assets/icons/myAds.svg"
-import calendar from "../../../assets/icons/calendar.svg"
-import feedbackStar from "../../../assets/icons/feedbackStar.svg"
-import statement from "../../../assets/icons/statement.svg"
+import editor from "../../../assets/icons/editor.svg"
+import documents from "../../../assets/icons/documents.svg"
+import projects from "../../../assets/icons/projects.svg"
 import settings from "../../../assets/icons/settings.svg"
 import classNames from "classnames"
 
@@ -26,6 +23,7 @@ const Navbar = ({isNavbarOpen}) => {
         dashboard: {
             icon: dashboard,
             title: 'Dashboard',
+            url: '/'
         },
         messages: {
             icon: envelope,
@@ -49,33 +47,20 @@ const Navbar = ({isNavbarOpen}) => {
                 }
             }
         },
-        overview: {
-            icon: overview,
-            title: 'Overview'
+        editor: {
+            icon: editor,
+            title: 'Editor',
+            url: '/document'
         },
-        statistic: {
-            icon: statistic,
-            title: 'Statistic'
+        documents: {
+            icon: documents,
+            title: 'Documents',
+            url: '/documents'
         },
-        invoice: {
-            icon: invoice,
-            title: 'Invoice'
-        },
-        myAds: {
-            icon: myAds,
-            title: 'My Ads'
-        },
-        calendar: {
-            icon: calendar,
-            title: 'Calendar'
-        },
-        feedback: {
-            icon: feedbackStar,
-            title: 'Feedback'
-        },
-        statement: {
-            icon: statement,
-            title: 'Statement'
+        projects: {
+            icon: projects,
+            title: 'Projects',
+            url: '/projects'
         },
         settings: {
             icon: settings,
@@ -107,12 +92,14 @@ const Navbar = ({isNavbarOpen}) => {
             }
             menuItems.push(
                 <nav key={topLevelMenuItemKey}>
-                    <div className={style.navbarItem}>
+                    <div className={style.navbarItem} >
                         <div className={style.navbarIcon}>
-                            <SVG src={topLevelMenu.icon} alt="icon" />
+                            <NavLink to={{pathname: topLevelMenu.url}}>
+                                <SVG src={topLevelMenu.icon} alt="icon" />
+                            </NavLink>
                             <div className={style.navbarNotification}>3</div>
                         </div>
-                        <span>{topLevelMenu.title}</span>
+                        <NavLink to={{pathname: topLevelMenu.url}}>{topLevelMenu.title}</NavLink>
                         <button onClick={() => menuItemOnClickHandler(topLevelMenuItemKey)}>+</button>
                     </div>
                     {subMenuItems.length > 0 && sideBarMenuState[topLevelMenuItemKey] &&
