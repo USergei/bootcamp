@@ -1,5 +1,5 @@
 const {knex} = require('../db/knex')
-const {canDeleteById} = require('./baseModel')
+const {canDeleteById, canFindById} = require('./baseModel')
 
 const config = {
     tableName: 'document',
@@ -26,7 +26,6 @@ const Model = (config) => {
                 'status_id',
                 'updated_at'
             ])
-        
             const projectDocumentsRelation = {
                 document_id: createdDocument[0].id,
                 project_id: document.project_id 
@@ -52,10 +51,18 @@ const Model = (config) => {
     }
 
     const update = async document => {
-        
-        return await knex(config.tableName).where('id', document.id).update(document, [
+        const documentData = {
+            title: document.title,
+            content: document.content,
+            author_id: document.author_id,
+            status_id: document.status_id
+        }
+
+        return await knex(config.tableName).where('id', document.id).update(documentData, [
+            'id',
             'title',
             'content',
+            'author_id',
             'status_id',
             'updated_at'
         ])
@@ -79,7 +86,7 @@ const Model = (config) => {
         .from(config.tableName)
         .where({'project_documents.project_id': projectId})
         .leftJoin('project_documents', {'document.id': 'project_documents.document_id'})
-        console.log({projectId});
+
         return documents
     }
 
@@ -90,6 +97,7 @@ const Model = (config) => {
         update,
         selectByTitle,
         ...canDeleteById(config),
+        ...canFindById(config),
         selectAllDocumentsByProjectId
     }
 }

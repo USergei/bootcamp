@@ -21,6 +21,16 @@ const documentReducer = (state = initialState, action) => {
             return {
                 ...state,
                 error: action.payload.error
+            }
+        case "READ_DOCUMENT":
+            return {
+                ...state,
+                documentInEdit: action.payload.document
+            }
+        case "READ_DOCUMENT_REJECTED":
+            return {
+                ...state,
+                error: action.payload.error
             }  
         default:
             return state
