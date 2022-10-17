@@ -80,7 +80,7 @@ const Navbar = ({isNavbarOpen}) => {
         const menuItems = []
         for (let [topLevelMenuItemKey, topLevelMenu] of Object.entries(menuObject)) {
             const subMenuItems = []
-            if (topLevelMenu.submenu ) {
+            if (topLevelMenu.submenu && !isNavbarOpen) {
                 for (let [subMenuLevelItemKey, subMenuItem] of Object.entries(topLevelMenu.submenu)) {
                     subMenuItems.push(
                         <a key={subMenuLevelItemKey} className={style.subMenu} href={subMenuItem.url}>
