@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"
 import {useSearchParams} from "react-router-dom"
 import style from "./Documents.module.scss"
+import mainStyles from "../../../App.module.scss"
 
 //TODO in progress documents catalogue page
 //TODO move this in component fetch to a redux action later on
@@ -17,7 +18,7 @@ const Documents = () => {
     }, [])
      
     return (
-        <div className={style.container}> 
+        <div className={mainStyles.mainWrapper}> 
             {documents.length > 0 && documents.map((document, i) => (
                 <div className={style.document} key={i}>
                     <div className={style.title}>{document.title}</div> 
