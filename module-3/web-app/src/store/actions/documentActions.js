@@ -7,7 +7,7 @@ export const saveDocument = (document, id = null) => {
   return async (dispatch) => {
     try {
       const savedDocument = await writeDocument(document, id)
-      savedDocument.length > 0 &&
+      savedDocument[0].id && 
         dispatch({
           type: "SAVE_DOCUMENT",
           payload: {document: savedDocument[0]}

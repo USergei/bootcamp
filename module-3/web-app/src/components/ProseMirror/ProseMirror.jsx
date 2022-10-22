@@ -18,7 +18,7 @@ const ProseMirror = ({documentId}) => {
     const documentInEdit = useSelector(getDocumentInEdit)
     const [editorState, setEditorState] = useState({})
     const navigate = useNavigate()
-
+    
     const onEditorContentUpdate = documentContent => {
         const documentData = {
             "title": "YYYYT",
@@ -59,10 +59,15 @@ const ProseMirror = ({documentId}) => {
     }, [documentInEdit.id])
 
     useDebouncedEffect(() => onEditorContentUpdate(editorState), [editorState], 1000)
+
     useEffect(() => {
-        dispatch(readDocument(documentId))
+        if (documentId) {
+            dispatch(readDocument(documentId))
+        }
     }, [])
+
     const initialValue = undefined
+    
     useEffect(() => {
         //TODO If documentInEdit.id is not empty read editor initial state from database
         initEditor(documentInEdit?.content)
