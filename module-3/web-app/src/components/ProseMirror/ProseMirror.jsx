@@ -19,7 +19,10 @@ const ProseMirror = ({documentId}) => {
     const [editorState, setEditorState] = useState({})
     const navigate = useNavigate()
     
+    //TODO Task-81 Move this function to parent EditorContainer component and pass down as props to ProseMirror and DocumentTitle component 
+    //TODO Task-81 add second param to this function(onEditorContentUpdate) and name it as document title
     const onEditorContentUpdate = documentContent => {
+        //TODO Use actual author_id status_id and project_id instead of hardcoded values
         const documentData = {
             "title": "YYYYT",
             "content": documentContent,
@@ -52,14 +55,16 @@ const ProseMirror = ({documentId}) => {
         })
     }
 
+    //TODO Task-81 Move this function to parent EditorContainer component and other stuff that not related to ProseMirror 
     useMemo(() => {
         if (documentInEdit.id) {
             navigate(`/document/${documentInEdit.id}`)
         }
     }, [documentInEdit.id])
-
+    
+    //TODO Use the same hook for Editor title
     useDebouncedEffect(() => onEditorContentUpdate(editorState), [editorState], 1000)
-
+    
     useEffect(() => {
         if (documentId) {
             dispatch(readDocument(documentId))
@@ -69,7 +74,6 @@ const ProseMirror = ({documentId}) => {
     const initialValue = undefined
     
     useEffect(() => {
-        //TODO If documentInEdit.id is not empty read editor initial state from database
         initEditor(documentInEdit?.content)
     }, [documentInEdit])
 
