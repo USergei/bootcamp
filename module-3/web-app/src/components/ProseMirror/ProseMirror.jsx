@@ -8,32 +8,12 @@ import {exampleSetup} from "prosemirror-example-setup"
 import {GetDataFromEditorPlugin} from "./plugins/GetDataFromEditorPlugin"
 import "./ProseMirror.css"
 import { useDebouncedEffect } from "../../../src/reactCustomHooks/useDebouncedEffect"
-import { useDispatch, useSelector } from 'react-redux'
-import { saveDocument, readDocument } from '../../store/actions/documentActions'
+import { useSelector } from 'react-redux'
 import { getDocumentInEdit } from '../../store/selectors'
-import { useNavigate } from "react-router-dom"
 
-const ProseMirror = ({documentId}) => {
-    const dispatch = useDispatch()
+const ProseMirror = ({onEditorContentUpdate}) => {
     const documentInEdit = useSelector(getDocumentInEdit)
     const [editorState, setEditorState] = useState({})
-    const navigate = useNavigate()
-    
-    //TODO Task-81 Move this function to parent EditorContainer component and pass down as props to ProseMirror and DocumentTitle component 
-    //TODO Task-81 add second param to this function(onEditorContentUpdate) and name it as document title
-    const onEditorContentUpdate = documentContent => {
-        //TODO Use actual author_id status_id and project_id instead of hardcoded values
-        const documentData = {
-            "title": "YYYYT",
-            "content": documentContent,
-            "author_id": "authyyyyyorid",
-            "status_id": 1,
-            "project_id": 5
-        }
-        if (Object.keys(documentContent).length > 0) {
-            dispatch(saveDocument(documentData, documentInEdit.id))
-        }
-    }
     
     const initEditor = (initialEditorContent = undefined) => {
         //Destroy prev editor instance if it exists to force editor re-render
@@ -54,25 +34,10 @@ const ProseMirror = ({documentId}) => {
             }),
         })
     }
-
-    //TODO Task-81 Move this function to parent EditorContainer component and other stuff that not related to ProseMirror 
-    useMemo(() => {
-        if (documentInEdit.id) {
-            navigate(`/document/${documentInEdit.id}`)
-        }
-    }, [documentInEdit.id])
     
     //TODO Use the same hook for Editor title
     useDebouncedEffect(() => onEditorContentUpdate(editorState), [editorState], 1000)
-    
-    useEffect(() => {
-        if (documentId) {
-            dispatch(readDocument(documentId))
-        }
-    }, [])
 
-    const initialValue = undefined
-    
     useEffect(() => {
         initEditor(documentInEdit?.content)
     }, [documentInEdit])
