@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useMemo} from "react"
+import React, {useEffect, useState} from "react"
 import {EditorState} from "prosemirror-state"
 import {EditorView} from "prosemirror-view"
 import {Schema, DOMParser} from "prosemirror-model"
@@ -11,7 +11,7 @@ import { useDebouncedEffect } from "../../../src/reactCustomHooks/useDebouncedEf
 import { useSelector } from 'react-redux'
 import { getDocumentInEdit } from '../../store/selectors'
 
-const ProseMirror = ({onEditorContentUpdate}) => {
+const ProseMirror = ({onEditorContentUpdate, documentTitle}) => {
     const documentInEdit = useSelector(getDocumentInEdit)
     const [editorState, setEditorState] = useState({})
     
@@ -36,7 +36,7 @@ const ProseMirror = ({onEditorContentUpdate}) => {
     }
     
     //TODO Use the same hook for Editor title
-    useDebouncedEffect(() => onEditorContentUpdate(editorState), [editorState], 1000)
+    useDebouncedEffect(() => onEditorContentUpdate(editorState, documentTitle), [editorState], 1000)
 
     useEffect(() => {
         initEditor(documentInEdit?.content)
