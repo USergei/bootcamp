@@ -1,4 +1,4 @@
-import React, {useEffect, useState, useMemo} from "react"
+import React, {useEffect, useState} from "react"
 import {EditorState} from "prosemirror-state"
 import {EditorView} from "prosemirror-view"
 import {Schema, DOMParser} from "prosemirror-model"
@@ -8,29 +8,12 @@ import {exampleSetup} from "prosemirror-example-setup"
 import {GetDataFromEditorPlugin} from "./plugins/GetDataFromEditorPlugin"
 import "./ProseMirror.css"
 import { useDebouncedEffect } from "../../../src/reactCustomHooks/useDebouncedEffect"
-import { useDispatch, useSelector } from 'react-redux'
-import { saveDocument, readDocument } from '../../store/actions/documentActions'
+import { useSelector } from 'react-redux'
 import { getDocumentInEdit } from '../../store/selectors'
-import { useNavigate } from "react-router-dom"
 
-const ProseMirror = ({documentId}) => {
-    const dispatch = useDispatch()
+const ProseMirror = ({onEditorContentUpdate, documentTitle}) => {
     const documentInEdit = useSelector(getDocumentInEdit)
     const [editorState, setEditorState] = useState({})
-    const navigate = useNavigate()
-    
-    const onEditorContentUpdate = documentContent => {
-        const documentData = {
-            "title": "YYYYT",
-            "content": documentContent,
-            "author_id": "authyyyyyorid",
-            "status_id": 1,
-            "project_id": 5
-        }
-        if (Object.keys(documentContent).length > 0) {
-            dispatch(saveDocument(documentData, documentInEdit.id))
-        }
-    }
     
     const initEditor = (initialEditorContent = undefined) => {
         //Destroy prev editor instance if it exists to force editor re-render
@@ -51,25 +34,15 @@ const ProseMirror = ({documentId}) => {
             }),
         })
     }
-
-    useMemo(() => {
-        if (documentInEdit.id) {
-            navigate(`/document/${documentInEdit.id}`)
-        }
-    }, [documentInEdit.id])
-
-    useDebouncedEffect(() => onEditorContentUpdate(editorState), [editorState], 1000)
-
-    useEffect(() => {
-        if (documentId) {
-            dispatch(readDocument(documentId))
-        }
-    }, [])
-
-    const initialValue = undefined
     
+    //TODO Use the same hook for Editor title
+    useDebouncedEffect(
+        () => onEditorContentUpdate(editorState, documentTitle), 
+        [editorState], 
+        1000
+    )
+
     useEffect(() => {
-        //TODO If documentInEdit.id is not empty read editor initial state from database
         initEditor(documentInEdit?.content)
     }, [documentInEdit])
 
