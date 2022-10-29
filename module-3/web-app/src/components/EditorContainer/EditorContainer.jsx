@@ -5,21 +5,18 @@ import { useDispatch, useSelector } from 'react-redux'
 import { getDocumentInEdit } from '../../store/selectors'
 import { useNavigate } from "react-router-dom"
 import { saveDocument, readDocument } from '../../store/actions/documentActions'
+import { useDebouncedEffect } from "../../../src/reactCustomHooks/useDebouncedEffect"
 
 const EditorContainer = ({documentId}) => {
     const documentInEdit = useSelector(getDocumentInEdit)
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const [documentTitle, setDocumentTitle] = useState('')
-
-    
+    const [documentTitle, setDocumentTitle] = useState(documentInEdit.title || '')
 
     const onChange = (e) => {
-        setDocumentTitle(currentValue => ({...currentValue,[e.target.name]: e.target.value}))
+        setDocumentTitle(e.target.value)
     }
-    console.log("documentTitle", documentTitle.title);
-    //TODO Task-81 pass below func down as props to ProseMirror and DocumentTitle component 
-    //TODO Task-81 add second param to this function(onEditorContentUpdate) and name it as document title
+
     const onEditorContentUpdate = (documentContent, documentTitle) => {
         //TODO Use actual author_id status_id and project_id instead of hardcoded values
         const documentData = {
@@ -29,7 +26,8 @@ const EditorContainer = ({documentId}) => {
             "status_id": 1,
             "project_id": 5
         }
-        if (Object.keys(documentContent).length > 0) {
+        
+        if (Object.keys(documentContent).length > 0 || documentTitle) {
             dispatch(saveDocument(documentData, documentInEdit.id))
         }
     }
@@ -40,16 +38,26 @@ const EditorContainer = ({documentId}) => {
         }
     }, [documentInEdit.id])
 
+    useMemo(() => {
+        setDocumentTitle(documentInEdit?.title)
+    }, [documentInEdit])
+
     useEffect(() => {
         if (documentId) {
             dispatch(readDocument(documentId))
         }
     }, [])
 
+    useDebouncedEffect(
+        () => onEditorContentUpdate(documentInEdit?.content, documentTitle), 
+        [documentTitle], 
+        1000
+    )
+
     return (
         <div>
-            <EditorTitle onChange={onChange} documentTitle={documentTitle}/>
-            <ProseMirror onEditorContentUpdate={onEditorContentUpdate} documentTitle={documentTitle.title}/>
+            <EditorTitle value={documentTitle} onChange={onChange}/>
+            <ProseMirror onEditorContentUpdate={onEditorContentUpdate} documentTitle={documentTitle}/>
         </div>
     )
 }

@@ -36,7 +36,11 @@ const ProseMirror = ({onEditorContentUpdate, documentTitle}) => {
     }
     
     //TODO Use the same hook for Editor title
-    useDebouncedEffect(() => onEditorContentUpdate(editorState, documentTitle), [editorState], 1000)
+    useDebouncedEffect(
+        () => onEditorContentUpdate(editorState, documentTitle), 
+        [editorState], 
+        1000
+    )
 
     useEffect(() => {
         initEditor(documentInEdit?.content)

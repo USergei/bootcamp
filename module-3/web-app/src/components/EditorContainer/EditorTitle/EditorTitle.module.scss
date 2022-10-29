@@ -1,17 +1,17 @@
-input {
+.editorTitle {
     width: 100%;
-    max-width: 30em;
     height: 2em;
     margin-right: 0.45em;
-    padding: 0 0.85em 0 0.85em;
+    padding: 0.5em 0.85em;
     font-family: "Roboto";
-    font-size: 1.2em;
+    font-size: 2em;
     font-weight: 300;
     color: #fff;
     background: #373a44;
-    border: 2px solid #212328;
+    border: none;
     border-radius: 0.2em;
     transition:border-color 0.2s ease-in-out;
+    margin-bottom: 0.5em;
 
     &::placeholder {
       font-style: italic;
