@@ -1,15 +1,39 @@
 .container {
     display: flex;
+    align-items: start;
+    align-content: center;
     margin: 0 auto;
     min-height: 90vh;
+    
+    & > a {
+        width: 265px;
+        margin-right: 2em;
+        text-decoration: none;
+        color: white;
+    }
 }
 
 .project {
-    margin-right: 2em;
-    height: fit-content;
-    border: 2px #fff solid;
+    padding: 10px;
+    border: 1px #fff solid;
+    border-bottom: 15px #fff solid;
+    border-radius: 0px 0px 5px 5px;
 
     &:hover {
         cursor: pointer;
     }
+}
+
+.title {
+    margin-bottom: 5px;
+    font-size: 20px;
+}
+
+.description {
+    margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

@@ -18,8 +18,8 @@ const Projects = () => {
             {projects.length > 0 && projects.map((project, i) => (
                 <Link key={i} to={`/documents/?projectid=${project.id}`}>    
                     <div className={style.project}>
-                        <div className={style.title}>{project.title}</div> 
-                        <div>{project.description}</div> 
+                        <h1 className={style.title}>{project.title}</h1> 
+                        <div className={style.description}>{project.description}</div> 
                         <div>Created: {project.created_at}</div> 
                         <div>Updated: {project.updated_at}</div> 
                     </div>
