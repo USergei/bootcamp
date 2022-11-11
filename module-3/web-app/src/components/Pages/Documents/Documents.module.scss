@@ -1,0 +1,14 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+
+.document {
+    margin: 0 10px 10px 0;
+    border: 1px #103ad2 solid;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

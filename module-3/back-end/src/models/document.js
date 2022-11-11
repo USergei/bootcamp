@@ -80,6 +80,7 @@ const Model = (config) => {
             'document.content as content',
             'document.author_id as authorId',
             'document.status_id as statusId',
+            'document.created_at as createdAt',
             'document.updated_at as updatedAt',
             'project_documents.project_id as projectId'
         )
