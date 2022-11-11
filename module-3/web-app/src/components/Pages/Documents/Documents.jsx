@@ -20,9 +20,16 @@ const Documents = () => {
         <div className={`${mainStyles.mainWrapper} ${style.container}`}> 
             {documents.length > 0 && documents.map((document, i) => (
                 <Link className={style.document} key={i} to={`/document/${document.documentId}`}>
+                    <div className={style.icon}>
+                        <span/>
+                        <span/>
+                        <span/>
+                        <span/> 
+                        
+                        {/* <div>Created: {document.createdAt}</div> 
+                        <div>Updated: {document.updatedAt}</div>  */}
+                    </div>
                     <div className={style.title}>{document.title}</div> 
-                    <div>Created: {document.createdAt}</div> 
-                    <div>Updated: {document.updatedAt}</div> 
                 </Link>
             ))}
         </div>   
