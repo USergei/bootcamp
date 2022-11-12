@@ -7,7 +7,7 @@ const AccountContext = createContext()
 
 const Account = (props) => {
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [isAuthenticated, setIsAuthenticated] = useState(true)
   const [currentUser, setCurrentUser] = useState({})
   
   const getSession = async () => {
