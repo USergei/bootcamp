@@ -4,30 +4,56 @@
     align-content: flex-start;
 }
 
-.icon {
+.fileIcon {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 7px;
     justify-content: center;
     align-items: start;
-    width: 120px;
-    height: 150px;
-    padding: 0 25px;
-    background-color: #4c6fef;
-    border: 1px solid #253b8c;
-    border-radius: 13px;
-    box-shadow: 4px 4px 5px 0px rgba(0, 0, 0, .7);
+    width: 96px;
+    height: 128px;
+    padding: 0 15px;
+    border-radius: 4px;
+    background: #018fef;
+    position: relative;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, .7);
 
     span {
         display: block;
         width: 100%;
-        height: 6px;
+        height: 4px;
         background: #fff;
 
+        &:nth-child(4) {
+            width: 60%;
+        }
         &:last-of-type {
+            position: absolute;
+            bottom: 12px;
+            left: -12px;
             width: 50%;
+            height: 20px;
+            background: #7f4fae;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 600;
+            box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, .7);
         }
     }
+}
+.fileIcon::before {
+    display: block;
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-bottom-left-radius: 4px;
+    box-shadow: -1px 2px 1px 0px black, 10px 0px 0px 0px #212228;
+    border-width: 16px;
+    border-style: solid;
+    border-color: #212228 #212228 rgba(255,255,255,.35) rgba(255,255,255,.35);
 }
 
 .document {
