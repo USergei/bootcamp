@@ -14,20 +14,17 @@ const Registration = () => {
   
     const onSubmit = (event) => {
         event.preventDefault()
-
+        
+        const fullName = name.split(" ")
         let attributeList = []
-
+        
         attributeList.push({
             "Name": "name",
-            "Value": name
+            "Value": fullName.shift()
         }, 
         {
             "Name": "family_name",
-            "Value": "Surname"
-        }, 
-        {
-            "Name": "custom:jobtitle",
-            "Value": "jobTitle"
+            "Value": fullName.join(" ")
         })
 
         UserPool.signUp(email, password, attributeList, null, (err, data) => {
