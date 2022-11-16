@@ -79,7 +79,7 @@ const Model = (config) => {
             'document.title as title',
             'document.content as content',
             'document.author_id as authorId',
-            'document.status_id as statusId',
+            'status.title as status',
             'document.created_at as createdAt',
             'document.updated_at as updatedAt',
             'project_documents.project_id as projectId'
@@ -87,6 +87,7 @@ const Model = (config) => {
         .from(config.tableName)
         .where({'project_documents.project_id': projectId})
         .leftJoin('project_documents', {'document.id': 'project_documents.document_id'})
+        .leftJoin('status', {'document.status_id': 'status.id'})
 
         return documents
     }

@@ -47,7 +47,13 @@ export const getDocument = async (id = null) => {
     if (id) {
         return getData(`${apiHostUrl}/selectDocument/${id}`, postMethods.GET)
     }
-}   
+}
+
+export const getDocuments = async (projectId = null) => {
+    if (projectId) {
+        return getData(`${apiHostUrl}/selectAllDocuments/${projectId}`, postMethods.GET)
+    }
+}
 
 export const saveDocument = async (documentData, id = null) => {
     if (id) {

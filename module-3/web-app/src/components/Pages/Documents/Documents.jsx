@@ -1,5 +1,8 @@
-import React, {useState, useEffect} from "react"
+import React, {useState, useEffect, useMemo} from "react"
 import {useSearchParams, Link} from "react-router-dom"
+import {readDocuments} from '../../../store/actions/documentActions'
+import {useDispatch, useSelector} from 'react-redux'
+import {getDocuments} from '../../../store/selectors/documentSelectors'
 import style from "./Documents.module.scss"
 import mainStyles from "../../../App.module.scss"
 
@@ -18,18 +21,23 @@ const DOCUMENT_STATUSES = {
     }
 }
 
-//TODO move this in component fetch to a redux action later on
 const Documents = () => {
 
-    const [documents, setDocuments] = useState('')
+    const selectedDocuments = useSelector(getDocuments)
+    const [documents, setDocuments] = useState({})
+    const dispatch = useDispatch()
     const [searchParams, setSearchParams] = useSearchParams()
     const projectId = searchParams.get('projectid')
     
     useEffect(() => {
-        fetch(`http://localhost:3001/selectAllDocuments/${projectId}`)
-            .then(res => res.json())
-            .then(data => setDocuments(data))
+        if (projectId) {
+            dispatch(readDocuments(projectId))
+        }
     }, [])
+
+    useMemo(() => {
+        selectedDocuments && setDocuments(selectedDocuments)  
+    }, [selectedDocuments])
 
     return (
         <div className={`${mainStyles.mainWrapper} ${style.container}`}> 
@@ -42,13 +50,10 @@ const Documents = () => {
                         <span className={style.line}/>
                         <span 
                             className={style.badge} 
-                            style={{backgroundColor: DOCUMENT_STATUSES["PUBLISHED"].color}}
+                            style={{backgroundColor: DOCUMENT_STATUSES[`${document.status}`].color}}
                         >
-                            {DOCUMENT_STATUSES["PUBLISHED"].title}
+                            {DOCUMENT_STATUSES[`${document.status}`].title}
                         </span> 
-                        
-                        {/* <div>Created: {document.createdAt}</div> 
-                        <div>Updated: {document.updatedAt}</div>  */}
                     </div>
                     <div className={style.title}>{document.title}</div> 
                 </Link>
