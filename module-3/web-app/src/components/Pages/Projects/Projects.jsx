@@ -17,9 +17,9 @@ const Projects = () => {
         <div className={style.container}> 
             {projects.length > 0 && projects.map((project, i) => (
                 <Link key={i} to={`/documents/?projectid=${project.id}`}>    
-                    <div className={style.project}>
-                        <h1 className={style.title}>{project.title}</h1> 
-                        <div className={style.description}>{project.description}</div> 
+                    <div className={style['project-tile-wrapper']}>
+                        <h3 className={style['project-tile-title']}>{project.title}</h3> 
+                        <div className={style['project-tile-description']}>{project.description}</div> 
                         <div>Created: {project.created_at}</div> 
                         <div>Updated: {project.updated_at}</div> 
                     </div>

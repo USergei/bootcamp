@@ -43,7 +43,7 @@ const Documents = () => {
         <div className={`${mainStyles.mainWrapper} ${style.container}`}> 
             {documents.length > 0 && documents.map((document, i) => (
                 <Link className={style.document} key={i} to={`/document/${document.documentId}`}>
-                    <div className={style.fileIcon}>
+                    <div className={style['file-icon-wrapper']}>
                         <span className={style.line}/>
                         <span className={style.line}/>
                         <span className={style.line}/>
@@ -55,7 +55,7 @@ const Documents = () => {
                             {DOCUMENT_STATUSES[`${document.status}`].title}
                         </span> 
                     </div>
-                    <div className={style.title}>{document.title}</div> 
+                    <div className={style['file-title']}>{document.title}</div> 
                 </Link>
             ))}
         </div>   
