@@ -1,15 +1,117 @@
 .container {
     display: flex;
+    align-items: start;
+    align-content: center;
     margin: 0 auto;
     min-height: 90vh;
+
+    & > a {
+        width: 265px;
+        margin-right: 2em;
+        text-decoration: none;
+        color: white;
+    }
 }
 
 .project {
-    margin-right: 2em;
-    height: fit-content;
-    border: 2px #fff solid;
+    padding: 10px;
+    border: 1px #fff solid;
+    border-bottom: 15px #fff solid;
+    border-radius: 0px 0px 5px 5px;
 
     &:hover {
         cursor: pointer;
     }
 }
+
+.title {
+    margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px;
+}
+
+.description {
+    margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.folder {
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    width: 150px;
+    height: 105px;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    position: relative;
+    background-color: #dc8206;
+    border-radius: 0 10px 10px 10px;
+    box-shadow: 4px 4px 4px 0px rgba(0, 0, 0, .7);
+    font-weight: 600;
+
+    &:before {
+        content: '';
+        width: 50%;
+        height: 12px;
+        border-radius: 0 20px 0 0;
+        background-color: #a6650b;
+        position: absolute;
+        top: -12px;
+        left: 0px;
+    }
+
+    &:after {
+        content: '';
+        width: 100%;
+        height: 6px;
+        background-color: #fff;
+        position: absolute;
+        top: 15px;
+    }
+}
+
+.gear {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 35px;
+    height: 35px;
+    background: red;
+    border-radius: 50%;
+    position: absolute;
+
+  }
+  
+  .gearInner {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    z-index: 1;
+  }
+  
+  .bar {
+    width: 55px;
+    height: 14px;
+    // background: #14213d;
+    background: red;
+
+    border-radius: 3px;
+    position: absolute;
+  }
+  .bar:nth-child(2) {
+    transform: rotate(60deg);
+  }
+  .bar:nth-child(3) {
+    transform: rotate(120deg);
+  }
+  

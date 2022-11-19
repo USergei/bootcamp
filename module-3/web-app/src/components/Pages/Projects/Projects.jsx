@@ -17,13 +17,23 @@ const Projects = () => {
         <div className={style.container}> 
             {projects.length > 0 && projects.map((project, i) => (
                 <Link key={i} to={`/documents/?projectid=${project.id}`}>    
+                        {/* <div className={style.folderTab}></div> */}
+                        {/* <div className={style.tableOfContents}>PROJECT</div> */}
+                        <div className={style.folder}>PROJECT
+                        <div className={style.gear}>
+                            <div className={style.bar}></div>
+                            <div className={style.bar}></div>
+                            <div className={style.bar}></div>
+                            <div className={style.gearInner}></div>
+                        </div>
+                        </div>
                     <div className={style.project}>
                         <div className={style.title}>{project.title}</div> 
-                        <div>{project.description}</div> 
+                        <div className={style.description}>{project.description}</div> 
                         <div>Created: {project.created_at}</div> 
                         <div>Updated: {project.updated_at}</div> 
                     </div>
-                </Link>
+                </Link>  
             ))}
         </div>   
     )
