@@ -29,6 +29,8 @@ const Documents = () => {
     const [searchParams, setSearchParams] = useSearchParams()
     const projectId = searchParams.get('projectid')
     
+    const truncateDocumentTitle = input => input.length > 25 ? `${input.substring(0, 25)}...` : input
+
     useEffect(() => {
         if (projectId) {
             dispatch(readDocuments(projectId))
@@ -36,7 +38,7 @@ const Documents = () => {
     }, [])
 
     useMemo(() => {
-        selectedDocuments && setDocuments(selectedDocuments)  
+        selectedDocuments && setDocuments(selectedDocuments)
     }, [selectedDocuments])
 
     return (
@@ -55,7 +57,7 @@ const Documents = () => {
                             {DOCUMENT_STATUSES[`${document.status}`].title}
                         </span> 
                     </div>
-                    <div className={style['file-title']}>{document.title}</div> 
+                    <div className={style['file-title']}>{truncateDocumentTitle(document.title)}</div> 
                 </Link>
             ))}
         </div>   
