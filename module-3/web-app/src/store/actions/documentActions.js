@@ -1,6 +1,6 @@
 import {
   saveDocument as writeDocument, 
-  getDocument
+  getDocument, getDocuments
 } from '../../services/documentService'
 
 export const saveDocument = (document, id = null) => {
@@ -33,6 +33,24 @@ export const readDocument = (id = null) => {
     } catch (error) {
       dispatch({
         type: "READ_DOCUMENT_REJECTED",
+        payload: {error}
+      })
+    }
+  }
+}
+
+export const readDocuments = (projectId = null) => {
+  return async (dispatch) => {
+    try {
+      const fetchedDocuments = await getDocuments(projectId)
+      fetchedDocuments &&
+        dispatch({
+          type: "READ_DOCUMENTS",
+          payload: {documents: fetchedDocuments}
+        })
+    } catch (error) {
+      dispatch({
+        type: "READ_DOCUMENTS_REJECTED",
         payload: {error}
       })
     }
