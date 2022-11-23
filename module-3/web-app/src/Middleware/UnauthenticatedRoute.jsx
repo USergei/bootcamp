@@ -1,6 +1,6 @@
 import React, {cloneElement, useContext} from "react"
 import {Navigate} from "react-router-dom"
-import {AccountContext} from "./AccountContext"
+import {AccountContext} from "../components/AccountContext"
 
 const querystring = (name, url = window.location.href) => {
     const parsedName = name.replace(/[[]]/g, "\\$&")

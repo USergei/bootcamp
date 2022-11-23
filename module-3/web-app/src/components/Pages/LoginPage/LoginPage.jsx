@@ -52,7 +52,8 @@ const LoginPage = () => {
                     </form>
                     <div className={style.pageLinks}>
                         <NavLink  to='/registration'>Don’t have an account? Sign up</NavLink>
-                        <a href="#">Forget Password?</a>
+                        <NavLink  to='/forgot_password'>Forgot Password?</NavLink>
+                        {/* <a href="#">Forgot Password?</a> */}
                     </div>
                 </div>
             </div>

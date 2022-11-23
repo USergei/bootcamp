@@ -1,16 +1,16 @@
 import React from "react"
 import {Route, Routes} from "react-router-dom"
 import Main from "./components/Main"
-import Home from "./components/Home"
+import Home from "./components/Pages/Home"
 import Document from "./components/Pages/Document"
 import Documents from "./components/Pages/Documents"
 import LoginPage from "./components/Pages/LoginPage"
 import Registration from "./components/Pages/Registration"
 import NotFound from "./components/Pages/NotFound"
 import Projects from "./components/Pages/Projects"
-import UnauthenticatedRoute from "./components/UnauthenticatedRoute"
-import AuthenticatedRoute from "./components/AuthenticatedRoute"
-import ForgotPassword from "./components/ForgotPassword"
+import UnauthenticatedRoute from "../src/Middleware/UnauthenticatedRoute"
+import AuthenticatedRoute from "../src/Middleware/AuthenticatedRoute"
+import ForgotPassword from "./components/Pages/ForgotPassword"
 
 const Links = () => {
   return (

@@ -2,7 +2,6 @@ import React, {createContext, useEffect, useState} from "react"
 import {CognitoUser, AuthenticationDetails} from "amazon-cognito-identity-js"
 import Pool from "./UserPool"
 
-
 const AccountContext = createContext()
 
 const Account = (props) => {
@@ -52,8 +51,6 @@ const Account = (props) => {
       }
     })
   }
-
-  
 
   const authenticate = async (Username, Password) => {
     return await new Promise((resolve, reject) => {
