@@ -15,83 +15,26 @@ import ForgotPassword from "./components/Pages/ForgotPassword"
 const Links = () => {
   return (
     <Routes>
-        <Route
-          path="/"
-          element={
+        <Route element={
             <AuthenticatedRoute>
-              <Main>
-                <Home/>
-              </Main>
-            </AuthenticatedRoute>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <UnauthenticatedRoute>
-              <LoginPage/>
-            </UnauthenticatedRoute>
-          }
-        /> 
-        <Route
-          path="/forgot_password"
-          element={
-            <UnauthenticatedRoute>
-              <ForgotPassword/>
-            </UnauthenticatedRoute>
-          }
-        /> 
-        <Route
-          path="/registration"
-          element={
-            <UnauthenticatedRoute>
-              <Registration/>
-            </UnauthenticatedRoute>
-          }
-        />
-        <Route
-          path="/document"
-          element={
-            <AuthenticatedRoute>
-              <Main>
-                <Document/>
-              </Main>
+              <Main />
             </AuthenticatedRoute>
           }
         >
-          <Route path=":id" element={
-            <Document/>
-          } />
-          <Route path="" element={
-            <Document/>
-          } />
-        </Route>   
-        <Route
-          path="/documents"
-          element={
-            <AuthenticatedRoute>
-              <Main>
-                <Documents/>
-              </Main>
-            </AuthenticatedRoute>
-          }
-        /> 
-        <Route
-          path="/projects"
-          element={
-            <AuthenticatedRoute>
-              <Main>
-                <Projects/>
-              </Main>
-            </AuthenticatedRoute>
-          }
-        />
-        <Route
-          path="*"
-          element={
-            <NotFound/>
-          }
-        /> 
+          <Route path="/" element={<Home />} />
+          <Route path="/document">
+            <Route index element={<Document />} />
+            <Route path=":id" element={<Document />} />
+          </Route>   
+          <Route path="/documents" element={<Documents />} /> 
+          <Route path="/projects" element={<Projects />} />
+        </Route>
+        {/* <Route element={<UnauthenticatedRoute />}> */}
+          <Route path="/login" element={<LoginPage />} /> 
+          <Route path="/forgot_password" element={<ForgotPassword />} /> 
+          <Route path="/registration" element={<Registration />} />
+        {/* </Route> */}
+        <Route path="*" element={<NotFound />} /> 
     </Routes>
   )
 }

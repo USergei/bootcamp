@@ -8,7 +8,7 @@ const querystring = (name, url = window.location.href) => {
     const results = regex.exec(url)
   
     if (!results || !results[2]) {
-      return false;
+      return false
     }
   
     return decodeURIComponent(results[2].replace(/\+/g, " "))
