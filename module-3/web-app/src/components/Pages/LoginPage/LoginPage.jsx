@@ -1,5 +1,5 @@
-import React, {useState, useContext} from "react"
-import {NavLink} from "react-router-dom"
+import React, {useState, useContext, useEffect} from "react"
+import {NavLink, useNavigate} from "react-router-dom"
 import style from "./LoginPage.module.scss"
 import mainStyles from "../../../App.module.scss"
 import SVG from "react-inlinesvg"
@@ -7,17 +7,21 @@ import google from "../../../assets/icons/googleIcon.svg"
 import {AccountContext} from "../../AccountContext"
 
 const LoginPage = () => {
+    const navigate = useNavigate()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const {authenticate} = useContext(AccountContext)
     const [errorMessage, setErrorMessage] = useState('')
 
-    const onSubmit = (event) => {
+    const onSubmit = async event => {
         event.preventDefault()
-        authenticate(email, password)
-        .catch(err => {
+        try {
+            await authenticate(email, password)
+            navigate('/')
+        } 
+        catch(err) {
             setErrorMessage('Incorrect username or password.')
-        })
+        }    
     }
 
     return (
@@ -53,7 +57,6 @@ const LoginPage = () => {
                     <div className={style.pageLinks}>
                         <NavLink  to='/registration'>Don’t have an account? Sign up</NavLink>
                         <NavLink  to='/forgot_password'>Forgot Password?</NavLink>
-                        {/* <a href="#">Forgot Password?</a> */}
                     </div>
                 </div>
             </div>

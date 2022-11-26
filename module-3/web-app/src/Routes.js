@@ -8,17 +8,16 @@ import LoginPage from "./components/Pages/LoginPage"
 import Registration from "./components/Pages/Registration"
 import NotFound from "./components/Pages/NotFound"
 import Projects from "./components/Pages/Projects"
-import UnauthenticatedRoute from "../src/Middleware/UnauthenticatedRoute"
-import AuthenticatedRoute from "../src/Middleware/AuthenticatedRoute"
+import PrivateRoutes from "./Middleware/PrivateRoutes"
 import ForgotPassword from "./components/Pages/ForgotPassword"
 
 const Links = () => {
   return (
     <Routes>
         <Route element={
-            <AuthenticatedRoute>
+            <PrivateRoutes>
               <Main />
-            </AuthenticatedRoute>
+            </PrivateRoutes>
           }
         >
           <Route path="/" element={<Home />} />
@@ -29,11 +28,9 @@ const Links = () => {
           <Route path="/documents" element={<Documents />} /> 
           <Route path="/projects" element={<Projects />} />
         </Route>
-        {/* <Route element={<UnauthenticatedRoute />}> */}
-          <Route path="/login" element={<LoginPage />} /> 
-          <Route path="/forgot_password" element={<ForgotPassword />} /> 
-          <Route path="/registration" element={<Registration />} />
-        {/* </Route> */}
+        <Route path="/login" element={<LoginPage />} /> 
+        <Route path="/forgot_password" element={<ForgotPassword />} /> 
+        <Route path="/registration" element={<Registration />} />
         <Route path="*" element={<NotFound />} /> 
     </Routes>
   )
