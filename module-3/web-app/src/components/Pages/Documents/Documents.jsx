@@ -30,6 +30,8 @@ const Documents = () => {
     const projectId = searchParams.get('projectid')
     
     const truncateDocumentTitle = input => input.length > 25 ? `${input.substring(0, 25)}...` : input
+    const syllableRegex = /[^aeiouy]*[aeiouy]+(?:[^aeiouy]*$|[^aeiouy](?=[^aeiouy]))?/gi;
+    const syllabify = word => word.match(syllableRegex)
 
     useEffect(() => {
         if (projectId) {
@@ -40,6 +42,48 @@ const Documents = () => {
     useMemo(() => {
         selectedDocuments && setDocuments(selectedDocuments)
     }, [selectedDocuments])
+
+    // const testArr = ["Lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipisicing", "repellendus"]
+    const word = "repellendus consectetur adipisicing"
+    // const syllabyfiedWord = testArr.map(word => syllabify(word))
+    const splittedWord = word.substring(0,25).split(" ")
+
+    
+    const syllabyfiedWord = syllabify(word.substring(0,25))
+    
+    console.log({splittedWord});
+    const truncateTest = arr => {
+            let ln = 0
+            let str = ''
+            for(let i = 0; i < arr.length; i++) {
+                if (arr[i].length <= 12) {
+                    str += arr[i] + " " 
+                } 
+                else {
+                    arr[i]
+                }
+
+            }
+        }
+    
+    // const truncateTest = arr => {
+    //     let string = ' '
+    //     for(let i = 0; i < arr.length; i++) {
+    //         for(let j = 0; j < arr[i].length; j++) {
+    //             if (arr[i][j] == arr[i].length - 1) {
+    //                 string += arr[i][j]
+    //                 console.log({string})
+    //             }
+                
+    //             // if (string.length > 25) {
+    //             //     console.log({string})
+    //             // }
+    //         }
+    //     }
+    // }
+    console.log({res:truncateTest(syllabyfiedWord)}); 
+    console.log({res:truncateDocumentTitle(word)}); 
+    
 
     return (
         <div className={`${mainStyles.mainWrapper} ${style.container}`}> 
