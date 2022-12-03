@@ -1,8 +1,8 @@
 import React, {useState} from "react"
 import { CognitoUser } from "amazon-cognito-identity-js"
-import Pool from "../UserPool"
+import Pool from "../../UserPool"
 import style from "./ForgotPassword.module.scss"
-import mainStyles from "../../App.module.scss"
+import mainStyles from "../../../App.module.scss"
 
 const ForgotPassword = () => {
     const [stage, setStage] = useState(1)
