@@ -1,6 +1,5 @@
 import React from "react"
 import {Route, Routes} from "react-router-dom"
-import Main from "./components/Main"
 import Home from "./components/Pages/Home"
 import Document from "./components/Pages/Document"
 import Documents from "./components/Pages/Documents"
@@ -14,12 +13,7 @@ import ForgotPassword from "./components/Pages/ForgotPassword"
 const Links = () => {
   return (
     <Routes>
-        <Route element={
-            <PrivateRoutes>
-              <Main />
-            </PrivateRoutes>
-          }
-        >
+        <Route element={<PrivateRoutes />}>
           <Route path="/" element={<Home />} />
           <Route path="/document">
             <Route index element={<Document />} />
@@ -28,6 +22,7 @@ const Links = () => {
           <Route path="/documents" element={<Documents />} /> 
           <Route path="/projects" element={<Projects />} />
         </Route>
+
         <Route path="/login" element={<LoginPage />} /> 
         <Route path="/forgot_password" element={<ForgotPassword />} /> 
         <Route path="/registration" element={<Registration />} />
